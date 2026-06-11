@@ -628,6 +628,11 @@
     .sq-check-row span { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: 1em; line-height: 1.4; }
     .sq-answer { margin-top: 6px !important; }
     .sq-recovery-q { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: .95em; padding: 8px 12px; background: rgba(255,255,255,.04); border-radius: 6px; margin-bottom: 6px; }
+    .sq-intro { background: rgba(249,213,122,.06); border: 1px solid rgba(249,213,122,.2); border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; }
+    .sq-intro-title { font-family: 'Lexend', sans-serif; font-size: .8em; font-weight: 600; color: #f9d57a; margin-bottom: 8px; }
+    .sq-intro-text { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.82); font-size: .95em; line-height: 1.6; }
+    .sq-counter { font-family: 'Lexend', sans-serif; font-size: .75em; color: rgba(255,255,255,.65); margin-bottom: 8px; }
+    .sq-counter.complete { color: #f9d57a; }
     .forgot-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 18px; }
     .forgot-tab {
       flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid transparent;
@@ -713,6 +718,11 @@
     body.light .forgot-tab.active { color: #8a5e00; border-bottom-color: #8a5e00; }
     body.light .sq-check-row span { color: rgba(30,18,4,.85); }
     body.light .sq-recovery-q { color: rgba(30,18,4,.85); background: rgba(0,0,0,.03); }
+    body.light .sq-intro { background: rgba(138,94,0,.05); border-color: rgba(138,94,0,.2); }
+    body.light .sq-intro-title { color: #8a5e00; }
+    body.light .sq-intro-text { color: rgba(30,18,4,.8); }
+    body.light .sq-counter { color: rgba(30,18,4,.6); }
+    body.light .sq-counter.complete { color: #8a5e00; }
     body.light .modal-box { background: #fffcf7; border-color: rgba(138,94,0,.2); }
     body.light .modal-title { color: #8a5e00; }
     body.light .modal-btn-cancel { color: rgba(30,18,4,.6); border-color: rgba(0,0,0,.12); }
@@ -968,12 +978,14 @@ async function initApp() {
 
 // ══════════ SETUP ══════════
 const SECURITY_QUESTIONS = [
-  "What is the name of a close friend of the child?",
-  "What was the name of the child's first pet?",
-  "What was the name of a place the child loved visiting?",
-  "What was the child's favourite story or book?",
-  "What was the child's favourite food when they were little?",
-  "What was the name of the child's favourite toy?"
+  "What is your favourite colour?",
+  "What is your favourite food?",
+  "What is the name of your favourite fictional character?",
+  "What is your favourite season?",
+  "What was the name of your first pet?",
+  "What is your favourite film or TV show?",
+  "What sport or hobby did you enjoy most as a child?",
+  "What is your favourite number?"
 ];
 let setupData = {};
 function showSetup() { showScreen('setup-screen'); renderSetup(1); }
@@ -981,6 +993,7 @@ function showSetup() { showScreen('setup-screen'); renderSetup(1); }
 function renderSetup(step) {
   const box = document.getElementById('setup-box');
   if (step === 1) {
+    box.style.maxHeight = ''; box.style.overflowY = '';
     box.innerHTML = `<div class="auth-emblem">✦</div>
       <div class="auth-title">Secure your book</div>
       <div class="auth-subtitle">Choose a password to protect this memory book</div>
@@ -993,22 +1006,29 @@ function renderSetup(step) {
       <button class="auth-btn" onclick="s1next()">Next</button>`;
     document.getElementById('sp1').focus();
   } else if (step === 2) {
+    box.style.maxHeight = '88vh'; box.style.overflowY = 'auto';
     const qHTML = SECURITY_QUESTIONS.map((q, i) => `
       <div class="sq-item">
         <label class="sq-check-row">
           <input type="checkbox" id="sqc${i}" onchange="toggleSqInput(${i})">
           <span>${q}</span>
         </label>
-        <input class="auth-input sq-answer" id="sqa${i}" style="display:none" placeholder="Your answer…" autocomplete="off">
+        <input class="auth-input sq-answer" id="sqa${i}" style="display:none" placeholder="Their answer…" autocomplete="off">
       </div>`).join('');
     box.innerHTML = `<div class="auth-emblem">✦</div>
       <div class="auth-title">Security questions</div>
-      <div class="auth-subtitle">Tick 1 to 3 questions and write your answers. Any one correct answer can unlock the book.</div>
       <div class="auth-step">Step 2 of 3</div>
+      <div class="sq-intro">
+        <div class="sq-intro-title">Before you begin</div>
+        <div class="sq-intro-text">This memory book belongs to the child in your care — not to you as their carer. It's designed to travel with them through life, so when you answer these questions, sit together and let them lead. These should be their answers, in their words, reflecting who they are right now.</div>
+      </div>
+      <div class="auth-label" style="margin-bottom:10px;">Answer 3 of the following:</div>
+      <div class="sq-counter" id="sqCounter">0 of 3 selected</div>
       <div class="auth-error" id="se2"></div>
       ${qHTML}
       <button class="auth-btn" style="margin-top:14px;" onclick="s2next()">Next</button>`;
   } else {
+    box.style.maxHeight = ''; box.style.overflowY = '';
     tempRK = genRecoveryKey();
     box.innerHTML = `<div class="auth-emblem">🔑</div>
       <div class="auth-title">Your recovery key</div>
@@ -1036,10 +1056,16 @@ function s1next() {
 function toggleSqInput(i) {
   const cb=document.getElementById(`sqc${i}`), inp=document.getElementById(`sqa${i}`);
   const checkedCount=SECURITY_QUESTIONS.filter((_,j)=>document.getElementById(`sqc${j}`)?.checked).length;
-  if (cb.checked && checkedCount>3) { cb.checked=false; document.getElementById('se2').textContent='You can choose a maximum of 3 questions.'; return; }
+  if (cb.checked && checkedCount>3) { cb.checked=false; document.getElementById('se2').textContent='You can only pick 3 questions.'; return; }
   document.getElementById('se2').textContent='';
   inp.style.display=cb.checked?'':'none';
   if (!cb.checked) inp.value='';
+  const counter=document.getElementById('sqCounter');
+  if (counter) {
+    const n=SECURITY_QUESTIONS.filter((_,j)=>document.getElementById(`sqc${j}`)?.checked).length;
+    counter.textContent=`${n} of 3 selected`;
+    counter.classList.toggle('complete', n===3);
+  }
 }
 function s2next() {
   const e=document.getElementById('se2');
@@ -1048,7 +1074,7 @@ function s2next() {
     const cb=document.getElementById(`sqc${i}`), inp=document.getElementById(`sqa${i}`);
     if (cb?.checked) { const a=inp.value.trim(); if(a) selected.push({q,a}); }
   });
-  if (selected.length===0) { e.textContent='Please tick at least one question and write your answer.'; return; }
+  if (selected.length<3) { e.textContent='Please pick 3 questions and write an answer for each.'; return; }
   setupData.secQs=selected; renderSetup(3);
 }
 function copyRK(btn) {
