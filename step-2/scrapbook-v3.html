@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Life Story</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/opendyslexic');
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -132,7 +133,7 @@
     .b-emblem { font-size: 2.2em; margin-bottom: 12px; text-shadow: 0 0 18px rgba(249,213,122,.55); position: relative; z-index: 2; }
 
     .b-title {
-      font-family: 'Cinzel', serif;
+      font-family: 'Lexend', sans-serif;
       color: #f9d57a;
       font-size: 1.45em;
       text-align: center;
@@ -146,7 +147,7 @@
     .b-sub {
       font-family: 'Crimson Text', serif;
       font-style: italic;
-      color: rgba(249,213,122,.45);
+      color: rgba(249,213,122,.9);
       font-size: .95em;
       text-align: center;
       margin-bottom: 22px;
@@ -165,7 +166,7 @@
     .b-cover-btn {
       padding: 9px 14px;
       border-radius: 7px;
-      font-family: 'Cinzel', serif;
+      font-family: 'Lexend', sans-serif;
       font-size: .68em;
       letter-spacing: .08em;
       cursor: pointer;
@@ -184,7 +185,7 @@
     .cover-hint {
       font-family: 'Crimson Text', serif;
       font-style: italic;
-      color: rgba(255,255,255,.28);
+      color: rgba(255,255,255,.75);
       font-size: .95em;
       text-align: center;
       position: relative; z-index: 1;
@@ -217,7 +218,7 @@
       background: none;
       border: 1px solid rgba(255,255,255,.15);
       border-radius: 20px;
-      color: rgba(255,255,255,.45);
+      color: rgba(255,255,255,.75);
       font-family: 'Crimson Text', serif;
       font-size: 1em;
       cursor: pointer;
@@ -227,7 +228,7 @@
     .top-home-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 
     .top-title {
-      font-family: 'Cinzel', serif;
+      font-family: 'Lexend', sans-serif;
       color: #f9d57a;
       font-size: 1.05em;
       letter-spacing: .12em;
@@ -237,7 +238,7 @@
     .top-tab {
       padding: 7px 18px;
       border-radius: 20px;
-      font-family: 'Cinzel', serif;
+      font-family: 'Lexend', sans-serif;
       font-size: .7em;
       letter-spacing: .08em;
       cursor: pointer;
@@ -258,7 +259,7 @@
       background: none;
       border: 1px solid rgba(255,255,255,.15);
       border-radius: 20px;
-      color: rgba(255,255,255,.45);
+      color: rgba(255,255,255,.75);
       font-family: 'Crimson Text', serif;
       font-size: 1em;
       cursor: pointer;
@@ -311,10 +312,9 @@
 
     /* page header */
     .pg-header {
-      font-family: 'Cinzel', serif;
-      font-size: .7em;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      font-family: 'Lexend', sans-serif;
+      font-size: .75em;
+      letter-spacing: .04em;
       margin-bottom: 28px;
       padding-bottom: 12px;
       border-bottom: 1px solid;
@@ -328,7 +328,7 @@
 
     /* section titles */
     .sec-title {
-      font-family: 'Caveat', cursive;
+      font-family: 'Lexend', sans-serif;
       font-size: 2.1em;
       margin-bottom: 16px;
       margin-top: 30px;
@@ -348,17 +348,17 @@
     .entry-date input {
       background: transparent; border: none; outline: none;
       font-family: 'Crimson Text', serif; font-size: 1em;
-      color: rgba(255,255,255,.35); width: 150px;
+      color: rgba(255,255,255,.75); width: 150px;
     }
-    .entry-date input::placeholder { color: rgba(255,255,255,.2); }
+    .entry-date input::placeholder { color: rgba(255,255,255,.55); }
     .entry textarea {
       width: 100%; background: transparent; border: none; outline: none;
       resize: none; overflow: hidden;
-      font-family: 'Caveat', cursive; font-size: 1.35em;
+      font-family: 'OpenDyslexic', sans-serif; font-size: 1.35em;
       color: rgba(255,255,255,.88); line-height: 1.5; min-height: 68px;
       margin-top: 6px;
     }
-    .entry textarea::placeholder { color: rgba(255,255,255,.2); }
+    .entry textarea::placeholder { color: rgba(255,255,255,.55); }
 
     /* milestones */
     .milestone-list { list-style: none; margin-bottom: 12px; }
@@ -372,10 +372,10 @@
     .milestone-list li .ms-star { font-size: 1.1em; flex-shrink: 0; }
     .milestone-list li input {
       background: transparent; border: none; outline: none;
-      font-family: 'Caveat', cursive; font-size: 1.25em;
+      font-family: 'OpenDyslexic', sans-serif; font-size: 1.25em;
       color: rgba(255,255,255,.82); flex: 1;
     }
-    .milestone-list li input::placeholder { color: rgba(255,255,255,.2); }
+    .milestone-list li input::placeholder { color: rgba(255,255,255,.55); }
 
     /* photos */
     .photo-grid {
@@ -392,7 +392,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 6px;
-      color: rgba(255,255,255,.3);
+      color: rgba(255,255,255,.75);
       font-family: 'Crimson Text', serif; font-size: 1em;
       position: relative; overflow: hidden;
       cursor: pointer; transition: border-color .2s;
@@ -412,7 +412,7 @@
       outline: none; font-family: 'Crimson Text', serif; font-size: 1em;
       color: rgba(255,255,255,.65); padding: 4px 6px; border-radius: 4px;
     }
-    .photo-caption input::placeholder { color: rgba(255,255,255,.22); }
+    .photo-caption input::placeholder { color: rgba(255,255,255,.55); }
 
     /* add buttons */
     .add-btn {
@@ -421,7 +421,7 @@
       border-radius: 8px;
       padding: 8px 18px;
       font-family: 'Crimson Text', serif; font-size: 1em;
-      color: rgba(255,255,255,.32);
+      color: rgba(255,255,255,.75);
       cursor: pointer; transition: all .2s; margin-bottom: 8px;
     }
     .add-btn:hover { border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.6); }
@@ -438,7 +438,7 @@
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 50%;
       width: 46px; height: 46px;
-      color: rgba(255,255,255,.5); font-size: 1.2em;
+      color: rgba(255,255,255,.75); font-size: 1.2em;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       transition: all .2s;
     }
@@ -446,16 +446,16 @@
     .pg-nav-btn:disabled { opacity: .2; cursor: default; }
     .pg-nav-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
     .pg-indicator {
-      font-family: 'Cinzel', serif; font-size: .75em;
-      color: rgba(255,255,255,.3); letter-spacing: .1em; text-align: center;
+      font-family: 'Lexend', sans-serif; font-size: .75em;
+      color: rgba(255,255,255,.75); letter-spacing: .04em; text-align: center;
     }
     .pg-add-btn {
       background: none; border: none;
       font-family: 'Crimson Text', serif; font-style: italic; font-size: .95em;
-      color: rgba(255,255,255,.24); cursor: pointer; margin-top: 5px;
+      color: rgba(255,255,255,.75); cursor: pointer; margin-top: 5px;
       display: block; transition: color .2s;
     }
-    .pg-add-btn:hover { color: rgba(255,255,255,.5); }
+    .pg-add-btn:hover { color: white; }
     .pg-add-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 
     /* print modal */
@@ -472,7 +472,7 @@
       border: 1px solid rgba(249,213,122,.2);
     }
     .modal-title {
-      font-family: 'Cinzel', serif; color: #f9d57a;
+      font-family: 'Lexend', sans-serif; color: #f9d57a;
       font-size: 1em; margin-bottom: 20px; text-align: center;
       letter-spacing: .1em;
     }
@@ -504,7 +504,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 3px;
-      color: rgba(249,213,122,.4);
+      color: rgba(249,213,122,.9);
       font-size: .75em;
       margin-bottom: 14px;
       background: #111828;
@@ -543,10 +543,10 @@
       border-radius: 8px; margin-bottom: 6px;
       border: 1px solid rgba(236,130,183,.12);
     }
-    .voice-clip .clip-label { font-size: .85em; color: rgba(255,255,255,.4); flex-shrink: 0; white-space: nowrap; }
+    .voice-clip .clip-label { font-size: .85em; color: rgba(255,255,255,.75); flex-shrink: 0; white-space: nowrap; }
     .voice-clip audio { flex: 1; height: 30px; min-width: 0; }
     .voice-clip .clip-del {
-      background: none; border: none; color: rgba(255,255,255,.25);
+      background: none; border: none; color: rgba(255,255,255,.75);
       cursor: pointer; font-size: 1em; flex-shrink: 0; padding: 0 4px;
       transition: color .2s;
     }
@@ -567,33 +567,33 @@
     }
     .auth-emblem { font-size: 2em; text-align: center; margin-bottom: 10px; }
     .auth-title {
-      font-family: 'Cinzel', serif; color: #f9d57a;
+      font-family: 'Lexend', sans-serif; color: #f9d57a;
       font-size: 1.1em; letter-spacing: .1em; text-align: center; margin-bottom: 6px;
     }
     .auth-subtitle {
       font-family: 'Crimson Text', serif; font-style: italic;
-      color: rgba(255,255,255,.35); font-size: 1em; text-align: center; margin-bottom: 22px;
+      color: rgba(255,255,255,.75); font-size: 1em; text-align: center; margin-bottom: 22px;
     }
-    .auth-step { font-family: 'Cinzel', serif; font-size: .62em; letter-spacing: .14em; color: rgba(255,255,255,.22); text-align: center; margin-bottom: 18px; }
-    .auth-label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.55); font-size: 1em; margin-bottom: 5px; display: block; }
+    .auth-step { font-family: 'Lexend', sans-serif; font-size: .72em; letter-spacing: .04em; color: rgba(255,255,255,.75); text-align: center; margin-bottom: 18px; }
+    .auth-label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: 1em; margin-bottom: 5px; display: block; }
     .auth-input {
       width: 100%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
       border-radius: 8px; padding: 12px 14px; font-family: 'Crimson Text', serif; font-size: 1.05em;
       color: white; outline: none; transition: border-color .2s; margin-bottom: 12px;
     }
     .auth-input:focus { border-color: rgba(249,213,122,.5); }
-    .auth-input::placeholder { color: rgba(255,255,255,.2); }
+    .auth-input::placeholder { color: rgba(255,255,255,.55); }
     .auth-btn {
       width: 100%; padding: 13px; background: rgba(249,213,122,.14);
       border: 1px solid rgba(249,213,122,.35); border-radius: 9px;
-      font-family: 'Cinzel', serif; font-size: .8em; letter-spacing: .08em;
+      font-family: 'Lexend', sans-serif; font-size: .8em; letter-spacing: .08em;
       color: #f9d57a; cursor: pointer; transition: all .2s; margin-top: 4px;
     }
     .auth-btn:hover { background: rgba(249,213,122,.24); }
     .auth-btn:disabled { opacity: .4; cursor: default; }
     .auth-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
     .auth-link {
-      background: none; border: none; color: rgba(255,255,255,.3);
+      background: none; border: none; color: rgba(255,255,255,.75);
       font-family: 'Crimson Text', serif; font-style: italic; font-size: .95em;
       cursor: pointer; text-decoration: underline; padding: 0;
       margin-top: 14px; display: block; text-align: center; transition: color .2s;
@@ -608,21 +608,27 @@
       font-family: 'Courier New', monospace; font-size: .9em; color: #f9d57a;
       text-align: center; letter-spacing: .06em; word-break: break-all; line-height: 1.9;
     }
-    .recovery-warn { font-family: 'Crimson Text', serif; font-style: italic; color: rgba(255,255,255,.38); font-size: .9em; text-align: center; margin-bottom: 12px; }
+    .recovery-warn { font-family: 'Crimson Text', serif; font-style: italic; color: rgba(255,255,255,.75); font-size: .9em; text-align: center; margin-bottom: 12px; }
     .copy-btn {
       width: 100%; padding: 9px; background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.12); border-radius: 7px;
-      font-family: 'Crimson Text', serif; font-size: .95em; color: rgba(255,255,255,.45);
+      font-family: 'Crimson Text', serif; font-size: .95em; color: rgba(255,255,255,.75);
       cursor: pointer; transition: all .2s; margin-bottom: 12px;
     }
     .copy-btn:hover { border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.75); }
     .auth-check-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
     .auth-check-row input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
-    .auth-check-row label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.5); font-size: 1em; cursor: pointer; }
+    .auth-check-row label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.75); font-size: 1em; cursor: pointer; }
+    .sq-item { margin-bottom: 10px; }
+    .sq-check-row { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+    .sq-check-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; cursor: pointer; }
+    .sq-check-row span { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: 1em; line-height: 1.4; }
+    .sq-answer { margin-top: 6px !important; }
+    .sq-recovery-q { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: .95em; padding: 8px 12px; background: rgba(255,255,255,.04); border-radius: 6px; margin-bottom: 6px; }
     .forgot-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 18px; }
     .forgot-tab {
       flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid transparent;
-      font-family: 'Crimson Text', serif; font-size: 1em; color: rgba(255,255,255,.3);
+      font-family: 'Crimson Text', serif; font-size: 1em; color: rgba(255,255,255,.75);
       cursor: pointer; margin-bottom: -1px; transition: all .2s;
     }
     .forgot-tab.active { color: #f9d57a; border-bottom-color: #f9d57a; }
@@ -698,10 +704,7 @@
       <button class="auth-btn" onclick="tryRecovery()">Unlock with recovery key</button>
     </div>
     <div id="fpanel-security" style="display:none">
-      <div class="auth-error" id="ferr-security"></div>
-      <label class="auth-label">What is the name of a close friend of the child this book belongs to?</label>
-      <input class="auth-input" type="text" id="finput-security" placeholder="Enter your answer…">
-      <button class="auth-btn" onclick="trySecurityAnswer()">Unlock with security question</button>
+      <!-- rebuilt dynamically by showForgot() -->
     </div>
     <button class="modal-btn modal-btn-cancel" style="margin-top:10px;" onclick="closeForgot()">Cancel</button>
   </div>
@@ -830,6 +833,14 @@ async function initApp() {
 }
 
 // ══════════ SETUP ══════════
+const SECURITY_QUESTIONS = [
+  "What is the name of a close friend of the child?",
+  "What was the name of the child's first pet?",
+  "What was the name of a place the child loved visiting?",
+  "What was the child's favourite story or book?",
+  "What was the child's favourite food when they were little?",
+  "What was the name of the child's favourite toy?"
+];
 let setupData = {};
 function showSetup() { showScreen('setup-screen'); renderSetup(1); }
 
@@ -839,7 +850,7 @@ function renderSetup(step) {
     box.innerHTML = `<div class="auth-emblem">✦</div>
       <div class="auth-title">Secure your book</div>
       <div class="auth-subtitle">Choose a password to protect this memory book</div>
-      <div class="auth-step">STEP 1 OF 3</div>
+      <div class="auth-step">Step 1 of 3</div>
       <div class="auth-error" id="se1"></div>
       <label class="auth-label" for="sp1">Password</label>
       <input class="auth-input" type="password" id="sp1" placeholder="Choose a password…" autocomplete="new-password" onkeydown="if(event.key==='Enter')s1next()">
@@ -848,23 +859,27 @@ function renderSetup(step) {
       <button class="auth-btn" onclick="s1next()">Next</button>`;
     document.getElementById('sp1').focus();
   } else if (step === 2) {
+    const qHTML = SECURITY_QUESTIONS.map((q, i) => `
+      <div class="sq-item">
+        <label class="sq-check-row">
+          <input type="checkbox" id="sqc${i}" onchange="toggleSqInput(${i})">
+          <span>${q}</span>
+        </label>
+        <input class="auth-input sq-answer" id="sqa${i}" style="display:none" placeholder="Your answer…" autocomplete="off">
+      </div>`).join('');
     box.innerHTML = `<div class="auth-emblem">✦</div>
-      <div class="auth-title">Security question</div>
-      <div class="auth-subtitle">This helps you recover access if you forget your password</div>
-      <div class="auth-step">STEP 2 OF 3</div>
+      <div class="auth-title">Security questions</div>
+      <div class="auth-subtitle">Tick 1 to 3 questions and write your answers. Any one correct answer can unlock the book.</div>
+      <div class="auth-step">Step 2 of 3</div>
       <div class="auth-error" id="se2"></div>
-      <label class="auth-label">What is the name of a close friend of the child this book belongs to?</label>
-      <input class="auth-input" type="text" id="sq1" placeholder="Your answer…" autocomplete="off">
-      <label class="auth-label" for="sq2">Confirm answer</label>
-      <input class="auth-input" type="text" id="sq2" placeholder="Confirm answer…" autocomplete="off">
-      <button class="auth-btn" onclick="s2next()">Next</button>`;
-    document.getElementById('sq1').focus();
+      ${qHTML}
+      <button class="auth-btn" style="margin-top:14px;" onclick="s2next()">Next</button>`;
   } else {
     tempRK = genRecoveryKey();
     box.innerHTML = `<div class="auth-emblem">🔑</div>
       <div class="auth-title">Your recovery key</div>
       <div class="auth-subtitle">Write this down and keep it somewhere safe.<br>You will only see it once.</div>
-      <div class="auth-step">STEP 3 OF 3</div>
+      <div class="auth-step">Step 3 of 3</div>
       <div class="recovery-box"><div class="recovery-val" id="rkDisplay">${tempRK}</div></div>
       <div class="recovery-warn">If you lose your password and this key, the book cannot be recovered.</div>
       <button class="copy-btn" onclick="copyRK(this)">Copy to clipboard</button>
@@ -884,11 +899,23 @@ function s1next() {
   if (p!==p2) { e.textContent='Passwords do not match.'; return; }
   setupData.pwd=p; renderSetup(2);
 }
+function toggleSqInput(i) {
+  const cb=document.getElementById(`sqc${i}`), inp=document.getElementById(`sqa${i}`);
+  const checkedCount=SECURITY_QUESTIONS.filter((_,j)=>document.getElementById(`sqc${j}`)?.checked).length;
+  if (cb.checked && checkedCount>3) { cb.checked=false; document.getElementById('se2').textContent='You can choose a maximum of 3 questions.'; return; }
+  document.getElementById('se2').textContent='';
+  inp.style.display=cb.checked?'':'none';
+  if (!cb.checked) inp.value='';
+}
 function s2next() {
-  const a=document.getElementById('sq1').value.trim(), a2=document.getElementById('sq2').value.trim(), e=document.getElementById('se2');
-  if (!a) { e.textContent='Please enter an answer.'; return; }
-  if (a.toLowerCase()!==a2.toLowerCase()) { e.textContent='Answers do not match.'; return; }
-  setupData.sec=a; renderSetup(3);
+  const e=document.getElementById('se2');
+  const selected=[];
+  SECURITY_QUESTIONS.forEach((q,i)=>{
+    const cb=document.getElementById(`sqc${i}`), inp=document.getElementById(`sqa${i}`);
+    if (cb?.checked) { const a=inp.value.trim(); if(a) selected.push({q,a}); }
+  });
+  if (selected.length===0) { e.textContent='Please tick at least one question and write your answer.'; return; }
+  setupData.secQs=selected; renderSetup(3);
 }
 function copyRK(btn) {
   navigator.clipboard.writeText(tempRK).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy to clipboard',2000); });
@@ -898,15 +925,20 @@ async function setupFinish() {
   btn.textContent='Setting up…'; btn.disabled=true;
   try {
     masterKey = await crypto.subtle.generateKey({name:'AES-GCM',length:256}, true, ['encrypt','decrypt']);
-    const pS=crypto.getRandomValues(new Uint8Array(16)), rS=crypto.getRandomValues(new Uint8Array(16)), sS=crypto.getRandomValues(new Uint8Array(16));
-    const [pW,rW,sW] = await Promise.all([
+    const pS=crypto.getRandomValues(new Uint8Array(16)), rS=crypto.getRandomValues(new Uint8Array(16));
+    const [pW,rW] = await Promise.all([
       deriveWrapKey(setupData.pwd, pS),
-      deriveWrapKey(tempRK.replace(/-/g,''), rS),
-      deriveWrapKey(setupData.sec.toLowerCase().trim(), sS)
+      deriveWrapKey(tempRK.replace(/-/g,''), rS)
     ]);
-    const [pK,rK,sK] = await Promise.all([wrapMK(masterKey,pW), wrapMK(masterKey,rW), wrapMK(masterKey,sW)]);
+    const [pK,rK] = await Promise.all([wrapMK(masterKey,pW), wrapMK(masterKey,rW)]);
+    const sq = await Promise.all(setupData.secQs.map(async ({q,a}) => {
+      const s=crypto.getRandomValues(new Uint8Array(16));
+      const wk=await deriveWrapKey(a.toLowerCase().trim(), s);
+      const k=await wrapMK(masterKey, wk);
+      return { q, s:B64.to(s), k };
+    }));
     const encData = await encPayload(masterKey, { carer: data.carer, child: data.child, coverPhoto: null });
-    vault = { v:1, pS:B64.to(pS), pK, rS:B64.to(rS), rK, sS:B64.to(sS), sK, data:encData };
+    vault = { v:1, pS:B64.to(pS), pK, rS:B64.to(rS), rK, sq, data:encData };
     persistVault();
     tempRK=null; setupData={};
     showScreen('cover-screen');
@@ -946,11 +978,22 @@ async function unlockSuccess() {
 }
 
 // ══════════ FORGOT ══════════
-function showForgot() { document.getElementById('forgotModal').classList.add('open'); switchForgotTab('recovery'); }
+function showForgot() {
+  const panel=document.getElementById('fpanel-security');
+  const entries=vault?.sq || (vault?.sS ? [{q:'Security question', s:vault.sS, k:vault.sK}] : []);
+  const qList=entries.map(({q})=>`<div class="sq-recovery-q">${q}</div>`).join('');
+  panel.innerHTML=`<div class="auth-error" id="ferr-security"></div>
+    <div class="auth-label" style="margin-bottom:8px;">Answer any one of your security questions:</div>
+    <div style="margin-bottom:12px;">${qList}</div>
+    <input class="auth-input" type="text" id="finput-security" placeholder="Enter your answer…" autocomplete="off">
+    <button class="auth-btn" onclick="trySecurityAnswer()">Unlock with security question</button>`;
+  document.getElementById('forgotModal').classList.add('open');
+  switchForgotTab('recovery');
+}
 function closeForgot() {
   document.getElementById('forgotModal').classList.remove('open');
-  ['ferr-recovery','ferr-security'].forEach(id=>document.getElementById(id).textContent='');
-  ['finput-recovery','finput-security'].forEach(id=>document.getElementById(id).value='');
+  const ferr=document.getElementById('ferr-recovery'); if(ferr) ferr.textContent='';
+  const finput=document.getElementById('finput-recovery'); if(finput) finput.value='';
 }
 function switchForgotTab(t) {
   document.getElementById('ftab-recovery').classList.toggle('active',t==='recovery');
@@ -969,14 +1012,20 @@ async function tryRecovery() {
   } catch { e.textContent='Recovery key not recognised. Please check and try again.'; masterKey=null; }
 }
 async function trySecurityAnswer() {
-  const a=document.getElementById('finput-security').value.trim().toLowerCase(), e=document.getElementById('ferr-security');
+  const a=document.getElementById('finput-security').value.trim().toLowerCase();
+  const e=document.getElementById('ferr-security');
   if (!a) { e.textContent='Please enter your answer.'; return; }
   e.textContent='Checking…';
-  try {
-    const wk = await deriveWrapKey(a, B64.from(vault.sS));
-    masterKey = await unwrapMK(vault.sK, wk);
-    closeForgot(); await unlockSuccess(); setTimeout(showChangePwd, 400);
-  } catch { e.textContent='Answer not recognised. Please check and try again.'; masterKey=null; }
+  const entries=vault?.sq || (vault?.sS ? [{s:vault.sS, k:vault.sK}] : []);
+  for (const entry of entries) {
+    try {
+      const wk=await deriveWrapKey(a, B64.from(entry.s));
+      masterKey=await unwrapMK(entry.k, wk);
+      closeForgot(); await unlockSuccess(); setTimeout(showChangePwd, 400);
+      return;
+    } catch {}
+  }
+  e.textContent='Answer not recognised. Please check and try again.'; masterKey=null;
 }
 
 // ══════════ CHANGE PASSWORD ══════════
@@ -1303,7 +1352,7 @@ function doPrint(which) {
     body { font-family: Georgia, serif; font-size: 13pt; color: #111; background: white; }
     .print-page { padding: 32px 36px; page-break-after: always; border-bottom: 1px solid #eee; }
     .print-page:last-child { page-break-after: auto; }
-    .pg-label { font-size: .75em; letter-spacing: .15em; text-transform: uppercase; color: #555; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
+    .pg-label { font-size: .75em; letter-spacing: .04em; color: #555; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
     h2 { font-family: Georgia, serif; font-size: 1.6em; margin: 22px 0 10px; color: #222; }
     h2:first-of-type { margin-top: 0; }
     .entry { background: #f7f7f7; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
