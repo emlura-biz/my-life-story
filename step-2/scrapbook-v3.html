@@ -26,7 +26,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 40px 20px 60px;
+      padding: 40px 20px 100px;
     }
 
     /* ── COVER SCREEN ── */
@@ -653,6 +653,7 @@
         min-height: unset !important;
       }
       .topbar { display: none !important; }
+      #themeBar { display: none !important; }
       .page-wrap {
         box-shadow: none !important;
         border: none !important;
@@ -675,17 +676,34 @@
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
 
-    /* ── THEME TOGGLE ── */
+    /* ── THEME BAR ── */
+    #themeBar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 20px 18px;
+      text-align: center;
+      background: rgba(10,18,30,.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,.07);
+      z-index: 100;
+    }
+    .theme-label {
+      font-family: 'Lexend', sans-serif;
+      font-size: .7em;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 8px;
+      letter-spacing: .04em;
+    }
     .theme-toggle {
-      display: flex;
+      display: inline-flex;
       border: 1px solid rgba(255,255,255,.22);
       border-radius: 24px;
       overflow: hidden;
-      margin-top: 22px;
     }
     .theme-btn {
       background: none; border: none;
-      padding: 7px 20px;
+      padding: 6px 20px;
       font-family: 'Lexend', sans-serif; font-size: .78em;
       color: rgba(255,255,255,.55);
       cursor: pointer; transition: all .2s;
@@ -745,9 +763,11 @@
     body.light .cover-hint { color: rgba(30,18,4,.6); }
     body.light .cover-photo-slot { border-color: rgba(138,94,0,.4); color: #8a5e00; background: rgba(250,243,230,.9); }
     body.light .cover-photo-slot:hover { border-color: #8a5e00; }
-    body.light .theme-toggle { border-color: rgba(0,0,0,.2); }
+    body.light #themeBar { background: rgba(235,224,208,.92); border-top-color: rgba(0,0,0,.1); }
+    body.light .theme-label { color: rgba(30,18,4,.65); }
+    body.light .theme-toggle { border-color: rgba(0,0,0,.25); }
     body.light .theme-btn { color: rgba(30,18,4,.7); }
-    body.light .theme-btn.active { background: rgba(0,0,0,.1); color: #1c1004; }
+    body.light .theme-btn.active { background: rgba(0,0,0,.12); color: #1c1004; }
     body.light #book-screen { background: #f2e9db; background-image: none; }
     body.light .top-home-btn { color: rgba(30,18,4,.7); border-color: rgba(0,0,0,.2); }
     body.light .top-home-btn:hover { color: #1c1004; border-color: rgba(0,0,0,.5); }
@@ -881,11 +901,6 @@
 
   <p class="cover-hint" aria-live="polite">Choose a section to open the book</p>
 
-  <div class="theme-toggle" role="group" aria-label="Choose theme">
-    <button class="theme-btn active" id="tbtn-dark" onclick="setTheme('dark')" aria-pressed="true">Dark</button>
-    <button class="theme-btn" id="tbtn-light" onclick="setTheme('light')" aria-pressed="false">Light</button>
-  </div>
-
 </div>
 
 <!-- ══════════ BOOK SCREEN ══════════ -->
@@ -916,6 +931,15 @@
     <button class="modal-btn modal-btn-child" onclick="doPrint('child')">Child's pages only</button>
     <button class="modal-btn modal-btn-all"   onclick="doPrint('all')">Whole book</button>
     <button class="modal-btn modal-btn-cancel" onclick="closePrintMenu()">Cancel</button>
+  </div>
+</div>
+
+<!-- ══════════ THEME BAR (fixed, every screen) ══════════ -->
+<div id="themeBar" aria-label="Theme settings">
+  <div class="theme-label">Choose your theme</div>
+  <div class="theme-toggle" role="group" aria-label="Choose theme">
+    <button class="theme-btn active" id="tbtn-dark" onclick="setTheme('dark')" aria-pressed="true">Dark</button>
+    <button class="theme-btn" id="tbtn-light" onclick="setTheme('light')" aria-pressed="false">Light</button>
   </div>
 </div>
 
