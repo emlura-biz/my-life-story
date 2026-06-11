@@ -432,21 +432,27 @@
       border-top: 1px solid rgba(255,255,255,.06);
     }
     .pg-nav-btn {
-      background: none;
-      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      border: 2px solid rgba(255,255,255,.35);
       border-radius: 50%;
-      width: 46px; height: 46px;
-      color: rgba(255,255,255,.75); font-size: 1.2em;
+      width: 54px; height: 54px;
+      color: white; font-size: 1.5em;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       transition: all .2s;
     }
-    .pg-nav-btn:hover:not(:disabled) { border-color: rgba(255,255,255,.55); color: white; }
-    .pg-nav-btn:disabled { opacity: .2; cursor: default; }
+    .pg-nav-btn:hover:not(:disabled) { background: rgba(255,255,255,.18); border-color: white; }
+    .pg-nav-btn:disabled { opacity: .15; cursor: default; }
     .pg-nav-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    .carer .pg-nav-btn { border-color: rgba(249,213,122,.5); color: #f9d57a; }
+    .carer .pg-nav-btn:hover:not(:disabled) { background: rgba(249,213,122,.12); border-color: #f9d57a; }
+    .child .pg-nav-btn { border-color: rgba(236,130,183,.5); color: #ec82b7; }
+    .child .pg-nav-btn:hover:not(:disabled) { background: rgba(236,130,183,.12); border-color: #ec82b7; }
     .pg-indicator {
-      font-family: 'Lexend', sans-serif; font-size: .75em;
-      color: rgba(255,255,255,.75); letter-spacing: .04em; text-align: center;
+      font-family: 'Lexend', sans-serif; font-size: 1.4em;
+      font-weight: 600; letter-spacing: .04em; text-align: center;
     }
+    .carer .pg-indicator { color: #f9d57a; }
+    .child .pg-indicator { color: #ec82b7; }
     .pg-add-btn {
       background: none; border: none;
       font-family: 'Crimson Text', serif; font-size: .95em;
@@ -663,6 +669,123 @@
       .photo-caption input { color: #333 !important; border-color: #bbb !important; background: #f9f9f9 !important; }
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      display: flex;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 24px;
+      overflow: hidden;
+      margin-top: 22px;
+    }
+    .theme-btn {
+      background: none; border: none;
+      padding: 7px 20px;
+      font-family: 'Lexend', sans-serif; font-size: .78em;
+      color: rgba(255,255,255,.55);
+      cursor: pointer; transition: all .2s;
+    }
+    .theme-btn.active { background: rgba(255,255,255,.14); color: white; }
+
+    /* ── LIGHT THEME ── */
+    body.light { background: #f2e9db; }
+    body.light .auth-screen { background: #f2e9db; }
+    body.light .auth-box { background: #fffcf7; border-color: rgba(0,0,0,.1); box-shadow: 0 20px 60px rgba(0,0,0,.1); }
+    body.light .auth-title { color: #8a5e00; }
+    body.light .auth-subtitle { color: rgba(30,18,4,.7); }
+    body.light .auth-step { color: rgba(30,18,4,.6); }
+    body.light .auth-label { color: rgba(30,18,4,.8); }
+    body.light .auth-input { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.15); color: #1c1004; }
+    body.light .auth-input::placeholder { color: rgba(30,18,4,.38); }
+    body.light .auth-input:focus { border-color: rgba(138,94,0,.5); }
+    body.light .auth-btn { background: rgba(138,94,0,.1); border-color: rgba(138,94,0,.4); color: #8a5e00; }
+    body.light .auth-btn:hover { background: rgba(138,94,0,.2); }
+    body.light .auth-link { color: rgba(30,18,4,.65); }
+    body.light .auth-link:hover { color: #1c1004; }
+    body.light .recovery-box { background: rgba(138,94,0,.07); border-color: rgba(138,94,0,.25); }
+    body.light .recovery-val { color: #8a5e00; }
+    body.light .recovery-warn { color: rgba(30,18,4,.6); }
+    body.light .copy-btn { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.14); color: rgba(30,18,4,.7); }
+    body.light .copy-btn:hover { border-color: rgba(0,0,0,.35); color: #1c1004; }
+    body.light .auth-check-row label { color: rgba(30,18,4,.75); }
+    body.light .forgot-tabs { border-color: rgba(0,0,0,.1); }
+    body.light .forgot-tab { color: rgba(30,18,4,.55); }
+    body.light .forgot-tab.active { color: #8a5e00; border-bottom-color: #8a5e00; }
+    body.light .sq-check-row span { color: rgba(30,18,4,.85); }
+    body.light .sq-recovery-q { color: rgba(30,18,4,.85); background: rgba(0,0,0,.03); }
+    body.light .modal-box { background: #fffcf7; border-color: rgba(138,94,0,.2); }
+    body.light .modal-title { color: #8a5e00; }
+    body.light .modal-btn-cancel { color: rgba(30,18,4,.6); border-color: rgba(0,0,0,.12); }
+    body.light .modal-btn-all { background: rgba(0,0,0,.04); color: rgba(30,18,4,.8); border-color: rgba(0,0,0,.15); }
+    body.light .modal-btn-all:hover { background: rgba(0,0,0,.09); }
+    body.light .b-front {
+      background: radial-gradient(ellipse at 30% 25%, #fdf0d8 0%, transparent 55%), radial-gradient(ellipse at 75% 75%, #f5e8cc 0%, transparent 50%), #faf3e4;
+      border-color: rgba(138,94,0,.3);
+      box-shadow: inset -6px 0 24px rgba(0,0,0,.06), inset 0 0 60px rgba(0,0,0,.04);
+    }
+    body.light .b-front::before, body.light .b-front::after { border-color: rgba(138,94,0,.3); }
+    body.light .b-spine { background: linear-gradient(to right, #7a4f10, #a87840, #7a4f10); }
+    body.light .b-title { color: #8a5e00; text-shadow: none; }
+    body.light .b-sub { color: rgba(138,94,0,.85); }
+    body.light .b-divider { background: linear-gradient(to right, transparent, rgba(138,94,0,.3), transparent); }
+    body.light .btn-carer { background: rgba(138,94,0,.1); color: #8a5e00; border-color: rgba(138,94,0,.4); }
+    body.light .btn-carer:hover { background: rgba(138,94,0,.2); }
+    body.light .btn-child { background: rgba(168,32,96,.1); color: #a82060; border-color: rgba(168,32,96,.4); }
+    body.light .btn-child:hover { background: rgba(168,32,96,.2); }
+    body.light .cover-hint { color: rgba(30,18,4,.6); }
+    body.light .cover-photo-slot { border-color: rgba(138,94,0,.4); color: rgba(138,94,0,.8); background: rgba(250,243,230,.9); }
+    body.light .cover-photo-slot:hover { border-color: #8a5e00; }
+    body.light .theme-toggle { border-color: rgba(0,0,0,.2); }
+    body.light .theme-btn { color: rgba(30,18,4,.5); }
+    body.light .theme-btn.active { background: rgba(0,0,0,.1); color: #1c1004; }
+    body.light #book-screen { background: #f2e9db; background-image: none; }
+    body.light .top-home-btn { color: rgba(30,18,4,.7); border-color: rgba(0,0,0,.2); }
+    body.light .top-home-btn:hover { color: #1c1004; border-color: rgba(0,0,0,.5); }
+    body.light .top-title { color: #8a5e00; text-shadow: none; }
+    body.light .tab-carer { color: #8a5e00; border-color: rgba(138,94,0,.3); }
+    body.light .tab-carer.active { background: rgba(138,94,0,.12); border-color: #8a5e00; }
+    body.light .tab-carer { opacity: 1; }
+    body.light .top-tab { opacity: 1; }
+    body.light .tab-child { color: #a82060; border-color: rgba(168,32,96,.3); }
+    body.light .tab-child.active { background: rgba(168,32,96,.12); border-color: #a82060; }
+    body.light .top-print-btn { color: rgba(30,18,4,.7); border-color: rgba(0,0,0,.2); }
+    body.light .top-print-btn:hover { color: #1c1004; border-color: rgba(0,0,0,.5); }
+    body.light .page-wrap { background: #fffcf7; border-color: rgba(0,0,0,.07); box-shadow: -8px 0 0 #e6d9c8, -15px 0 0 #d9ccb8, 0 22px 64px rgba(0,0,0,.1); }
+    body.light .page-wrap::before { background: rgba(0,0,0,.04); }
+    body.light .pg-header.carer { color: #8a5e00; border-color: rgba(138,94,0,.2); }
+    body.light .pg-header.child { color: #a82060; border-color: rgba(168,32,96,.2); }
+    body.light .carer .sec-title { color: #8a5e00; }
+    body.light .child .sec-title { color: #a82060; }
+    body.light .entry { background: rgba(0,0,0,.025); border-color: rgba(0,0,0,.07); }
+    body.light .entry textarea { color: #1c1004; }
+    body.light .entry textarea::placeholder { color: rgba(30,18,4,.38); }
+    body.light .entry-date input { color: rgba(30,18,4,.7); }
+    body.light .entry-date input::placeholder { color: rgba(30,18,4,.35); }
+    body.light .milestone-list li { background: rgba(0,0,0,.025); border-color: rgba(0,0,0,.06); }
+    body.light .milestone-list li input { color: #1c1004; }
+    body.light .milestone-list li input::placeholder { color: rgba(30,18,4,.38); }
+    body.light .photo-slot { border-color: rgba(0,0,0,.18); color: rgba(30,18,4,.6); }
+    body.light .photo-slot:hover { border-color: rgba(0,0,0,.4); }
+    body.light .photo-caption input { color: rgba(30,18,4,.75); border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.03); }
+    body.light .photo-caption input::placeholder { color: rgba(30,18,4,.38); }
+    body.light .add-btn { color: rgba(30,18,4,.65); border-color: rgba(0,0,0,.18); }
+    body.light .add-btn:hover { color: #1c1004; border-color: rgba(0,0,0,.4); background: rgba(0,0,0,.03); }
+    body.light .pg-nav { border-color: rgba(0,0,0,.08); }
+    body.light .pg-nav-btn { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.2); color: #1c1004; }
+    body.light .carer .pg-nav-btn { border-color: rgba(138,94,0,.45); color: #8a5e00; }
+    body.light .carer .pg-nav-btn:hover:not(:disabled) { background: rgba(138,94,0,.1); border-color: #8a5e00; }
+    body.light .child .pg-nav-btn { border-color: rgba(168,32,96,.45); color: #a82060; }
+    body.light .child .pg-nav-btn:hover:not(:disabled) { background: rgba(168,32,96,.1); border-color: #a82060; }
+    body.light .carer .pg-indicator { color: #8a5e00; }
+    body.light .child .pg-indicator { color: #a82060; }
+    body.light .pg-add-btn { color: rgba(30,18,4,.65); }
+    body.light .pg-add-btn:hover { color: #1c1004; }
+    body.light .voice-btn { border-color: rgba(168,32,96,.3); color: rgba(168,32,96,.85); }
+    body.light .voice-btn:hover { border-color: rgba(168,32,96,.65); color: #a82060; }
+    body.light .voice-clip { background: rgba(168,32,96,.05); border-color: rgba(168,32,96,.15); }
+    body.light .voice-clip .clip-label { color: rgba(30,18,4,.65); }
+    body.light .voice-clip .clip-del { color: rgba(30,18,4,.5); }
+    body.light .voice-clip .clip-del:hover { color: rgba(200,0,0,.75); }
   </style>
 </head>
 <body>
@@ -731,7 +854,7 @@
       <div class="b-front">
         <div class="b-emblem">✦</div>
         <div class="b-title">My Life Story</div>
-        <div class="b-sub">a book of memories</div>
+        <div class="b-sub">A book of memories</div>
         <div class="cover-photo-slot" id="coverPhotoSlot" aria-label="Add a photo of the child">
           <span class="cph-icon" aria-hidden="true">📷</span>
           <span>Add photo</span>
@@ -739,14 +862,19 @@
         </div>
         <div class="b-divider"></div>
         <div class="b-cover-btns">
-          <button class="b-cover-btn btn-carer" onclick="openBook('carer')" aria-label="Open carer's pages">Carer's pages</button>
           <button class="b-cover-btn btn-child" onclick="openBook('child')" aria-label="Open child's pages">My pages</button>
+          <button class="b-cover-btn btn-carer" onclick="openBook('carer')" aria-label="Open carer's pages">Carer's pages</button>
         </div>
       </div>
     </div>
   </div>
 
   <p class="cover-hint" aria-live="polite">Choose a section to open the book</p>
+
+  <div class="theme-toggle" role="group" aria-label="Choose theme">
+    <button class="theme-btn active" id="tbtn-dark" onclick="setTheme('dark')" aria-pressed="true">Dark</button>
+    <button class="theme-btn" id="tbtn-light" onclick="setTheme('light')" aria-pressed="false">Light</button>
+  </div>
 
 </div>
 
@@ -820,11 +948,20 @@ function loadVault()  { try { return JSON.parse(localStorage.getItem(VKEY)); } c
 function persistVault(){ localStorage.setItem(VKEY, JSON.stringify(vault)); }
 
 // ══════════ APP INIT ══════════
+function setTheme(t) {
+  document.body.classList.toggle('light', t === 'light');
+  localStorage.setItem('mlsTheme', t);
+  const db = document.getElementById('tbtn-dark'), lb = document.getElementById('tbtn-light');
+  if (db) { db.classList.toggle('active', t === 'dark'); db.setAttribute('aria-pressed', t === 'dark'); }
+  if (lb) { lb.classList.toggle('active', t === 'light'); lb.setAttribute('aria-pressed', t === 'light'); }
+}
+
 async function initApp() {
   if (!window.crypto?.subtle) {
     document.body.innerHTML = '<div style="color:white;padding:40px;text-align:center;font-family:serif;"><h2>Browser not supported</h2><p>Please open this file in Chrome, Firefox, or Safari.</p></div>';
     return;
   }
+  setTheme(localStorage.getItem('mlsTheme') || 'dark');
   vault = loadVault();
   vault ? showLock() : showSetup();
 }
