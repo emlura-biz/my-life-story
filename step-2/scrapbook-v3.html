@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Life Story</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d1b2a;
+      min-height: 100vh;
+      font-family: 'Crimson Text', serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* ── SCREENS ── */
+    .screen { display: none; }
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+
+    /* ── COVER SCREEN ── */
+    #cover-screen {
+      background: radial-gradient(ellipse at 30% 40%, #1a2a4a 0%, #0d1520 65%),
+                  radial-gradient(ellipse at 80% 70%, #1a1035 0%, transparent 50%);
+    }
+
+    /* subtle stars */
+    #cover-screen::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(1.5px 1.5px at 12% 18%, rgba(255,220,150,.5) 0%, transparent 100%),
+        radial-gradient(1px   1px   at 72%  9%, rgba(255,255,255,.3) 0%, transparent 100%),
+        radial-gradient(1px   1px   at 38% 62%, rgba(255,220,150,.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 88% 72%, rgba(255,255,255,.25) 0%, transparent 100%),
+        radial-gradient(1px   1px   at 53% 84%, rgba(255,220,150,.25) 0%, transparent 100%),
+        radial-gradient(1px   1px   at  6% 78%, rgba(255,255,255,.2) 0%, transparent 100%),
+        radial-gradient(1px   1px   at 63% 38%, rgba(255,220,150,.2) 0%, transparent 100%),
+        radial-gradient(1px   1px   at 22% 44%, rgba(255,255,255,.15) 0%, transparent 100%),
+        radial-gradient(1px   1px   at 95% 28%, rgba(255,220,150,.2) 0%, transparent 100%);
+    }
+
+    /* 3-D book on cover */
+    .book-3d-scene {
+      perspective: 1400px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .book-3d {
+      position: relative;
+      width: 340px;
+      height: 480px;
+      transform-style: preserve-3d;
+      transform: rotateY(-22deg) rotateX(6deg);
+    }
+
+    .book-3d.opening {
+      animation: bookSwing 1s ease-in-out forwards;
+    }
+
+    @keyframes bookSwing {
+      0%   { transform: rotateY(-22deg) rotateX(6deg); opacity: 1; }
+      25%  { transform: rotateY(0deg)   rotateX(3deg); opacity: 1; }
+      65%  { transform: rotateY(35deg)  rotateX(1deg) scale(1.04); opacity: 0.6; }
+      100% { transform: rotateY(70deg)  rotateX(0deg) scale(1.08); opacity: 0; }
+    }
+
+    /* spine */
+    .b-spine {
+      position: absolute;
+      left: -34px; top: 4px; bottom: 4px; width: 34px;
+      background: linear-gradient(to right, #08101a, #14212f, #0c1824);
+      border-radius: 4px 0 0 4px;
+      transform: rotateY(-90deg);
+      transform-origin: right center;
+    }
+
+    /* page stack visible on right */
+    .b-pages {
+      position: absolute;
+      right: -15px; top: 5px; bottom: 5px; width: 16px;
+      background: repeating-linear-gradient(
+        to right, #e0d8c8, #e0d8c8 1px, #cfc7b5 1px, #cfc7b5 2.5px
+      );
+      border-radius: 0 3px 3px 0;
+      transform: rotateY(90deg);
+      transform-origin: left center;
+    }
+
+    /* front cover face */
+    .b-front {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px 14px 14px 3px;
+      border: 1px solid rgba(249,213,122,.28);
+      background:
+        radial-gradient(ellipse at 30% 25%, #1e2f55 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 75%, #1a1040 0%, transparent 50%),
+        #111828;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 22px;
+      overflow: hidden;
+      box-shadow: inset -6px 0 24px rgba(0,0,0,.45), inset 0 0 60px rgba(0,0,0,.2);
+    }
+
+    /* corner filigree */
+    .b-front::before, .b-front::after {
+      content: "";
+      position: absolute;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(249,213,122,.35);
+    }
+    .b-front::before { top: 11px;    left: 11px;    border-right: none; border-bottom: none; }
+    .b-front::after  { bottom: 11px; right: 11px;   border-left: none;  border-top: none;   }
+
+    /* faint runes / ornamental lines */
+    .b-runes {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 60px 20px;
+      pointer-events: none;
+      opacity: .07;
+    }
+    .b-rune-line {
+      height: 1px;
+      width: 80%;
+      background: #f9d57a;
+    }
+
+    .b-emblem { font-size: 2.2em; margin-bottom: 12px; text-shadow: 0 0 18px rgba(249,213,122,.55); }
+
+    .b-title {
+      font-family: 'Cinzel', serif;
+      color: #f9d57a;
+      font-size: 1.45em;
+      text-align: center;
+      letter-spacing: .1em;
+      line-height: 1.2;
+      text-shadow: 0 0 22px rgba(249,213,122,.45);
+      margin-bottom: 6px;
+    }
+
+    .b-sub {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      color: rgba(249,213,122,.45);
+      font-size: .95em;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .b-divider {
+      width: 75%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(249,213,122,.35), transparent);
+      margin-bottom: 20px;
+    }
+
+    .b-cover-btns { display: flex; flex-direction: column; gap: 9px; width: 100%; }
+
+    .b-cover-btn {
+      padding: 9px 14px;
+      border-radius: 7px;
+      font-family: 'Cinzel', serif;
+      font-size: .68em;
+      letter-spacing: .08em;
+      cursor: pointer;
+      border: 1px solid;
+      transition: all .2s;
+      text-align: center;
+      font-weight: 600;
+    }
+    .b-cover-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+
+    .btn-carer { background: rgba(249,213,122,.12); color: #f9d57a; border-color: rgba(249,213,122,.35); }
+    .btn-carer:hover { background: rgba(249,213,122,.24); }
+    .btn-child { background: rgba(236,130,183,.12); color: #ec82b7; border-color: rgba(236,130,183,.35); }
+    .btn-child:hover { background: rgba(236,130,183,.24); }
+
+    .cover-hint {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      color: rgba(255,255,255,.28);
+      font-size: .95em;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+
+    /* ── BOOK SCREEN ── */
+    #book-screen {
+      background: #0d1b2a;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, #1a2a4a 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, #1f1030 0%, transparent 50%);
+      justify-content: flex-start;
+      padding-top: 28px;
+    }
+
+    /* top bar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .top-home-btn {
+      padding: 7px 14px;
+      background: none;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
+      color: rgba(255,255,255,.45);
+      font-family: 'Crimson Text', serif;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .top-home-btn:hover { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.8); }
+    .top-home-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+
+    .top-title {
+      font-family: 'Cinzel', serif;
+      color: #f9d57a;
+      font-size: 1.05em;
+      letter-spacing: .12em;
+      text-shadow: 0 0 14px rgba(249,213,122,.3);
+    }
+
+    .top-tab {
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-family: 'Cinzel', serif;
+      font-size: .7em;
+      letter-spacing: .08em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all .2s;
+      opacity: .45;
+      background: none;
+    }
+    .top-tab.active { opacity: 1; }
+    .top-tab:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    .tab-carer { color: #f9d57a; border-color: rgba(249,213,122,.28); }
+    .tab-carer.active { background: rgba(249,213,122,.18); border-color: #f9d57a; }
+    .tab-child { color: #ec82b7; border-color: rgba(236,130,183,.28); }
+    .tab-child.active { background: rgba(236,130,183,.18); border-color: #ec82b7; }
+
+    .top-print-btn {
+      padding: 7px 14px;
+      background: none;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
+      color: rgba(255,255,255,.45);
+      font-family: 'Crimson Text', serif;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .top-print-btn:hover { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.8); }
+    .top-print-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+
+    /* book page */
+    .book-wrap { width: 100%; max-width: 840px; perspective: 1600px; }
+
+    .page-wrap {
+      background: #192638;
+      border-radius: 4px 16px 16px 4px;
+      box-shadow: -8px 0 0 #0d1520, -15px 0 0 #0a1018, 0 22px 64px rgba(0,0,0,.6);
+      border: 1px solid rgba(255,255,255,.055);
+      min-height: 540px;
+      padding: 44px 50px 40px 62px;
+      position: relative;
+      overflow: hidden;
+      transform-origin: left center;
+    }
+
+    /* spine shadow inside page */
+    .page-wrap::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 32px;
+      background: linear-gradient(to right, #08101a, #14212f);
+      border-right: 1px solid rgba(255,255,255,.04);
+    }
+
+    .page-wrap.flip-fwd { animation: flipFwd .6s cubic-bezier(.4,0,.2,1); }
+    .page-wrap.flip-bck { animation: flipBck .6s cubic-bezier(.4,0,.2,1); }
+
+    @keyframes flipFwd {
+      0%   { transform: perspective(1600px) rotateY(0);      opacity: 1; }
+      35%  { transform: perspective(1600px) rotateY(-34deg); opacity: 0.5; }
+      50%  { transform: perspective(1600px) rotateY(-40deg); opacity: 0.35; }
+      65%  { transform: perspective(1600px) rotateY(-20deg); opacity: 0.7; }
+      100% { transform: perspective(1600px) rotateY(0);      opacity: 1; }
+    }
+    @keyframes flipBck {
+      0%   { transform: perspective(1600px) rotateY(0);      opacity: 1; }
+      35%  { transform: perspective(1600px) rotateY(34deg);  opacity: 0.5; }
+      50%  { transform: perspective(1600px) rotateY(40deg);  opacity: 0.35; }
+      65%  { transform: perspective(1600px) rotateY(20deg);  opacity: 0.7; }
+      100% { transform: perspective(1600px) rotateY(0);      opacity: 1; }
+    }
+
+    /* page header */
+    .pg-header {
+      font-family: 'Cinzel', serif;
+      font-size: .7em;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pg-header.carer { color: #f9d57a; border-color: rgba(249,213,122,.2); }
+    .pg-header.child { color: #ec82b7; border-color: rgba(236,130,183,.2); }
+    .pg-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* section titles */
+    .sec-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2.1em;
+      margin-bottom: 16px;
+      margin-top: 30px;
+    }
+    .sec-title:first-of-type { margin-top: 0; }
+    .carer .sec-title { color: #f9d57a; }
+    .child .sec-title { color: #ec82b7; }
+
+    /* memory entry */
+    .entry {
+      background: rgba(255,255,255,.04);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,.065);
+    }
+    .entry-date input {
+      background: transparent; border: none; outline: none;
+      font-family: 'Crimson Text', serif; font-size: 1em;
+      color: rgba(255,255,255,.35); width: 150px;
+    }
+    .entry-date input::placeholder { color: rgba(255,255,255,.2); }
+    .entry textarea {
+      width: 100%; background: transparent; border: none; outline: none;
+      resize: none; overflow: hidden;
+      font-family: 'Caveat', cursive; font-size: 1.35em;
+      color: rgba(255,255,255,.88); line-height: 1.5; min-height: 68px;
+      margin-top: 6px;
+    }
+    .entry textarea::placeholder { color: rgba(255,255,255,.2); }
+
+    /* milestones */
+    .milestone-list { list-style: none; margin-bottom: 12px; }
+    .milestone-list li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.03);
+      border-radius: 8px; margin-bottom: 7px;
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .milestone-list li .ms-star { font-size: 1.1em; flex-shrink: 0; }
+    .milestone-list li input {
+      background: transparent; border: none; outline: none;
+      font-family: 'Caveat', cursive; font-size: 1.25em;
+      color: rgba(255,255,255,.82); flex: 1;
+    }
+    .milestone-list li input::placeholder { color: rgba(255,255,255,.2); }
+
+    /* photos */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .photo-item { display: flex; flex-direction: column; gap: 7px; }
+    .photo-slot {
+      aspect-ratio: 1;
+      border: 1.5px dashed rgba(255,255,255,.16);
+      border-radius: 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 6px;
+      color: rgba(255,255,255,.3);
+      font-family: 'Crimson Text', serif; font-size: 1em;
+      position: relative; overflow: hidden;
+      cursor: pointer; transition: border-color .2s;
+    }
+    .photo-slot:hover { border-color: rgba(255,255,255,.35); }
+    .photo-slot .ph-icon { font-size: 1.8em; }
+    .photo-slot input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%;
+    }
+    .photo-slot img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; border-radius: 9px;
+    }
+    .photo-caption input {
+      width: 100%; background: rgba(255,255,255,.04);
+      border: none; border-bottom: 1px solid rgba(255,255,255,.1);
+      outline: none; font-family: 'Crimson Text', serif; font-size: 1em;
+      color: rgba(255,255,255,.65); padding: 4px 6px; border-radius: 4px;
+    }
+    .photo-caption input::placeholder { color: rgba(255,255,255,.22); }
+
+    /* add buttons */
+    .add-btn {
+      background: none;
+      border: 1px dashed rgba(255,255,255,.16);
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-family: 'Crimson Text', serif; font-size: 1em;
+      color: rgba(255,255,255,.32);
+      cursor: pointer; transition: all .2s; margin-bottom: 8px;
+    }
+    .add-btn:hover { border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.6); }
+    .add-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+
+    /* navigation */
+    .pg-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 28px; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .pg-nav-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+      width: 46px; height: 46px;
+      color: rgba(255,255,255,.5); font-size: 1.2em;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .pg-nav-btn:hover:not(:disabled) { border-color: rgba(255,255,255,.55); color: white; }
+    .pg-nav-btn:disabled { opacity: .2; cursor: default; }
+    .pg-nav-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    .pg-indicator {
+      font-family: 'Cinzel', serif; font-size: .75em;
+      color: rgba(255,255,255,.3); letter-spacing: .1em; text-align: center;
+    }
+    .pg-add-btn {
+      background: none; border: none;
+      font-family: 'Crimson Text', serif; font-style: italic; font-size: .95em;
+      color: rgba(255,255,255,.24); cursor: pointer; margin-top: 5px;
+      display: block; transition: color .2s;
+    }
+    .pg-add-btn:hover { color: rgba(255,255,255,.5); }
+    .pg-add-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+
+    /* print modal */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.72); z-index: 200;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #1a2a40;
+      border-radius: 16px; padding: 32px;
+      max-width: 320px; width: 90%;
+      border: 1px solid rgba(249,213,122,.2);
+    }
+    .modal-title {
+      font-family: 'Cinzel', serif; color: #f9d57a;
+      font-size: 1em; margin-bottom: 20px; text-align: center;
+      letter-spacing: .1em;
+    }
+    .modal-btn {
+      display: block; width: 100%; margin-bottom: 10px;
+      padding: 13px 16px; border-radius: 9px;
+      font-family: 'Crimson Text', serif; font-size: 1.05em;
+      cursor: pointer; border: 1px solid; transition: all .2s; text-align: left;
+    }
+    .modal-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    .modal-btn-carer { background: rgba(249,213,122,.1); color: #f9d57a; border-color: rgba(249,213,122,.3); }
+    .modal-btn-carer:hover { background: rgba(249,213,122,.2); }
+    .modal-btn-child { background: rgba(236,130,183,.1); color: #ec82b7; border-color: rgba(236,130,183,.3); }
+    .modal-btn-child:hover { background: rgba(236,130,183,.2); }
+    .modal-btn-all { background: rgba(255,255,255,.05); color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.15); }
+    .modal-btn-all:hover { background: rgba(255,255,255,.1); }
+    .modal-btn-cancel { background: none; color: rgba(255,255,255,.35); border-color: rgba(255,255,255,.1); margin-top: 4px; }
+    .modal-btn-cancel:hover { color: rgba(255,255,255,.6); border-color: rgba(255,255,255,.25); }
+
+    /* cover photo slot */
+    .cover-photo-slot {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(249,213,122,.4);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 3px;
+      color: rgba(249,213,122,.4);
+      font-size: .75em;
+      margin-bottom: 14px;
+      background: rgba(249,213,122,.05);
+      flex-shrink: 0;
+      transition: border-color .2s;
+    }
+    .cover-photo-slot:hover { border-color: rgba(249,213,122,.7); }
+    .cover-photo-slot .cph-icon { font-size: 1.5em; }
+    .cover-photo-slot input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+    .cover-photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    /* voice recording */
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .voice-btn {
+      background: none;
+      border: 1px dashed rgba(236,130,183,.3);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: 'Crimson Text', serif; font-size: 1em;
+      color: rgba(236,130,183,.55);
+      cursor: pointer; transition: all .2s;
+    }
+    .voice-btn:hover { border-color: rgba(236,130,183,.65); color: rgba(236,130,183,.9); }
+    .voice-btn.is-recording {
+      border-color: rgba(255,80,80,.7); color: rgba(255,100,100,.9);
+      animation: recPulse .9s ease-in-out infinite;
+    }
+    .voice-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    @keyframes recPulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+
+    .voice-clips { margin-bottom: 10px; }
+    .voice-clip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px;
+      background: rgba(236,130,183,.06);
+      border-radius: 8px; margin-bottom: 6px;
+      border: 1px solid rgba(236,130,183,.12);
+    }
+    .voice-clip .clip-label { font-size: .85em; color: rgba(255,255,255,.4); flex-shrink: 0; white-space: nowrap; }
+    .voice-clip audio { flex: 1; height: 30px; min-width: 0; }
+    .voice-clip .clip-del {
+      background: none; border: none; color: rgba(255,255,255,.25);
+      cursor: pointer; font-size: 1em; flex-shrink: 0; padding: 0 4px;
+      transition: color .2s;
+    }
+    .voice-clip .clip-del:hover { color: rgba(255,100,100,.7); }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body { background: white !important; color: #111 !important; font-size: 13pt; }
+      #cover-screen { display: none !important; }
+      .modal-overlay { display: none !important; }
+      #book-screen {
+        background: white !important;
+        display: block !important;
+        padding: 0 !important;
+        min-height: unset !important;
+      }
+      .topbar { display: none !important; }
+      .page-wrap {
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+        padding: 24px 32px !important;
+        min-height: unset !important;
+        page-break-after: always;
+      }
+      .page-wrap::before { display: none !important; }
+      .pg-nav { display: none !important; }
+      .add-btn { display: none !important; }
+      .pg-header { color: #333 !important; border-color: #bbb !important; }
+      .sec-title, .carer .sec-title, .child .sec-title { color: #111 !important; }
+      .entry { background: #f6f6f6 !important; border-color: #ddd !important; }
+      .entry textarea, .entry-date input { color: #111 !important; }
+      .milestone-list li { background: #f6f6f6 !important; border-color: #ddd !important; }
+      .milestone-list li input { color: #111 !important; }
+      .photo-slot { border-color: #aaa !important; color: #888 !important; }
+      .photo-caption input { color: #333 !important; border-color: #bbb !important; background: #f9f9f9 !important; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ COVER SCREEN ══════════ -->
+<div class="screen active" id="cover-screen" role="main">
+
+  <div class="book-3d-scene" aria-hidden="true">
+    <div class="book-3d" id="book3d">
+      <div class="b-spine"></div>
+      <div class="b-pages"></div>
+      <div class="b-front">
+        <div class="b-runes">
+          <div class="b-rune-line"></div>
+          <div class="b-rune-line"></div>
+          <div class="b-rune-line"></div>
+        </div>
+        <div class="b-emblem">✦</div>
+        <div class="b-title">My Life Story</div>
+        <div class="b-sub">a book of memories</div>
+        <div class="cover-photo-slot" id="coverPhotoSlot" aria-label="Add a photo of the child">
+          <span class="cph-icon" aria-hidden="true">📷</span>
+          <span>Add photo</span>
+          <input type="file" accept="image/*" aria-label="Upload cover photo" onchange="loadCoverPhoto(this)">
+        </div>
+        <div class="b-divider"></div>
+        <div class="b-cover-btns">
+          <button class="b-cover-btn btn-carer" onclick="openBook('carer')" aria-label="Open carer's pages">Carer's pages</button>
+          <button class="b-cover-btn btn-child" onclick="openBook('child')" aria-label="Open child's pages">My pages</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="cover-hint" aria-live="polite">Choose a section to open the book</p>
+
+</div>
+
+<!-- ══════════ BOOK SCREEN ══════════ -->
+<div class="screen" id="book-screen" role="main">
+
+  <nav class="topbar" aria-label="Book navigation">
+    <button class="top-home-btn" onclick="goHome()" aria-label="Return to cover">← Cover</button>
+    <span class="top-title" aria-hidden="true">✦ My Life Story ✦</span>
+    <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
+    <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
+    <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print</button>
+  </nav>
+
+  <div class="book-wrap">
+    <div class="page-wrap" id="pageWrap" role="region" aria-live="polite" aria-label="Book page">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ PRINT MODAL ══════════ -->
+<div class="modal-overlay" id="printModal" role="dialog" aria-modal="true" aria-label="Print options">
+  <div class="modal-box">
+    <div class="modal-title">What would you like to print?</div>
+    <button class="modal-btn modal-btn-carer" onclick="doPrint('carer')">Carer's pages only</button>
+    <button class="modal-btn modal-btn-child" onclick="doPrint('child')">Child's pages only</button>
+    <button class="modal-btn modal-btn-all"   onclick="doPrint('all')">Whole book</button>
+    <button class="modal-btn modal-btn-cancel" onclick="closePrintMenu()">Cancel</button>
+  </div>
+</div>
+
+<script>
+// ══════════ STATE ══════════
+let coverPhoto = null;
+
+const data = {
+  carer: [{
+    entries:    [{ date: '', text: '' }],
+    milestones: [''],
+    favourites: [''],
+    proudOf:    [''],
+    photos:     [{ src: null, caption: '' }, { src: null, caption: '' },
+                 { src: null, caption: '' }, { src: null, caption: '' }]
+  }],
+  child: [{
+    entries:      [{ date: '', text: '' }],
+    milestones:   [''],
+    favourites:   [''],
+    proudOf:      [''],
+    describeSelf: [''],
+    photos:       [{ src: null, caption: '' }, { src: null, caption: '' },
+                   { src: null, caption: '' }, { src: null, caption: '' }],
+    voices: { entries: [], milestones: [], favourites: [], proudOf: [], describeSelf: [] }
+  }]
+};
+
+// recording state
+const rec = { active: false, field: null, mediaRecorder: null, chunks: [], stream: null };
+
+let section = 'carer';
+let pageIdx = 0;
+
+// ══════════ COVER ══════════
+function openBook(sec) {
+  section = sec;
+  pageIdx = 0;
+  document.getElementById('book3d').classList.add('opening');
+  setTimeout(() => {
+    document.getElementById('cover-screen').classList.remove('active');
+    document.getElementById('book-screen').classList.add('active');
+    document.getElementById('book3d').classList.remove('opening');
+    updateTabs();
+    render();
+  }, 950);
+}
+
+function goHome() {
+  document.getElementById('book-screen').classList.remove('active');
+  document.getElementById('cover-screen').classList.add('active');
+}
+
+// ══════════ TABS ══════════
+function switchSection(sec) {
+  section = sec;
+  pageIdx = 0;
+  updateTabs();
+  flip('fwd');
+  setTimeout(render, 260);
+}
+
+function updateTabs() {
+  document.getElementById('tab-carer').classList.toggle('active', section === 'carer');
+  document.getElementById('tab-child').classList.toggle('active', section === 'child');
+}
+
+// ══════════ RENDER ══════════
+function render() {
+  const pg   = data[section][pageIdx];
+  const pages = data[section];
+  const isCarer = section === 'carer';
+  const wrap = document.getElementById('pageWrap');
+  const accentClass = isCarer ? 'carer' : 'child';
+  const dotColor    = isCarer ? '#f9d57a' : '#ec82b7';
+  const star        = isCarer ? '✦' : '✿';
+
+  wrap.className = `page-wrap ${accentClass}`;
+  wrap.innerHTML = '';
+
+  // Header
+  const hdr = el('div', 'pg-header ' + accentClass);
+  hdr.setAttribute('role', 'heading'); hdr.setAttribute('aria-level', '2');
+  hdr.innerHTML = `<span class="pg-dot" style="background:${dotColor}" aria-hidden="true"></span>
+    ${isCarer ? "Carer's Pages" : "Your Pages"}
+    <span style="margin-left:auto;opacity:.45;font-size:.9em">Page ${pageIdx + 1}</span>`;
+  wrap.appendChild(hdr);
+
+  // ── Memories ──
+  wrap.appendChild(secTitle(isCarer ? 'Memories &amp; Moments' : 'Things I want to remember'));
+
+  const entriesBox = el('div');
+  pg.entries.forEach((e, i) => {
+    const card = el('div', 'entry');
+    card.innerHTML = `
+      <div class="entry-date">
+        <input type="text" placeholder="Date…" value="${esc(e.date)}"
+          aria-label="Date of memory ${i + 1}"
+          onchange="data['${section}'][${pageIdx}].entries[${i}].date = this.value">
+      </div>
+      <textarea placeholder="Write a memory…"
+        aria-label="Memory ${i + 1}"
+        onchange="data['${section}'][${pageIdx}].entries[${i}].text = this.value"
+        oninput="grow(this)">${esc(e.text)}</textarea>`;
+    entriesBox.appendChild(card);
+  });
+  wrap.appendChild(entriesBox);
+  if (!isCarer) wrap.appendChild(voiceClipsList(pg.voices.entries, 'entries'));
+  wrap.appendChild(btnRow('+ Add a memory', `addEntry()`, !isCarer, 'entries'));
+
+  // ── Milestones ──
+  wrap.appendChild(secTitle(isCarer ? 'Milestones' : 'My milestones'));
+  const msList = el('ul', 'milestone-list');
+  msList.setAttribute('aria-label', 'Milestones');
+  pg.milestones.forEach((m, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="ms-star" aria-hidden="true">${star}</span>
+      <input type="text" placeholder="A milestone…" value="${esc(m)}"
+        aria-label="Milestone ${i + 1}"
+        onchange="data['${section}'][${pageIdx}].milestones[${i}] = this.value">`;
+    msList.appendChild(li);
+  });
+  wrap.appendChild(msList);
+  if (!isCarer) wrap.appendChild(voiceClipsList(pg.voices.milestones, 'milestones'));
+  wrap.appendChild(btnRow('+ Add a milestone', `addMilestone()`, !isCarer, 'milestones'));
+
+  // ── Favourite things ──
+  wrap.appendChild(secTitle('Favourite things at this age'));
+  wrap.appendChild(buildSimpleList(pg.favourites, 'favourites', '★', 'A favourite thing…'));
+  if (!isCarer) wrap.appendChild(voiceClipsList(pg.voices.favourites, 'favourites'));
+  wrap.appendChild(btnRow('+ Add a favourite', `addFavourite()`, !isCarer, 'favourites'));
+
+  // ── Proud of ──
+  wrap.appendChild(secTitle(isCarer ? 'Things they were proud of' : 'Things I was proud of'));
+  wrap.appendChild(buildSimpleList(pg.proudOf, 'proudOf', '✓', 'Something they were proud of…'));
+  if (!isCarer) wrap.appendChild(voiceClipsList(pg.voices.proudOf, 'proudOf'));
+  wrap.appendChild(btnRow('+ Add something', `addProudOf()`, !isCarer, 'proudOf'));
+
+  // ── How I'd describe myself (child only) ──
+  if (!isCarer) {
+    wrap.appendChild(secTitle('How I\'d describe myself'));
+    wrap.appendChild(buildSimpleList(pg.describeSelf, 'describeSelf', '◆', 'A word or phrase…'));
+    wrap.appendChild(voiceClipsList(pg.voices.describeSelf, 'describeSelf'));
+    wrap.appendChild(btnRow('+ Add a description', `addDescribeSelf()`, true, 'describeSelf'));
+  }
+
+
+  // ── Photos ──
+  wrap.appendChild(secTitle('Photos'));
+  const grid = el('div', 'photo-grid');
+  grid.setAttribute('aria-label', 'Photo gallery');
+  pg.photos.forEach((ph, i) => {
+    const item = el('div', 'photo-item');
+
+    const slot = el('div', 'photo-slot');
+    slot.setAttribute('role', 'img');
+    slot.setAttribute('aria-label', `Photo ${i + 1}${ph.src ? '' : ' — empty, click to add'}`);
+    if (ph.src) {
+      const img = document.createElement('img');
+      img.src = ph.src; img.alt = `Memory photo ${i + 1}`;
+      slot.appendChild(img);
+    } else {
+      slot.innerHTML = `<span class="ph-icon" aria-hidden="true">📷</span><span>Add photo</span>`;
+    }
+    const fileIn = document.createElement('input');
+    fileIn.type = 'file'; fileIn.accept = 'image/*';
+    fileIn.setAttribute('aria-label', `Upload photo ${i + 1}`);
+    fileIn.onchange = function() { loadPhoto(this, i); };
+    slot.appendChild(fileIn);
+
+    const cap = el('div', 'photo-caption');
+    const capIn = document.createElement('input');
+    capIn.type = 'text'; capIn.placeholder = 'Add a caption…';
+    capIn.value = ph.caption;
+    capIn.setAttribute('aria-label', `Caption for photo ${i + 1}`);
+    capIn.onchange = function() { data[section][pageIdx].photos[i].caption = this.value; };
+    cap.appendChild(capIn);
+
+    item.appendChild(slot);
+    item.appendChild(cap);
+    grid.appendChild(item);
+  });
+  wrap.appendChild(grid);
+  wrap.appendChild(addBtn('+ Add photo space', `addPhoto()`));
+
+  // ── Navigation ──
+  const nav = el('div', 'pg-nav');
+  nav.setAttribute('role', 'navigation'); nav.setAttribute('aria-label', 'Turn pages');
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'pg-nav-btn'; prevBtn.innerHTML = '&#8592;';
+  prevBtn.setAttribute('aria-label', 'Previous page');
+  if (pageIdx === 0) prevBtn.disabled = true;
+  prevBtn.onclick = prevPage;
+
+  const mid = el('div', '');
+  mid.style.cssText = 'text-align:center;';
+  mid.innerHTML = `<div class="pg-indicator" aria-live="polite">Page ${pageIdx + 1} of ${pages.length}</div>`;
+  const addPg = document.createElement('button');
+  addPg.className = 'pg-add-btn'; addPg.textContent = '+ add a page';
+  addPg.setAttribute('aria-label', 'Add a new page'); addPg.onclick = addPage;
+  mid.appendChild(addPg);
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'pg-nav-btn'; nextBtn.innerHTML = '&#8594;';
+  nextBtn.setAttribute('aria-label', 'Next page');
+  if (pageIdx >= pages.length - 1) nextBtn.disabled = true;
+  nextBtn.onclick = nextPage;
+
+  nav.appendChild(prevBtn); nav.appendChild(mid); nav.appendChild(nextBtn);
+  wrap.appendChild(nav);
+}
+
+// ══════════ PAGE ACTIONS ══════════
+function addEntry()       { data[section][pageIdx].entries.push({ date: '', text: '' }); render(); }
+function addMilestone()   { data[section][pageIdx].milestones.push(''); render(); }
+function addFavourite()   { data[section][pageIdx].favourites.push(''); render(); }
+function addProudOf()     { data[section][pageIdx].proudOf.push(''); render(); }
+function addDescribeSelf(){ data[section][pageIdx].describeSelf.push(''); render(); }
+function addPhoto()       { data[section][pageIdx].photos.push({ src: null, caption: '' }); render(); }
+
+function addPage() {
+  const isCarer = section === 'carer';
+  const base = {
+    entries:    [{ date: '', text: '' }],
+    milestones: [''],
+    favourites: [''],
+    proudOf:    [''],
+    photos:     [{ src: null, caption: '' }, { src: null, caption: '' },
+                 { src: null, caption: '' }, { src: null, caption: '' }]
+  };
+  if (!isCarer) {
+    base.describeSelf = [''];
+    base.voices = { entries: [], milestones: [], favourites: [], proudOf: [], describeSelf: [] };
+  }
+  data[section].push(base);
+  pageIdx = data[section].length - 1;
+  flip('fwd');
+  setTimeout(render, 260);
+}
+
+function prevPage() { if (pageIdx > 0) { pageIdx--; flip('bck'); setTimeout(render, 260); } }
+function nextPage() { if (pageIdx < data[section].length - 1) { pageIdx++; flip('fwd'); setTimeout(render, 260); } }
+
+function loadPhoto(input, i) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => { data[section][pageIdx].photos[i].src = e.target.result; render(); };
+  reader.readAsDataURL(file);
+}
+
+// ══════════ ANIMATION ══════════
+function flip(dir) {
+  const w = document.getElementById('pageWrap');
+  w.classList.remove('flip-fwd', 'flip-bck');
+  void w.offsetWidth;
+  w.classList.add(dir === 'fwd' ? 'flip-fwd' : 'flip-bck');
+  setTimeout(() => w.classList.remove('flip-fwd', 'flip-bck'), 600);
+}
+
+// ══════════ PRINT ══════════
+function openPrintMenu()  { document.getElementById('printModal').classList.add('open'); }
+function closePrintMenu() { document.getElementById('printModal').classList.remove('open'); }
+
+function doPrint(which) {
+  closePrintMenu();
+
+  // Build a temporary print window with all requested pages
+  const win = window.open('', '_blank', 'width=900,height=700');
+  if (!win) { alert('Please allow pop-ups to print.'); return; }
+
+  let html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+  <title>My Life Story — Print</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family: Georgia, serif; font-size: 13pt; color: #111; background: white; }
+    .print-page { padding: 32px 36px; page-break-after: always; border-bottom: 1px solid #eee; }
+    .print-page:last-child { page-break-after: auto; }
+    .pg-label { font-size: .75em; letter-spacing: .15em; text-transform: uppercase; color: #555; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
+    h2 { font-family: Georgia, serif; font-size: 1.6em; margin: 22px 0 10px; color: #222; }
+    h2:first-of-type { margin-top: 0; }
+    .entry { background: #f7f7f7; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
+    .entry-date { font-size: .85em; color: #888; margin-bottom: 4px; }
+    .entry-text { font-size: 1.05em; color: #222; min-height: 2em; white-space: pre-wrap; }
+    .ms-list { list-style: none; margin-bottom: 10px; }
+    .ms-list li { padding: 8px 12px; background: #f7f7f7; border-radius: 6px; margin-bottom: 6px; font-size: 1.05em; }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 10px; }
+    .photo-item { display: flex; flex-direction: column; gap: 4px; }
+    .photo-box { aspect-ratio: 1; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: .9em; }
+    .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+    .caption { font-size: .9em; color: #555; font-style: italic; }
+  </style></head><body>`;
+
+  const secs = which === 'all' ? ['carer', 'child'] : [which];
+  secs.forEach(sec => {
+    data[sec].forEach((pg, pi) => {
+      const label = sec === 'carer' ? "Carer's Pages" : "Your Pages";
+      html += `<div class="print-page">
+        <div class="pg-label">${label} — Page ${pi + 1}</div>
+        <h2>${sec === 'carer' ? 'Memories &amp; Moments' : 'Things I want to remember'}</h2>`;
+
+      pg.entries.forEach(e => {
+        html += `<div class="entry">
+          <div class="entry-date">${esc(e.date) || '&nbsp;'}</div>
+          <div class="entry-text">${esc(e.text) || '&nbsp;'}</div>
+        </div>`;
+      });
+
+      html += `<h2>${sec === 'carer' ? 'Milestones' : 'My milestones'}</h2><ul class="ms-list">`;
+      pg.milestones.forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+      html += `</ul><h2>Favourite things at this age</h2><ul class="ms-list">`;
+      pg.favourites.forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+      html += `</ul><h2>${sec === 'carer' ? 'Things they were proud of' : 'Things I was proud of'}</h2><ul class="ms-list">`;
+      pg.proudOf.forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+      html += `</ul>`;
+      if (sec === 'child') {
+        html += `<h2>How I'd describe myself</h2><ul class="ms-list">`;
+        (pg.describeSelf || []).forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+        html += `</ul>`;
+      }
+      html += `<h2>Photos</h2><div class="photo-grid">`;
+
+      pg.photos.forEach((ph, i) => {
+        html += `<div class="photo-item"><div class="photo-box">`;
+        html += ph.src ? `<img src="${ph.src}" alt="Memory photo ${i + 1}">` : `Photo ${i + 1}`;
+        html += `</div><div class="caption">${esc(ph.caption) || '&nbsp;'}</div></div>`;
+      });
+
+      html += `</div></div>`;
+    });
+  });
+
+  html += `</body></html>`;
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(() => { win.print(); }, 400);
+}
+
+// ══════════ HELPERS ══════════
+function el(tag, cls) {
+  const d = document.createElement(tag);
+  if (cls) d.className = cls;
+  return d;
+}
+
+function secTitle(text) {
+  const d = el('div', 'sec-title');
+  d.setAttribute('role', 'heading'); d.setAttribute('aria-level', '3');
+  d.innerHTML = text;
+  return d;
+}
+
+// ══════════ VOICE RECORDING ══════════
+function startVoiceRecording(field) {
+  if (rec.active) { stopVoiceRecording(); return; }
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      rec.active = true; rec.field = field; rec.chunks = []; rec.stream = stream;
+      rec.mediaRecorder = new MediaRecorder(stream);
+      rec.mediaRecorder.ondataavailable = e => rec.chunks.push(e.data);
+      rec.mediaRecorder.onstop = () => {
+        const blob = new Blob(rec.chunks, { type: 'audio/webm' });
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const pg = data[section][pageIdx];
+          if (!pg.voices) pg.voices = { entries: [], milestones: [], favourites: [], proudOf: [], describeSelf: [] };
+          pg.voices[rec.field].push({ src: ev.target.result, date: new Date().toLocaleDateString('en-GB') });
+          rec.stream.getTracks().forEach(t => t.stop());
+          rec.active = false; rec.field = null;
+          render();
+        };
+        reader.readAsDataURL(blob);
+      };
+      rec.mediaRecorder.start();
+      render();
+    })
+    .catch(() => alert('Microphone access is needed to record voice clips. Please allow it in your browser.'));
+}
+
+function stopVoiceRecording() {
+  if (rec.mediaRecorder && rec.mediaRecorder.state !== 'inactive') rec.mediaRecorder.stop();
+}
+
+function deleteVoice(field, i) {
+  data[section][pageIdx].voices[field].splice(i, 1);
+  render();
+}
+
+function loadCoverPhoto(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    coverPhoto = e.target.result;
+    const slot = document.getElementById('coverPhotoSlot');
+    if (slot) {
+      slot.innerHTML = `<img src="${coverPhoto}" alt="Cover photo">
+        <input type="file" accept="image/*" aria-label="Change cover photo" onchange="loadCoverPhoto(this)">`;
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// ══════════ BUTTON ROW HELPER ══════════
+function btnRow(label, fn, withVoice, field) {
+  const row = el('div', 'btn-row');
+  const ab = addBtn(label, fn);
+  row.appendChild(ab);
+  if (withVoice) {
+    const vb = el('button', 'voice-btn' + (rec.active && rec.field === field ? ' is-recording' : ''));
+    vb.setAttribute('aria-label', rec.active && rec.field === field ? 'Stop recording' : 'Add voice recording');
+    vb.textContent = rec.active && rec.field === field ? '⏹ Stop recording' : '🎤 Add voice recording';
+    vb.onclick = () => rec.active && rec.field === field ? stopVoiceRecording() : startVoiceRecording(field);
+    row.appendChild(vb);
+  }
+  return row;
+}
+
+function voiceClipsList(clips, field) {
+  if (!clips || clips.length === 0) return el('div');
+  const box = el('div', 'voice-clips');
+  clips.forEach((clip, i) => {
+    const div = el('div', 'voice-clip');
+    div.innerHTML = `<span class="clip-label" aria-hidden="true">🎤 ${clip.date}</span>
+      <audio controls src="${clip.src}" aria-label="Voice recording ${i + 1} from ${clip.date}"></audio>
+      <button class="clip-del" aria-label="Delete voice recording ${i + 1}" onclick="deleteVoice('${field}',${i})">✕</button>`;
+    box.appendChild(div);
+  });
+  return box;
+}
+
+function buildSimpleList(items, field, icon, placeholder) {
+  const ul = el('ul', 'milestone-list');
+  ul.setAttribute('aria-label', field);
+  items.forEach((val, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="ms-star" aria-hidden="true">${icon}</span>
+      <input type="text" placeholder="${placeholder}" value="${esc(val)}"
+        aria-label="${field} item ${i + 1}"
+        onchange="data['${section}'][${pageIdx}]['${field}'][${i}] = this.value">`;
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+function addBtn(label, fn) {
+  const b = el('button', 'add-btn');
+  b.textContent = label;
+  b.setAttribute('aria-label', label);
+  b.setAttribute('onclick', fn);
+  return b;
+}
+
+function esc(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function grow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+// init
+updateTabs();
+</script>
+
+</body>
+</html>
