@@ -69,14 +69,12 @@
     }
 
     .book-3d.opening {
-      animation: bookSwing 1s ease-in-out forwards;
+      animation: bookSwing 2s ease-in-out forwards;
     }
 
     @keyframes bookSwing {
       0%   { transform: rotateY(-22deg) rotateX(6deg); opacity: 1; }
-      25%  { transform: rotateY(0deg)   rotateX(3deg); opacity: 1; }
-      65%  { transform: rotateY(35deg)  rotateX(1deg) scale(1.04); opacity: 0.6; }
-      100% { transform: rotateY(70deg)  rotateX(0deg) scale(1.08); opacity: 0; }
+      100% { transform: rotateY(60deg)  rotateX(2deg); opacity: 0; }
     }
 
     /* spine */
@@ -130,25 +128,8 @@
     .b-front::before { top: 11px;    left: 11px;    border-right: none; border-bottom: none; }
     .b-front::after  { bottom: 11px; right: 11px;   border-left: none;  border-top: none;   }
 
-    /* faint runes / ornamental lines */
-    .b-runes {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      padding: 60px 20px;
-      pointer-events: none;
-      opacity: .07;
-    }
-    .b-rune-line {
-      height: 1px;
-      width: 80%;
-      background: #f9d57a;
-    }
 
-    .b-emblem { font-size: 2.2em; margin-bottom: 12px; text-shadow: 0 0 18px rgba(249,213,122,.55); }
+    .b-emblem { font-size: 2.2em; margin-bottom: 12px; text-shadow: 0 0 18px rgba(249,213,122,.55); position: relative; z-index: 2; }
 
     .b-title {
       font-family: 'Cinzel', serif;
@@ -159,6 +140,7 @@
       line-height: 1.2;
       text-shadow: 0 0 22px rgba(249,213,122,.45);
       margin-bottom: 6px;
+      position: relative; z-index: 2;
     }
 
     .b-sub {
@@ -168,6 +150,7 @@
       font-size: .95em;
       text-align: center;
       margin-bottom: 22px;
+      position: relative; z-index: 2;
     }
 
     .b-divider {
@@ -177,7 +160,7 @@
       margin-bottom: 20px;
     }
 
-    .b-cover-btns { display: flex; flex-direction: column; gap: 9px; width: 100%; }
+    .b-cover-btns { display: flex; flex-direction: column; gap: 9px; width: 100%; position: relative; z-index: 2; }
 
     .b-cover-btn {
       padding: 9px 14px;
@@ -517,13 +500,14 @@
       overflow: hidden;
       cursor: pointer;
       position: relative;
+      z-index: 2;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 3px;
       color: rgba(249,213,122,.4);
       font-size: .75em;
       margin-bottom: 14px;
-      background: rgba(249,213,122,.05);
+      background: #111828;
       flex-shrink: 0;
       transition: border-color .2s;
     }
@@ -568,6 +552,81 @@
     }
     .voice-clip .clip-del:hover { color: rgba(255,100,100,.7); }
 
+    /* ── AUTH SCREENS ── */
+    .auth-screen {
+      background: radial-gradient(ellipse at 30% 40%, #1a2a4a 0%, #0d1520 65%),
+                  radial-gradient(ellipse at 80% 70%, #1a1035 0%, transparent 50%);
+    }
+    .auth-box {
+      background: #192638;
+      border: 1px solid rgba(249,213,122,.18);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%; max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .auth-emblem { font-size: 2em; text-align: center; margin-bottom: 10px; }
+    .auth-title {
+      font-family: 'Cinzel', serif; color: #f9d57a;
+      font-size: 1.1em; letter-spacing: .1em; text-align: center; margin-bottom: 6px;
+    }
+    .auth-subtitle {
+      font-family: 'Crimson Text', serif; font-style: italic;
+      color: rgba(255,255,255,.35); font-size: 1em; text-align: center; margin-bottom: 22px;
+    }
+    .auth-step { font-family: 'Cinzel', serif; font-size: .62em; letter-spacing: .14em; color: rgba(255,255,255,.22); text-align: center; margin-bottom: 18px; }
+    .auth-label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.55); font-size: 1em; margin-bottom: 5px; display: block; }
+    .auth-input {
+      width: 100%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px; padding: 12px 14px; font-family: 'Crimson Text', serif; font-size: 1.05em;
+      color: white; outline: none; transition: border-color .2s; margin-bottom: 12px;
+    }
+    .auth-input:focus { border-color: rgba(249,213,122,.5); }
+    .auth-input::placeholder { color: rgba(255,255,255,.2); }
+    .auth-btn {
+      width: 100%; padding: 13px; background: rgba(249,213,122,.14);
+      border: 1px solid rgba(249,213,122,.35); border-radius: 9px;
+      font-family: 'Cinzel', serif; font-size: .8em; letter-spacing: .08em;
+      color: #f9d57a; cursor: pointer; transition: all .2s; margin-top: 4px;
+    }
+    .auth-btn:hover { background: rgba(249,213,122,.24); }
+    .auth-btn:disabled { opacity: .4; cursor: default; }
+    .auth-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    .auth-link {
+      background: none; border: none; color: rgba(255,255,255,.3);
+      font-family: 'Crimson Text', serif; font-style: italic; font-size: .95em;
+      cursor: pointer; text-decoration: underline; padding: 0;
+      margin-top: 14px; display: block; text-align: center; transition: color .2s;
+    }
+    .auth-link:hover { color: rgba(255,255,255,.6); }
+    .auth-error { color: rgba(255,120,120,.85); font-family: 'Crimson Text', serif; font-size: .95em; text-align: center; margin-bottom: 10px; min-height: 1.3em; }
+    .recovery-box {
+      background: rgba(0,0,0,.3); border: 1px solid rgba(249,213,122,.22);
+      border-radius: 10px; padding: 16px; margin-bottom: 14px;
+    }
+    .recovery-val {
+      font-family: 'Courier New', monospace; font-size: .9em; color: #f9d57a;
+      text-align: center; letter-spacing: .06em; word-break: break-all; line-height: 1.9;
+    }
+    .recovery-warn { font-family: 'Crimson Text', serif; font-style: italic; color: rgba(255,255,255,.38); font-size: .9em; text-align: center; margin-bottom: 12px; }
+    .copy-btn {
+      width: 100%; padding: 9px; background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12); border-radius: 7px;
+      font-family: 'Crimson Text', serif; font-size: .95em; color: rgba(255,255,255,.45);
+      cursor: pointer; transition: all .2s; margin-bottom: 12px;
+    }
+    .copy-btn:hover { border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.75); }
+    .auth-check-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .auth-check-row input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
+    .auth-check-row label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.5); font-size: 1em; cursor: pointer; }
+    .forgot-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 18px; }
+    .forgot-tab {
+      flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid transparent;
+      font-family: 'Crimson Text', serif; font-size: 1em; color: rgba(255,255,255,.3);
+      cursor: pointer; margin-bottom: -1px; transition: all .2s;
+    }
+    .forgot-tab.active { color: #f9d57a; border-bottom-color: #f9d57a; }
+
     /* ── PRINT STYLES ── */
     @media print {
       body { background: white !important; color: #111 !important; font-size: 13pt; }
@@ -605,19 +664,71 @@
 </head>
 <body>
 
+<!-- ══════════ SETUP SCREEN ══════════ -->
+<div class="screen auth-screen" id="setup-screen" role="main">
+  <div class="auth-box" id="setup-box"></div>
+</div>
+
+<!-- ══════════ LOCK SCREEN ══════════ -->
+<div class="screen auth-screen" id="lock-screen" role="main">
+  <div class="auth-box">
+    <div class="auth-emblem">✦</div>
+    <div class="auth-title">My Life Story</div>
+    <div class="auth-subtitle">Enter your password to open the book</div>
+    <div class="auth-error" id="lock-error"></div>
+    <label class="auth-label" for="lock-input">Password</label>
+    <input class="auth-input" type="password" id="lock-input" placeholder="Enter password…" autocomplete="current-password" onkeydown="if(event.key==='Enter')tryUnlock()">
+    <button class="auth-btn" onclick="tryUnlock()">Open the book</button>
+    <button class="auth-link" onclick="showForgot()">Forgot your password?</button>
+  </div>
+</div>
+
+<!-- ══════════ FORGOT MODAL ══════════ -->
+<div class="modal-overlay" id="forgotModal" role="dialog" aria-modal="true" aria-label="Reset access">
+  <div class="modal-box" style="max-width:400px;">
+    <div class="modal-title">Reset access</div>
+    <div class="forgot-tabs">
+      <button class="forgot-tab active" id="ftab-recovery" onclick="switchForgotTab('recovery')">Recovery key</button>
+      <button class="forgot-tab" id="ftab-security" onclick="switchForgotTab('security')">Security question</button>
+    </div>
+    <div id="fpanel-recovery">
+      <div class="auth-error" id="ferr-recovery"></div>
+      <label class="auth-label" for="finput-recovery">Your recovery key</label>
+      <input class="auth-input" type="text" id="finput-recovery" placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" style="font-family:'Courier New',monospace;font-size:.88em;">
+      <button class="auth-btn" onclick="tryRecovery()">Unlock with recovery key</button>
+    </div>
+    <div id="fpanel-security" style="display:none">
+      <div class="auth-error" id="ferr-security"></div>
+      <label class="auth-label">What is the name of a close friend of the child this book belongs to?</label>
+      <input class="auth-input" type="text" id="finput-security" placeholder="Enter your answer…">
+      <button class="auth-btn" onclick="trySecurityAnswer()">Unlock with security question</button>
+    </div>
+    <button class="modal-btn modal-btn-cancel" style="margin-top:10px;" onclick="closeForgot()">Cancel</button>
+  </div>
+</div>
+
+<!-- ══════════ CHANGE PASSWORD MODAL ══════════ -->
+<div class="modal-overlay" id="changePwdModal" role="dialog" aria-modal="true" aria-label="Change password">
+  <div class="modal-box" style="max-width:400px;">
+    <div class="modal-title">Change password</div>
+    <div class="auth-error" id="cpwd-error"></div>
+    <label class="auth-label" for="cpwd-new">New password</label>
+    <input class="auth-input" type="password" id="cpwd-new" placeholder="New password…">
+    <label class="auth-label" for="cpwd-confirm">Confirm new password</label>
+    <input class="auth-input" type="password" id="cpwd-confirm" placeholder="Confirm password…">
+    <button class="auth-btn" onclick="doChangePassword()">Save new password</button>
+    <button class="modal-btn modal-btn-cancel" style="margin-top:8px;" onclick="closeChangePwd()">Cancel</button>
+  </div>
+</div>
+
 <!-- ══════════ COVER SCREEN ══════════ -->
-<div class="screen active" id="cover-screen" role="main">
+<div class="screen" id="cover-screen" role="main">
 
   <div class="book-3d-scene" aria-hidden="true">
     <div class="book-3d" id="book3d">
       <div class="b-spine"></div>
       <div class="b-pages"></div>
       <div class="b-front">
-        <div class="b-runes">
-          <div class="b-rune-line"></div>
-          <div class="b-rune-line"></div>
-          <div class="b-rune-line"></div>
-        </div>
         <div class="b-emblem">✦</div>
         <div class="b-title">My Life Story</div>
         <div class="b-sub">a book of memories</div>
@@ -648,6 +759,7 @@
     <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
     <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
     <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print</button>
+    <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
   </nav>
 
   <div class="book-wrap">
@@ -670,6 +782,245 @@
 </div>
 
 <script>
+// ══════════ CRYPTO HELPERS ══════════
+const ENC = new TextEncoder(), DEC = new TextDecoder();
+const B64 = { to: b => btoa(String.fromCharCode(...new Uint8Array(b))), from: s => Uint8Array.from(atob(s), c => c.charCodeAt(0)) };
+
+async function deriveWrapKey(password, salt) {
+  const km = await crypto.subtle.importKey('raw', ENC.encode(password), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name:'PBKDF2', salt, iterations:100000, hash:'SHA-256' }, km, { name:'AES-GCM', length:256 }, false, ['wrapKey','unwrapKey']);
+}
+async function wrapMK(key, wk) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const w = await crypto.subtle.wrapKey('raw', key, wk, { name:'AES-GCM', iv });
+  return { w: B64.to(w), iv: B64.to(iv) };
+}
+async function unwrapMK(d, wk) {
+  return crypto.subtle.unwrapKey('raw', B64.from(d.w), wk, { name:'AES-GCM', iv:B64.from(d.iv) }, { name:'AES-GCM', length:256 }, true, ['encrypt','decrypt']);
+}
+async function encPayload(key, obj) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await crypto.subtle.encrypt({ name:'AES-GCM', iv }, key, ENC.encode(JSON.stringify(obj)));
+  return { e: B64.to(ct), iv: B64.to(iv) };
+}
+async function decPayload(key, d) {
+  const pt = await crypto.subtle.decrypt({ name:'AES-GCM', iv:B64.from(d.iv) }, key, B64.from(d.e));
+  return JSON.parse(DEC.decode(pt));
+}
+function genRecoveryKey() {
+  const h = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
+  return [0,4,8,12,16,20,24,28].map(i=>h.slice(i,i+4)).join('-');
+}
+
+// ══════════ VAULT ══════════
+const VKEY = 'mlsVault';
+let vault = null, masterKey = null, tempRK = null;
+
+function loadVault()  { try { return JSON.parse(localStorage.getItem(VKEY)); } catch { return null; } }
+function persistVault(){ localStorage.setItem(VKEY, JSON.stringify(vault)); }
+
+// ══════════ APP INIT ══════════
+async function initApp() {
+  if (!window.crypto?.subtle) {
+    document.body.innerHTML = '<div style="color:white;padding:40px;text-align:center;font-family:serif;"><h2>Browser not supported</h2><p>Please open this file in Chrome, Firefox, or Safari.</p></div>';
+    return;
+  }
+  vault = loadVault();
+  vault ? showLock() : showSetup();
+}
+
+// ══════════ SETUP ══════════
+let setupData = {};
+function showSetup() { showScreen('setup-screen'); renderSetup(1); }
+
+function renderSetup(step) {
+  const box = document.getElementById('setup-box');
+  if (step === 1) {
+    box.innerHTML = `<div class="auth-emblem">✦</div>
+      <div class="auth-title">Secure your book</div>
+      <div class="auth-subtitle">Choose a password to protect this memory book</div>
+      <div class="auth-step">STEP 1 OF 3</div>
+      <div class="auth-error" id="se1"></div>
+      <label class="auth-label" for="sp1">Password</label>
+      <input class="auth-input" type="password" id="sp1" placeholder="Choose a password…" autocomplete="new-password" onkeydown="if(event.key==='Enter')s1next()">
+      <label class="auth-label" for="sp2">Confirm password</label>
+      <input class="auth-input" type="password" id="sp2" placeholder="Confirm password…" autocomplete="new-password" onkeydown="if(event.key==='Enter')s1next()">
+      <button class="auth-btn" onclick="s1next()">Next</button>`;
+    document.getElementById('sp1').focus();
+  } else if (step === 2) {
+    box.innerHTML = `<div class="auth-emblem">✦</div>
+      <div class="auth-title">Security question</div>
+      <div class="auth-subtitle">This helps you recover access if you forget your password</div>
+      <div class="auth-step">STEP 2 OF 3</div>
+      <div class="auth-error" id="se2"></div>
+      <label class="auth-label">What is the name of a close friend of the child this book belongs to?</label>
+      <input class="auth-input" type="text" id="sq1" placeholder="Your answer…" autocomplete="off">
+      <label class="auth-label" for="sq2">Confirm answer</label>
+      <input class="auth-input" type="text" id="sq2" placeholder="Confirm answer…" autocomplete="off">
+      <button class="auth-btn" onclick="s2next()">Next</button>`;
+    document.getElementById('sq1').focus();
+  } else {
+    tempRK = genRecoveryKey();
+    box.innerHTML = `<div class="auth-emblem">🔑</div>
+      <div class="auth-title">Your recovery key</div>
+      <div class="auth-subtitle">Write this down and keep it somewhere safe.<br>You will only see it once.</div>
+      <div class="auth-step">STEP 3 OF 3</div>
+      <div class="recovery-box"><div class="recovery-val" id="rkDisplay">${tempRK}</div></div>
+      <div class="recovery-warn">If you lose your password and this key, the book cannot be recovered.</div>
+      <button class="copy-btn" onclick="copyRK(this)">Copy to clipboard</button>
+      <div class="auth-check-row">
+        <input type="checkbox" id="rkCheck" onchange="document.getElementById('sfinish').disabled=!this.checked">
+        <label for="rkCheck">I've saved my recovery key somewhere safe</label>
+      </div>
+      <div class="auth-error" id="se3"></div>
+      <button class="auth-btn" id="sfinish" disabled onclick="setupFinish()">Open my book</button>`;
+  }
+}
+
+function s1next() {
+  const p=document.getElementById('sp1').value, p2=document.getElementById('sp2').value, e=document.getElementById('se1');
+  if (!p) { e.textContent='Please choose a password.'; return; }
+  if (p.length<6) { e.textContent='Password must be at least 6 characters.'; return; }
+  if (p!==p2) { e.textContent='Passwords do not match.'; return; }
+  setupData.pwd=p; renderSetup(2);
+}
+function s2next() {
+  const a=document.getElementById('sq1').value.trim(), a2=document.getElementById('sq2').value.trim(), e=document.getElementById('se2');
+  if (!a) { e.textContent='Please enter an answer.'; return; }
+  if (a.toLowerCase()!==a2.toLowerCase()) { e.textContent='Answers do not match.'; return; }
+  setupData.sec=a; renderSetup(3);
+}
+function copyRK(btn) {
+  navigator.clipboard.writeText(tempRK).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy to clipboard',2000); });
+}
+async function setupFinish() {
+  const btn=document.getElementById('sfinish'), e=document.getElementById('se3');
+  btn.textContent='Setting up…'; btn.disabled=true;
+  try {
+    masterKey = await crypto.subtle.generateKey({name:'AES-GCM',length:256}, true, ['encrypt','decrypt']);
+    const pS=crypto.getRandomValues(new Uint8Array(16)), rS=crypto.getRandomValues(new Uint8Array(16)), sS=crypto.getRandomValues(new Uint8Array(16));
+    const [pW,rW,sW] = await Promise.all([
+      deriveWrapKey(setupData.pwd, pS),
+      deriveWrapKey(tempRK.replace(/-/g,''), rS),
+      deriveWrapKey(setupData.sec.toLowerCase().trim(), sS)
+    ]);
+    const [pK,rK,sK] = await Promise.all([wrapMK(masterKey,pW), wrapMK(masterKey,rW), wrapMK(masterKey,sW)]);
+    const encData = await encPayload(masterKey, { carer: data.carer, child: data.child, coverPhoto: null });
+    vault = { v:1, pS:B64.to(pS), pK, rS:B64.to(rS), rK, sS:B64.to(sS), sK, data:encData };
+    persistVault();
+    tempRK=null; setupData={};
+    showScreen('cover-screen');
+  } catch(err) {
+    e.textContent='Something went wrong. Please try again.';
+    btn.textContent='Open my book'; btn.disabled=false;
+  }
+}
+
+// ══════════ LOCK ══════════
+function showLock() { showScreen('lock-screen'); setTimeout(()=>document.getElementById('lock-input')?.focus(),80); }
+
+async function tryUnlock() {
+  const pwd=document.getElementById('lock-input').value, e=document.getElementById('lock-error');
+  if (!pwd) { e.textContent='Please enter your password.'; return; }
+  e.textContent='Checking…';
+  try {
+    const wk = await deriveWrapKey(pwd, B64.from(vault.pS));
+    masterKey = await unwrapMK(vault.pK, wk);
+    document.getElementById('lock-input').value='';
+    await unlockSuccess();
+  } catch { e.textContent='Incorrect password. Please try again.'; masterKey=null; }
+}
+
+async function unlockSuccess() {
+  try {
+    const d = await decPayload(masterKey, vault.data);
+    if (d.carer) data.carer=d.carer;
+    if (d.child) data.child=d.child;
+    if (d.coverPhoto) { coverPhoto=d.coverPhoto; }
+  } catch { /* first open or format change — use defaults */ }
+  showScreen('cover-screen');
+  if (coverPhoto) setTimeout(()=>{
+    const s=document.getElementById('coverPhotoSlot');
+    if(s) s.innerHTML=`<img src="${coverPhoto}" alt="Cover photo"><input type="file" accept="image/*" aria-label="Change cover photo" onchange="loadCoverPhoto(this)">`;
+  }, 120);
+}
+
+// ══════════ FORGOT ══════════
+function showForgot() { document.getElementById('forgotModal').classList.add('open'); switchForgotTab('recovery'); }
+function closeForgot() {
+  document.getElementById('forgotModal').classList.remove('open');
+  ['ferr-recovery','ferr-security'].forEach(id=>document.getElementById(id).textContent='');
+  ['finput-recovery','finput-security'].forEach(id=>document.getElementById(id).value='');
+}
+function switchForgotTab(t) {
+  document.getElementById('ftab-recovery').classList.toggle('active',t==='recovery');
+  document.getElementById('ftab-security').classList.toggle('active',t==='security');
+  document.getElementById('fpanel-recovery').style.display=t==='recovery'?'':'none';
+  document.getElementById('fpanel-security').style.display=t==='security'?'':'none';
+}
+async function tryRecovery() {
+  const k=document.getElementById('finput-recovery').value.trim().replace(/-/g,''), e=document.getElementById('ferr-recovery');
+  if (!k) { e.textContent='Please enter your recovery key.'; return; }
+  e.textContent='Checking…';
+  try {
+    const wk = await deriveWrapKey(k, B64.from(vault.rS));
+    masterKey = await unwrapMK(vault.rK, wk);
+    closeForgot(); await unlockSuccess(); setTimeout(showChangePwd, 400);
+  } catch { e.textContent='Recovery key not recognised. Please check and try again.'; masterKey=null; }
+}
+async function trySecurityAnswer() {
+  const a=document.getElementById('finput-security').value.trim().toLowerCase(), e=document.getElementById('ferr-security');
+  if (!a) { e.textContent='Please enter your answer.'; return; }
+  e.textContent='Checking…';
+  try {
+    const wk = await deriveWrapKey(a, B64.from(vault.sS));
+    masterKey = await unwrapMK(vault.sK, wk);
+    closeForgot(); await unlockSuccess(); setTimeout(showChangePwd, 400);
+  } catch { e.textContent='Answer not recognised. Please check and try again.'; masterKey=null; }
+}
+
+// ══════════ CHANGE PASSWORD ══════════
+function showChangePwd() { document.getElementById('changePwdModal').classList.add('open'); }
+function closeChangePwd() { document.getElementById('changePwdModal').classList.remove('open'); }
+async function doChangePassword() {
+  const np=document.getElementById('cpwd-new').value, nc=document.getElementById('cpwd-confirm').value, e=document.getElementById('cpwd-error');
+  if (!np) { e.textContent='Please enter a new password.'; return; }
+  if (np.length<6) { e.textContent='Password must be at least 6 characters.'; return; }
+  if (np!==nc) { e.textContent='Passwords do not match.'; return; }
+  e.textContent='Saving…';
+  try {
+    const pS=crypto.getRandomValues(new Uint8Array(16));
+    const wk = await deriveWrapKey(np, pS);
+    vault.pS=B64.to(pS); vault.pK=await wrapMK(masterKey, wk);
+    persistVault(); closeChangePwd();
+    document.getElementById('cpwd-new').value=''; document.getElementById('cpwd-confirm').value='';
+    e.textContent='';
+  } catch { e.textContent='Something went wrong. Please try again.'; }
+}
+
+// ══════════ AUTO SAVE ══════════
+let saveTimer=null;
+function queueSave() { clearTimeout(saveTimer); saveTimer=setTimeout(doSave, 700); }
+async function doSave() {
+  if (!masterKey||!vault) return;
+  try {
+    vault.data = await encPayload(masterKey, { carer:data.carer, child:data.child, coverPhoto });
+    persistVault();
+  } catch(e) { console.error('Save failed:',e); }
+}
+
+// save on any typed input inside the page
+document.addEventListener('input',  e=>{ if(e.target.closest?.('#pageWrap')) queueSave(); });
+document.addEventListener('change', e=>{ if(e.target.closest?.('#pageWrap')) queueSave(); });
+
+// ══════════ SCREEN HELPER ══════════
+function showScreen(id) {
+  ['setup-screen','lock-screen','cover-screen','book-screen'].forEach(s=>{
+    document.getElementById(s)?.classList.remove('active');
+  });
+  document.getElementById(id)?.classList.add('active');
+}
+
 // ══════════ STATE ══════════
 let coverPhoto = null;
 
@@ -706,17 +1057,15 @@ function openBook(sec) {
   pageIdx = 0;
   document.getElementById('book3d').classList.add('opening');
   setTimeout(() => {
-    document.getElementById('cover-screen').classList.remove('active');
-    document.getElementById('book-screen').classList.add('active');
     document.getElementById('book3d').classList.remove('opening');
+    showScreen('book-screen');
     updateTabs();
     render();
-  }, 950);
+  }, 1800);
 }
 
 function goHome() {
-  document.getElementById('book-screen').classList.remove('active');
-  document.getElementById('cover-screen').classList.add('active');
+  showScreen('cover-screen');
 }
 
 // ══════════ TABS ══════════
@@ -837,6 +1186,12 @@ function render() {
     slot.appendChild(fileIn);
 
     const cap = el('div', 'photo-caption');
+    if (ph.date) {
+      const dateEl = el('div');
+      dateEl.style.cssText = 'font-size:.8em; color:rgba(255,255,255,.3); margin-bottom:3px;';
+      dateEl.textContent = ph.date;
+      cap.appendChild(dateEl);
+    }
     const capIn = document.createElement('input');
     capIn.type = 'text'; capIn.placeholder = 'Add a caption…';
     capIn.value = ph.caption;
@@ -880,12 +1235,12 @@ function render() {
 }
 
 // ══════════ PAGE ACTIONS ══════════
-function addEntry()       { data[section][pageIdx].entries.push({ date: '', text: '' }); render(); }
-function addMilestone()   { data[section][pageIdx].milestones.push(''); render(); }
-function addFavourite()   { data[section][pageIdx].favourites.push(''); render(); }
-function addProudOf()     { data[section][pageIdx].proudOf.push(''); render(); }
-function addDescribeSelf(){ data[section][pageIdx].describeSelf.push(''); render(); }
-function addPhoto()       { data[section][pageIdx].photos.push({ src: null, caption: '' }); render(); }
+function addEntry()       { data[section][pageIdx].entries.push({ date: '', text: '' }); render(); queueSave(); }
+function addMilestone()   { data[section][pageIdx].milestones.push(''); render(); queueSave(); }
+function addFavourite()   { data[section][pageIdx].favourites.push(''); render(); queueSave(); }
+function addProudOf()     { data[section][pageIdx].proudOf.push(''); render(); queueSave(); }
+function addDescribeSelf(){ data[section][pageIdx].describeSelf.push(''); render(); queueSave(); }
+function addPhoto()       { data[section][pageIdx].photos.push({ src: null, caption: '' }); render(); queueSave(); }
 
 function addPage() {
   const isCarer = section === 'carer';
@@ -913,7 +1268,11 @@ function nextPage() { if (pageIdx < data[section].length - 1) { pageIdx++; flip(
 function loadPhoto(input, i) {
   const file = input.files[0]; if (!file) return;
   const reader = new FileReader();
-  reader.onload = e => { data[section][pageIdx].photos[i].src = e.target.result; render(); };
+  reader.onload = e => {
+    data[section][pageIdx].photos[i].src = e.target.result;
+    data[section][pageIdx].photos[i].date = new Date().toLocaleDateString('en-GB');
+    render(); queueSave();
+  };
   reader.readAsDataURL(file);
 }
 
@@ -991,7 +1350,7 @@ function doPrint(which) {
       pg.photos.forEach((ph, i) => {
         html += `<div class="photo-item"><div class="photo-box">`;
         html += ph.src ? `<img src="${ph.src}" alt="Memory photo ${i + 1}">` : `Photo ${i + 1}`;
-        html += `</div><div class="caption">${esc(ph.caption) || '&nbsp;'}</div></div>`;
+        html += `</div>${ph.date ? `<div class="caption" style="font-size:.8em;color:#999;">${esc(ph.date)}</div>` : ''}<div class="caption">${esc(ph.caption) || '&nbsp;'}</div></div>`;
       });
 
       html += `</div></div>`;
@@ -1052,7 +1411,7 @@ function stopVoiceRecording() {
 
 function deleteVoice(field, i) {
   data[section][pageIdx].voices[field].splice(i, 1);
-  render();
+  render(); queueSave();
 }
 
 function loadCoverPhoto(input) {
@@ -1060,6 +1419,7 @@ function loadCoverPhoto(input) {
   const reader = new FileReader();
   reader.onload = e => {
     coverPhoto = e.target.result;
+    queueSave();
     const slot = document.getElementById('coverPhotoSlot');
     if (slot) {
       slot.innerHTML = `<img src="${coverPhoto}" alt="Cover photo">
@@ -1129,7 +1489,7 @@ function grow(el) {
 }
 
 // init
-updateTabs();
+initApp();
 </script>
 
 </body>
