@@ -23,15 +23,15 @@
 
 ## Where I am right now
 
-Session 1 — diagnostic complete, about to start Step 1.
+Step 3 — learning what makes a good prompt, with the scrapbook as the working example.
 
 ---
 
 ## Step-2 artefact (the bookend)
 
-- **What it is:** TBD — to be built at Step 2
-- **File:** TBD
-- **The original prompts used:** TBD
+- **What it is:** Life story scrapbook for foster carers — colourful, warm, sections for carer and child memories and milestones
+- **File:** `~/Documents/my-claude-project/step-2/scrapbook.html`
+- **The original prompts used:** "I want to build a place for carers to contribute to a foster child's life story. I want it to be like a scrap book. I want it to include photos, memories, milestones. i want a place for the carer to contribute, and a place for the child to contribute. it has to be colourful and focused on making memories. it has to feel precious."
 
 > The tutor must keep this section intact. Step 10a depends on it.
 
@@ -41,11 +41,11 @@ Session 1 — diagnostic complete, about to start Step 1.
 
 ### Core (v1)
 
-- [ ] **Step 1 — What an AI agent is + the prompt → action → review loop**
-  Notes:
+- [x] **Step 1 — What an AI agent is + the prompt → action → review loop**
+  Notes: Landed well. Emily paraphrased the loop clearly in her own words.
 
-- [ ] **Step 2 — First prompts + the tiny build**
-  Notes:
+- [x] **Step 2 — First prompts + the tiny build**
+  Notes: Built scrapbook.html — a life story / placement memory book for foster carers. Emily's idea, unprompted and really strong. She wants to develop it further.
 
 - [ ] **Step 3 — Good prompts vs bad**
   Notes:
@@ -81,4 +81,4 @@ Session 1 — diagnostic complete, about to start Step 1.
 
 ## Session log
 
-- **Session 1 — 2026-06-11:** Diagnostic complete. Emily has some HTML experience, never used a terminal. Wants to build her Lovable website locally. Starting Step 1.
+- **Session 1 — 2026-06-11:** Diagnostic complete. Steps 1 and 2 done. Emily has some HTML experience, never used a terminal. Came up with a genuinely strong project idea unprompted — a life story scrapbook for foster carers. Wants to develop it into something with pages you can flick through. Full of ideas. Wants to develop Lovable website locally as longer-term goal.
