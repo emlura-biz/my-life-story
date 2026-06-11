@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Life Story</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
     @import url('https://fonts.cdnfonts.com/css/opendyslexic');
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -146,8 +146,7 @@
 
     .b-sub {
       font-family: 'Crimson Text', serif;
-      font-style: italic;
-      color: rgba(249,213,122,.9);
+            color: rgba(249,213,122,.9);
       font-size: .95em;
       text-align: center;
       margin-bottom: 22px;
@@ -184,8 +183,7 @@
 
     .cover-hint {
       font-family: 'Crimson Text', serif;
-      font-style: italic;
-      color: rgba(255,255,255,.75);
+            color: rgba(255,255,255,.75);
       font-size: .95em;
       text-align: center;
       position: relative; z-index: 1;
@@ -451,7 +449,7 @@
     }
     .pg-add-btn {
       background: none; border: none;
-      font-family: 'Crimson Text', serif; font-style: italic; font-size: .95em;
+      font-family: 'Crimson Text', serif; font-size: .95em;
       color: rgba(255,255,255,.75); cursor: pointer; margin-top: 5px;
       display: block; transition: color .2s;
     }
@@ -571,8 +569,7 @@
       font-size: 1.1em; letter-spacing: .1em; text-align: center; margin-bottom: 6px;
     }
     .auth-subtitle {
-      font-family: 'Crimson Text', serif; font-style: italic;
-      color: rgba(255,255,255,.75); font-size: 1em; text-align: center; margin-bottom: 22px;
+      font-family: 'Crimson Text', serif;       color: rgba(255,255,255,.75); font-size: 1em; text-align: center; margin-bottom: 22px;
     }
     .auth-step { font-family: 'Lexend', sans-serif; font-size: .72em; letter-spacing: .04em; color: rgba(255,255,255,.75); text-align: center; margin-bottom: 18px; }
     .auth-label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: 1em; margin-bottom: 5px; display: block; }
@@ -594,7 +591,7 @@
     .auth-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
     .auth-link {
       background: none; border: none; color: rgba(255,255,255,.75);
-      font-family: 'Crimson Text', serif; font-style: italic; font-size: .95em;
+      font-family: 'Crimson Text', serif; font-size: .95em;
       cursor: pointer; text-decoration: underline; padding: 0;
       margin-top: 14px; display: block; text-align: center; transition: color .2s;
     }
@@ -608,7 +605,7 @@
       font-family: 'Courier New', monospace; font-size: .9em; color: #f9d57a;
       text-align: center; letter-spacing: .06em; word-break: break-all; line-height: 1.9;
     }
-    .recovery-warn { font-family: 'Crimson Text', serif; font-style: italic; color: rgba(255,255,255,.75); font-size: .9em; text-align: center; margin-bottom: 12px; }
+    .recovery-warn { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.75); font-size: .9em; text-align: center; margin-bottom: 12px; }
     .copy-btn {
       width: 100%; padding: 9px; background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.12); border-radius: 7px;
@@ -1364,7 +1361,7 @@ function doPrint(which) {
     .photo-item { display: flex; flex-direction: column; gap: 4px; }
     .photo-box { aspect-ratio: 1; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: .9em; }
     .photo-box img { width: 100%; height: 100%; object-fit: cover; }
-    .caption { font-size: .9em; color: #555; font-style: italic; }
+    .caption { font-size: .9em; color: #555; }
   </style></head><body>`;
 
   const secs = which === 'all' ? ['carer', 'child'] : [which];
