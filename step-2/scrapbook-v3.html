@@ -92,9 +92,15 @@
     .b-pages {
       position: absolute;
       right: -15px; top: 5px; bottom: 5px; width: 16px;
-      background: repeating-linear-gradient(
-        to right, #e0d8c8, #e0d8c8 1px, #cfc7b5 1px, #cfc7b5 2.5px
-      );
+      background:
+        linear-gradient(to right, rgba(0,0,0,.45) 0%, rgba(0,0,0,.1) 45%, rgba(255,255,255,.08) 100%),
+        repeating-linear-gradient(
+          to right,
+          #ede5d5 0px, #ede5d5 1.5px,
+          #6a6050 1.5px, #6a6050 2px,
+          #e2d9c6 2px, #e2d9c6 3.5px,
+          #7a7060 3.5px, #7a7060 4px
+        );
       border-radius: 0 3px 3px 0;
       transform: rotateY(90deg);
       transform-origin: left center;
@@ -852,6 +858,17 @@
     }
     body.light .b-front::before, body.light .b-front::after { border-color: rgba(138,94,0,.3); }
     body.light .b-spine { background: linear-gradient(to right, #7a4f10, #a87840, #7a4f10); }
+    body.light .b-pages {
+      background:
+        linear-gradient(to right, rgba(0,0,0,.22) 0%, rgba(0,0,0,.04) 40%, rgba(255,255,255,.25) 100%),
+        repeating-linear-gradient(
+          to right,
+          #f8f3ec 0px, #f8f3ec 1.5px,
+          #9a9080 1.5px, #9a9080 2px,
+          #f2ece2 2px, #f2ece2 3.5px,
+          #aaa090 3.5px, #aaa090 4px
+        );
+    }
     body.light .b-title { color: #8a5e00; text-shadow: none; }
     body.light .b-sub { color: #8a5e00; }
     body.light .b-divider { background: linear-gradient(to right, transparent, rgba(138,94,0,.3), transparent); }
