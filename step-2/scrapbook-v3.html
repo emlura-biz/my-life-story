@@ -531,7 +531,7 @@
     .modal-btn-cancel:hover { color: rgba(255,255,255,.6); border-color: rgba(255,255,255,.25); }
     .print-notice {
       font-family: 'Crimson Text', serif;
-      font-size: .92em;
+      font-size: 1em;
       line-height: 1.55;
       color: rgba(255,255,255,.75);
       background: rgba(255,255,255,.04);
@@ -1060,7 +1060,7 @@
 
 <!-- ══════════ PRINT MODAL ══════════ -->
 <div class="modal-overlay" id="printModal" role="dialog" aria-modal="true" aria-label="Print options">
-  <div class="modal-box">
+  <div class="modal-box" style="max-width:400px;">
     <div class="modal-title">What would you like to print?</div>
     <div class="print-notice">This is the child's story — please treat printed copies with care. Give them only to the child or their social worker, and shred any spare or draft copies rather than putting them in general recycling.</div>
     <button class="modal-btn modal-btn-carer" onclick="doPrint('carer')">Carer's pages only</button>
