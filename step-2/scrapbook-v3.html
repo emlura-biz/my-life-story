@@ -1264,7 +1264,7 @@ function renderSetup(step) {
       <div class="sq-counter" id="sqCounter">0 of 3 selected</div>
       <div class="auth-error" id="se2"></div>
       ${qHTML}
-      <button class="auth-btn" id="sfinish" style="margin-top:14px;" onclick="setupFinish()">Secure Life Story</button>`;
+      <button class="auth-btn" id="sfinish" style="margin-top:14px;" onclick="s2next()">Secure Life Story</button>`;
   }
 }
 
@@ -1297,10 +1297,10 @@ function s2next() {
     if (cb?.checked) { const a=inp.value.trim(); if(a) selected.push({q,a}); }
   });
   if (selected.length<3) { e.textContent='Please pick 3 questions and write an answer for each.'; return; }
-  setupData.secQs=selected; renderSetup(3);
+  setupData.secQs=selected; setupFinish();
 }
 async function setupFinish() {
-  const btn=document.getElementById('sfinish'), e=document.getElementById('se3');
+  const btn=document.getElementById('sfinish'), e=document.getElementById('se2');
   btn.textContent='Setting up…'; btn.disabled=true;
   try {
     masterKey = await crypto.subtle.generateKey({name:'AES-GCM',length:256}, true, ['encrypt','decrypt']);
