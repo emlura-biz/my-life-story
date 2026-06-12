@@ -1134,13 +1134,15 @@ function genRecoveryKey() {
 const VKEY = 'mlsVault';
 let vault = null, masterKey = null, tempRK = null;
 
-function loadVault()  { try { return JSON.parse(localStorage.getItem(VKEY)); } catch { return null; } }
-function persistVault(){ localStorage.setItem(VKEY, JSON.stringify(vault)); }
+function lsGet(k)    { try { return localStorage.getItem(k); }    catch { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); }        catch {} }
+function loadVault()  { try { return JSON.parse(lsGet(VKEY)); }   catch { return null; } }
+function persistVault(){ lsSet(VKEY, JSON.stringify(vault)); }
 
 // ══════════ APP INIT ══════════
 function setTheme(t) {
   document.body.classList.toggle('light', t === 'light');
-  localStorage.setItem('mlsTheme', t);
+  lsSet('mlsTheme', t);
   const db = document.getElementById('tbtn-dark'), lb = document.getElementById('tbtn-light');
   if (db) { db.classList.toggle('active', t === 'dark'); db.setAttribute('aria-pressed', t === 'dark'); }
   if (lb) { lb.classList.toggle('active', t === 'light'); lb.setAttribute('aria-pressed', t === 'light'); }
@@ -1151,7 +1153,7 @@ async function initApp() {
     document.body.innerHTML = '<div style="color:white;padding:40px;text-align:center;font-family:serif;"><h2>Browser not supported</h2><p>Please open this file in Chrome, Firefox, or Safari.</p></div>';
     return;
   }
-  setTheme(localStorage.getItem('mlsTheme') || 'dark');
+  setTheme(lsGet('mlsTheme') || 'dark');
   vault = loadVault();
   vault ? showLock() : showWelcome();
 }
