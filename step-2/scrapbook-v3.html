@@ -897,7 +897,7 @@
       <input type="checkbox" id="welcomeCheck" onchange="document.getElementById('welcomeBtn').disabled=!this.checked">
       <label for="welcomeCheck">I've read and understood this information</label>
     </div>
-    <button class="auth-btn" id="welcomeBtn" disabled onclick="showSetup()">Set up my book</button>
+    <button class="auth-btn" id="welcomeBtn" disabled onclick="showSetup()">Set up Life Story</button>
   </div>
 </div>
 
@@ -1149,7 +1149,7 @@ function renderSetup(step) {
         <label for="rkCheck">I've saved my recovery key somewhere safe</label>
       </div>
       <div class="auth-error" id="se3"></div>
-      <button class="auth-btn" id="sfinish" disabled onclick="setupFinish()">Open my book</button>`;
+      <button class="auth-btn" id="sfinish" disabled onclick="setupFinish()">Secure Life Story</button>`;
   }
 }
 
@@ -1211,7 +1211,7 @@ async function setupFinish() {
     showScreen('cover-screen');
   } catch(err) {
     e.textContent='Something went wrong. Please try again.';
-    btn.textContent='Open my book'; btn.disabled=false;
+    btn.textContent='Secure Life Story'; btn.disabled=false;
   }
 }
 
