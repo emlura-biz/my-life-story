@@ -676,6 +676,36 @@
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
 
+    /* ── WELCOME SCREEN ── */
+    .welcome-box { max-width: 560px; max-height: 85vh; overflow-y: auto; }
+    .welcome-body {
+      font-family: 'Crimson Text', serif;
+      color: rgba(255,255,255,.82);
+      font-size: 1em; line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .welcome-body p { margin-bottom: 12px; }
+    .welcome-list { list-style: none; padding: 0; margin: 0; }
+    .welcome-list li {
+      padding: 11px 14px;
+      background: rgba(255,255,255,.04);
+      border-radius: 8px;
+      border-left: 2px solid rgba(249,213,122,.35);
+      margin-bottom: 8px;
+      line-height: 1.55;
+    }
+    .welcome-list li strong {
+      display: block;
+      font-family: 'Lexend', sans-serif;
+      font-size: .88em;
+      font-weight: 600;
+      color: rgba(255,255,255,.92);
+      margin-bottom: 4px;
+    }
+    body.light .welcome-body { color: rgba(30,18,4,.8); }
+    body.light .welcome-list li { background: rgba(0,0,0,.03); border-left-color: rgba(138,94,0,.4); }
+    body.light .welcome-list li strong { color: rgba(30,18,4,.9); }
+
     /* ── THEME BAR ── */
     #themeBar {
       position: fixed;
@@ -819,6 +849,45 @@
   </style>
 </head>
 <body>
+
+<!-- ══════════ WELCOME SCREEN ══════════ -->
+<div class="screen auth-screen" id="welcome-screen" role="main">
+  <div class="auth-box welcome-box">
+    <div class="auth-emblem">✦</div>
+    <div class="auth-title">Important information before you get started</div>
+    <div class="welcome-body">
+      <p>This memory book saves only to your device — nothing is stored on our servers or shared with us. That means keeping it safe is entirely in your hands.</p>
+      <p>A few things worth knowing:</p>
+      <ul class="welcome-list">
+        <li>
+          <strong>Check with your supervising social worker first.</strong>
+          Some fostering agencies have specific guidance about storing information digitally. If yours does, follow their guidance — this tool is designed to sit alongside official records, not replace them.
+        </li>
+        <li>
+          <strong>Don't save it to your main computer.</strong>
+          Save it to an encrypted USB stick instead — this keeps it separate from your everyday files and makes it easy to hand over or delete at the end of a placement. Most USB sticks can be encrypted through your computer's built-in settings (BitLocker on Windows, FileVault on Mac).
+        </li>
+        <li>
+          <strong>Back it up somewhere secure.</strong>
+          An encrypted USB is your primary copy — but keep a second copy somewhere equally secure in case it's lost or damaged. Do not back it up to a shared or family cloud account.
+        </li>
+        <li>
+          <strong>At the end of a placement,</strong>
+          export the book to PDF for the child and their social worker, then delete the file from your USB and any other location you've saved it. The child's copy belongs to them — not to you, and not to us.
+        </li>
+        <li>
+          <strong>Never share the file by email or WhatsApp.</strong>
+          If you need to share anything with a social worker, use the PDF export and send it through whatever secure channel your agency uses.
+        </li>
+      </ul>
+    </div>
+    <div class="auth-check-row">
+      <input type="checkbox" id="welcomeCheck" onchange="document.getElementById('welcomeBtn').disabled=!this.checked">
+      <label for="welcomeCheck">I've read and understood this information</label>
+    </div>
+    <button class="auth-btn" id="welcomeBtn" disabled onclick="showSetup()">Set up my book</button>
+  </div>
+</div>
 
 <!-- ══════════ SETUP SCREEN ══════════ -->
 <div class="screen auth-screen" id="setup-screen" role="main">
@@ -997,7 +1066,7 @@ async function initApp() {
   }
   setTheme(localStorage.getItem('mlsTheme') || 'dark');
   vault = loadVault();
-  vault ? showLock() : showSetup();
+  vault ? showLock() : showWelcome();
 }
 
 // ══════════ SETUP ══════════
@@ -1012,6 +1081,7 @@ const SECURITY_QUESTIONS = [
   "What is your favourite number?"
 ];
 let setupData = {};
+function showWelcome() { showScreen('welcome-screen'); }
 function showSetup() { showScreen('setup-screen'); renderSetup(1); }
 
 function renderSetup(step) {
@@ -1248,7 +1318,7 @@ document.addEventListener('change', e=>{ if(e.target.closest?.('#pageWrap')) que
 
 // ══════════ SCREEN HELPER ══════════
 function showScreen(id) {
-  ['setup-screen','lock-screen','cover-screen','book-screen'].forEach(s=>{
+  ['welcome-screen','setup-screen','lock-screen','cover-screen','book-screen'].forEach(s=>{
     document.getElementById(s)?.classList.remove('active');
   });
   document.getElementById(id)?.classList.add('active');
