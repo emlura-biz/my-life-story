@@ -975,6 +975,8 @@
       <label for="welcomeCheck">I've read and understood this information</label>
     </div>
     <button class="auth-btn" id="welcomeBtn" disabled onclick="showSetup()">Set up Life Story</button>
+    <button class="auth-link" onclick="document.getElementById('importInput').click()" style="margin-top:12px;">Already have a backup file? Restore it</button>
+    <input type="file" id="importInput" accept=".json,.mlsbackup" style="display:none" onchange="importBackup(this)">
   </div>
 </div>
 
@@ -1070,6 +1072,7 @@
     <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
     <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print</button>
     <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
+    <button class="top-print-btn" onclick="exportBackup()" aria-label="Download encrypted backup">💾 Backup</button>
     <span class="top-title" aria-hidden="true">✦ My Life Story ✦</span>
   </nav>
 
@@ -1391,6 +1394,39 @@ async function doChangePassword() {
     document.getElementById('cpwd-new').value=''; document.getElementById('cpwd-confirm').value='';
     e.textContent='';
   } catch { e.textContent='Something went wrong. Please try again.'; }
+}
+
+// ══════════ BACKUP / RESTORE ══════════
+function exportBackup() {
+  if (!vault) return;
+  const json = JSON.stringify(vault);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `life-story-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+}
+
+function importBackup(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (imported.v !== 1 || !imported.pK || !imported.pS) throw new Error('invalid');
+      vault = imported;
+      persistVault();
+      showLock();
+    } catch {
+      alert('That doesn\'t look like a valid backup file — please check you selected the right one.');
+    }
+    input.value = '';
+  };
+  reader.readAsText(file);
 }
 
 // ══════════ AUTO SAVE ══════════
