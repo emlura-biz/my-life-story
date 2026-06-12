@@ -1675,7 +1675,7 @@ function render() {
 
   // ── Proud of ──
   wrap.appendChild(secTitle(isCarer ? 'Things they were proud of' : 'Things I was proud of'));
-  wrap.appendChild(buildSimpleList(pg.proudOf, 'proudOf', '✓', 'Something they were proud of…'));
+  wrap.appendChild(buildSimpleList(pg.proudOf, 'proudOf', '✓', isCarer ? 'Something they were proud of…' : 'Something I felt proud of…'));
   if (!isCarer) wrap.appendChild(voiceClipsList(pg.voices.proudOf, 'proudOf'));
   wrap.appendChild(btnRow('+ Add something', `addProudOf()`, !isCarer, 'proudOf'));
 
