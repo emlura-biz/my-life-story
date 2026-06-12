@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Step 3 — learning what makes a good prompt, with the scrapbook as the working example.
+Step 7 — GitHub: moving save-points online. Steps 3–6 completed this session.
 
 ---
 
@@ -47,17 +47,17 @@ Step 3 — learning what makes a good prompt, with the scrapbook as the working 
 - [x] **Step 2 — First prompts + the tiny build**
   Notes: Built scrapbook.html — a life story / placement memory book for foster carers. Emily's idea, unprompted and really strong. She wants to develop it further.
 
-- [ ] **Step 3 — Good prompts vs bad**
-  Notes: Emily has been directing the scrapbook build through precise prompt-like instructions — font changes, contrast fixes, security questions, theme toggle. She's getting comfortable telling me exactly what she wants and reviewing the result. Not yet formally taught as a concept but practising it naturally.
+- [x] **Step 3 — Good prompts vs bad**
+  Notes: Emily already had the instinct — lesson was naming what she'd been doing. Key takeaways: specific beats vague, say what/where/how, tell me what to leave alone.
 
-- [ ] **Step 4 — Working with files**
-  Notes:
+- [x] **Step 4 — Working with files**
+  Notes: File extensions, file paths, and the difference between files that do something vs store something. All landed well via the scrapbook as example.
 
-- [ ] **Step 5 — Reviewing AI output critically**
-  Notes:
+- [x] **Step 5 — Reviewing AI output critically**
+  Notes: Emily cited the duplicate buttons as her own example unprompted. Covered the three failure modes (does too much, wrong scope, breaks something else). She's already doing this naturally.
 
-- [ ] **Step 6 — Git as a safety net (local commits)**
-  Notes:
+- [x] **Step 6 — Git as a safety net (local commits)**
+  Notes: Mental model: commits as photographs. Emily understood immediately — cited the broken animation as the example. Concept of safety-first (tutor makes commits) landed well.
 
 - [ ] **Step 7 — GitHub: moving your save-points online**
   Notes:
