@@ -686,10 +686,24 @@
     }
     .forgot-tab.active { color: #f9d57a; border-bottom-color: #f9d57a; }
 
-    /* ── WIDER SCREENS: let the auth boxes breathe ── */
+    /* ── WIDER SCREENS ── */
     @media (min-width: 640px) {
       .auth-box { max-width: 560px; }
       .welcome-box { max-width: 680px; }
+      .book-3d { transform: scale(1.15) rotateY(-22deg) rotateX(6deg); }
+      .book-3d-scene { margin-top: 36px; margin-bottom: 68px; }
+      @keyframes bookSwing {
+        0%   { transform: scale(1.15) rotateY(-22deg) rotateX(6deg); opacity: 1; }
+        100% { transform: scale(1.15) rotateY(60deg)  rotateX(2deg); opacity: 0; }
+      }
+    }
+    @media (min-width: 1100px) {
+      .book-3d { transform: scale(1.3) rotateY(-22deg) rotateX(6deg); }
+      .book-3d-scene { margin-top: 72px; margin-bottom: 104px; }
+      @keyframes bookSwing {
+        0%   { transform: scale(1.3) rotateY(-22deg) rotateX(6deg); opacity: 1; }
+        100% { transform: scale(1.3) rotateY(60deg)  rotateX(2deg); opacity: 0; }
+      }
     }
 
     /* ── PRINT STYLES ── */
