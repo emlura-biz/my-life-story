@@ -396,6 +396,40 @@
       cursor: pointer; transition: border-color .2s;
     }
     .photo-slot:hover { border-color: rgba(255,255,255,.35); }
+    .photo-slot.has-photo { cursor: zoom-in; }
+    .photo-replace {
+      position: absolute; bottom: 7px; right: 7px;
+      background: rgba(0,0,0,.6); border: none; border-radius: 6px;
+      color: rgba(255,255,255,.85); font-family: 'Lexend', sans-serif;
+      font-size: .65em; padding: 3px 8px; cursor: pointer; z-index: 2;
+      opacity: 0; transition: opacity .2s; pointer-events: auto;
+    }
+    .photo-slot:hover .photo-replace { opacity: 1; }
+    .lightbox-overlay {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,.92);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px; cursor: zoom-out;
+    }
+    .lightbox-overlay img {
+      max-width: 100%; max-height: 78vh;
+      object-fit: contain; border-radius: 8px;
+      box-shadow: 0 8px 48px rgba(0,0,0,.7);
+      cursor: default;
+    }
+    .lightbox-caption {
+      font-family: 'Crimson Text', serif; color: rgba(255,255,255,.8);
+      font-size: 1.05em; text-align: center;
+      margin-top: 14px; max-width: 500px;
+    }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; color: rgba(255,255,255,.65);
+      font-size: 2em; cursor: pointer; line-height: 1; padding: 4px 10px;
+      transition: color .15s;
+    }
+    .lightbox-close:hover { color: white; }
     .photo-slot .ph-icon { font-size: 1.8em; }
     .photo-slot input[type="file"] {
       position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%;
@@ -1498,14 +1532,31 @@ function render() {
       const img = document.createElement('img');
       img.src = ph.src; img.alt = `Memory photo ${i + 1}`;
       slot.appendChild(img);
+      slot.classList.add('has-photo');
+      const replaceLabel = document.createElement('label');
+      replaceLabel.className = 'photo-replace';
+      replaceLabel.textContent = 'Replace';
+      const replaceIn = document.createElement('input');
+      replaceIn.type = 'file'; replaceIn.accept = 'image/*';
+      replaceIn.style.cssText = 'position:absolute;width:0;height:0;opacity:0;';
+      replaceIn.setAttribute('aria-label', `Replace photo ${i + 1}`);
+      replaceIn.onchange = function() { loadPhoto(this, i); };
+      replaceLabel.appendChild(replaceIn);
+      slot.appendChild(replaceLabel);
+      slot.addEventListener('click', function(e) {
+        if (!replaceLabel.contains(e.target)) {
+          const cap = data[section][pageIdx].photos[i].caption || '';
+          showLightbox(ph.src, cap);
+        }
+      });
     } else {
       slot.innerHTML = `<span class="ph-icon" aria-hidden="true">📷</span><span>Add photo</span>`;
+      const fileIn = document.createElement('input');
+      fileIn.type = 'file'; fileIn.accept = 'image/*';
+      fileIn.setAttribute('aria-label', `Upload photo ${i + 1}`);
+      fileIn.onchange = function() { loadPhoto(this, i); };
+      slot.appendChild(fileIn);
     }
-    const fileIn = document.createElement('input');
-    fileIn.type = 'file'; fileIn.accept = 'image/*';
-    fileIn.setAttribute('aria-label', `Upload photo ${i + 1}`);
-    fileIn.onchange = function() { loadPhoto(this, i); };
-    slot.appendChild(fileIn);
 
     const cap = el('div', 'photo-caption');
     if (ph.date) {
@@ -1691,6 +1742,23 @@ function el(tag, cls) {
   const d = document.createElement(tag);
   if (cls) d.className = cls;
   return d;
+}
+
+function showLightbox(src, caption) {
+  const ov = document.createElement('div');
+  ov.className = 'lightbox-overlay';
+  ov.setAttribute('role', 'dialog');
+  ov.setAttribute('aria-label', 'Photo viewer — click anywhere to close');
+  ov.innerHTML = `
+    <button class="lightbox-close" aria-label="Close photo viewer">&#x2715;</button>
+    <img src="${src}" alt="${caption || 'Memory photo'}">
+    ${caption ? `<div class="lightbox-caption">${caption}</div>` : ''}
+  `;
+  const close = () => { if (document.body.contains(ov)) document.body.removeChild(ov); };
+  ov.addEventListener('click', e => { if (e.target === ov || e.target.classList.contains('lightbox-close')) close(); });
+  const onKey = e => { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', onKey); } };
+  document.addEventListener('keydown', onKey);
+  document.body.appendChild(ov);
 }
 
 function secTitle(text) {
