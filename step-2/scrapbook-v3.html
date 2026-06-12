@@ -277,6 +277,23 @@
     }
     .top-print-btn:hover { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.8); }
     .top-print-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    /* topbar items wrapper — transparent on wide screens so children sit in topbar flex directly */
+    .topbar-items { display: contents; }
+    /* burger button — hidden on wide screens */
+    .burger-btn {
+      display: none;
+      padding: 6px 11px;
+      background: none;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
+      color: rgba(255,255,255,.75);
+      font-size: 1.15em;
+      line-height: 1;
+      cursor: pointer;
+      transition: all .2s;
+      margin-left: auto;
+    }
+    .burger-btn:hover { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.9); }
 
     /* book page */
     .book-wrap { width: 100%; max-width: 840px; perspective: 1600px; }
@@ -724,6 +741,32 @@
       }
     }
 
+    /* ── BURGER NAV (narrow screens) ── */
+    @media (max-width: 800px) {
+      .burger-btn { display: block; }
+      .top-title  { display: none; }
+      .topbar-items {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding-top: 10px;
+        margin-top: 6px;
+        border-top: 1px solid rgba(255,255,255,.08);
+      }
+      .topbar-items.open { display: flex; }
+      .topbar-items .top-tab,
+      .topbar-items .top-print-btn {
+        border-radius: 10px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+        text-decoration: none;
+      }
+    }
+
     /* ── PRINT STYLES ── */
     @media print {
       body { background: white !important; color: #111 !important; font-size: 13pt; }
@@ -905,6 +948,9 @@
     body.light .tab-child.active { background: rgba(168,32,96,.12); border-color: #a82060; }
     body.light .top-print-btn { color: rgba(30,18,4,.7); border-color: rgba(0,0,0,.2); }
     body.light .top-print-btn:hover { color: #1c1004; border-color: rgba(0,0,0,.5); }
+    body.light .burger-btn { color: rgba(30,18,4,.7); border-color: rgba(0,0,0,.2); }
+    body.light .burger-btn:hover { color: #1c1004; border-color: rgba(0,0,0,.5); }
+    body.light .topbar-items { border-top-color: rgba(0,0,0,.08); }
     body.light .page-wrap { background: #fffcf7; border-color: rgba(0,0,0,.07); box-shadow: -8px 0 0 #e6d9c8, -15px 0 0 #d9ccb8, 0 22px 64px rgba(0,0,0,.1); }
     body.light .page-wrap::before { background: rgba(0,0,0,.04); }
     body.light .pg-header.carer { color: #8a5e00; border-color: rgba(138,94,0,.2); }
@@ -1074,12 +1120,15 @@
 
   <nav class="topbar" aria-label="Book navigation">
     <button class="top-home-btn" onclick="goHome()" aria-label="Return to cover">← Cover</button>
-    <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
-    <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
-    <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print/export</button>
-    <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
-    <button class="top-print-btn" onclick="exportBackup()" aria-label="Download encrypted backup">💾 Backup</button>
-    <a class="top-print-btn" href="PLACEHOLDER_URL" target="_blank" rel="noopener" aria-label="About this project">About</a>
+    <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    <div class="topbar-items" id="topbarItems">
+      <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
+      <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
+      <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print/export</button>
+      <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
+      <button class="top-print-btn" onclick="exportBackup()" aria-label="Download encrypted backup">💾 Backup</button>
+      <a class="top-print-btn" href="PLACEHOLDER_URL" target="_blank" rel="noopener" aria-label="About this project">About</a>
+    </div>
     <span class="top-title" aria-hidden="true">✦ My Life Story ✦</span>
   </nav>
 
@@ -1403,7 +1452,7 @@ async function trySecurityAnswer() {
 }
 
 // ══════════ CHANGE PASSWORD ══════════
-function showChangePwd() { document.getElementById('changePwdModal').classList.add('open'); }
+function showChangePwd() { closeBurger(); document.getElementById('changePwdModal').classList.add('open'); }
 function closeChangePwd() { document.getElementById('changePwdModal').classList.remove('open'); }
 async function doChangePassword() {
   const np=document.getElementById('cpwd-new').value, nc=document.getElementById('cpwd-confirm').value, e=document.getElementById('cpwd-error');
@@ -1423,6 +1472,7 @@ async function doChangePassword() {
 
 // ══════════ BACKUP / RESTORE ══════════
 function exportBackup() {
+  closeBurger();
   if (!vault) return;
   document.getElementById('backupCheck').checked = false;
   document.getElementById('backupDownloadBtn').disabled = true;
@@ -1537,6 +1587,21 @@ function hideCoverOverlay() {
 
 window.addEventListener('resize', positionCoverOverlay);
 
+// ══════════ BURGER NAV ══════════
+function toggleBurger() {
+  const items = document.getElementById('topbarItems');
+  const btn   = document.getElementById('burgerBtn');
+  const open  = items.classList.toggle('open');
+  btn.setAttribute('aria-expanded', String(open));
+  btn.textContent = open ? '✕' : '☰';
+}
+function closeBurger() {
+  const items = document.getElementById('topbarItems');
+  const btn   = document.getElementById('burgerBtn');
+  if (items) items.classList.remove('open');
+  if (btn)   { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; }
+}
+
 // ══════════ STATE ══════════
 let coverPhoto = null;
 
@@ -1587,6 +1652,7 @@ function goHome() {
 
 // ══════════ TABS ══════════
 function switchSection(sec) {
+  closeBurger();
   section = sec;
   pageIdx = 0;
   updateTabs();
@@ -1820,7 +1886,7 @@ function flip(dir) {
 }
 
 // ══════════ PRINT ══════════
-function openPrintMenu()  { document.getElementById('printModal').classList.add('open'); }
+function openPrintMenu()  { closeBurger(); document.getElementById('printModal').classList.add('open'); }
 function closePrintMenu() { document.getElementById('printModal').classList.remove('open'); }
 
 function doPrint(which) {
