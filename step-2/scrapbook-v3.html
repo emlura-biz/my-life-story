@@ -397,11 +397,13 @@
     }
     .read-more-btn {
       display: none; position: absolute; bottom: 5px; right: 4px;
-      background: none; border: none; padding: 2px 6px; z-index: 3;
-      color: rgba(255,255,255,.55); font-family: 'Lexend', sans-serif;
-      font-size: .62em; letter-spacing: .04em; cursor: pointer; transition: color .15s;
+      background: rgba(25,38,56,.95); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px; padding: 4px 12px; z-index: 3;
+      color: rgba(255,255,255,.8); font-family: 'Lexend', sans-serif;
+      font-size: .65em; letter-spacing: .05em; cursor: pointer;
+      transition: border-color .15s, color .15s;
     }
-    .read-more-btn:hover { color: rgba(255,255,255,.9); }
+    .read-more-btn:hover { border-color: rgba(255,255,255,.45); color: white; }
     .collapse-wrap.coll .read-more-btn { display: block; }
 
     /* milestones */
@@ -983,8 +985,8 @@
     body.light .milestone-list li textarea { color: #1c1004; }
     body.light .milestone-list li textarea::placeholder { color: rgba(30,18,4,.65); }
     body.light .collapse-wrap.coll::after { background: linear-gradient(to bottom, transparent, rgba(255,252,247,.95)); }
-    body.light .read-more-btn { color: rgba(30,18,4,.45); }
-    body.light .read-more-btn:hover { color: rgba(30,18,4,.85); }
+    body.light .read-more-btn { background: rgba(255,252,247,.97); border-color: rgba(0,0,0,.18); color: rgba(30,18,4,.65); }
+    body.light .read-more-btn:hover { border-color: rgba(0,0,0,.45); color: rgba(30,18,4,.9); }
     body.light .photo-slot { border-color: rgba(0,0,0,.18); color: rgba(30,18,4,.6); }
     body.light .photo-slot:hover { border-color: rgba(0,0,0,.4); }
     body.light .photo-caption input { color: rgba(30,18,4,.75); border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.03); }
