@@ -702,22 +702,6 @@
     }
     .auth-link:hover { color: rgba(255,255,255,.6); }
     .auth-error { color: rgba(255,120,120,.85); font-family: 'Crimson Text', serif; font-size: .95em; text-align: center; margin-bottom: 10px; min-height: 1.3em; }
-    .recovery-box {
-      background: rgba(0,0,0,.3); border: 1px solid rgba(249,213,122,.22);
-      border-radius: 10px; padding: 16px; margin-bottom: 14px;
-    }
-    .recovery-val {
-      font-family: 'Courier New', monospace; font-size: .9em; color: #f9d57a;
-      text-align: center; letter-spacing: .06em; word-break: break-all; line-height: 1.9;
-    }
-    .recovery-warn { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.75); font-size: .9em; text-align: center; margin-bottom: 12px; }
-    .copy-btn {
-      width: 100%; padding: 9px; background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.12); border-radius: 7px;
-      font-family: 'Crimson Text', serif; font-size: .95em; color: rgba(255,255,255,.75);
-      cursor: pointer; transition: all .2s; margin-bottom: 12px;
-    }
-    .copy-btn:hover { border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.75); }
     .auth-check-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
     .auth-check-row input { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; }
     .auth-check-row label { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.75); font-size: 1em; cursor: pointer; }
@@ -732,14 +716,6 @@
     .sq-intro-text { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.82); font-size: 1em; line-height: 1.6; }
     .sq-counter { font-family: 'Lexend', sans-serif; font-size: .75em; color: rgba(255,255,255,.65); margin-bottom: 8px; }
     .sq-counter.complete { color: #f9d57a; }
-    .forgot-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 18px; }
-    .forgot-tab {
-      flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid transparent;
-      font-family: 'Crimson Text', serif; font-size: 1em; color: rgba(255,255,255,.75);
-      cursor: pointer; margin-bottom: -1px; transition: all .2s;
-    }
-    .forgot-tab.active { color: #f9d57a; border-bottom-color: #f9d57a; }
-
     /* ── WIDER SCREENS ── */
     @media (min-width: 640px) {
       .auth-box { max-width: 560px; }
@@ -900,15 +876,7 @@
     body.light .auth-btn:hover { background: rgba(138,94,0,.2); }
     body.light .auth-link { color: rgba(30,18,4,.65); }
     body.light .auth-link:hover { color: #1c1004; }
-    body.light .recovery-box { background: rgba(138,94,0,.07); border-color: rgba(138,94,0,.25); }
-    body.light .recovery-val { color: #8a5e00; }
-    body.light .recovery-warn { color: rgba(30,18,4,.6); }
-    body.light .copy-btn { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.14); color: rgba(30,18,4,.7); }
-    body.light .copy-btn:hover { border-color: rgba(0,0,0,.35); color: #1c1004; }
     body.light .auth-check-row label { color: rgba(30,18,4,.75); }
-    body.light .forgot-tabs { border-color: rgba(0,0,0,.1); }
-    body.light .forgot-tab { color: rgba(30,18,4,.75); }
-    body.light .forgot-tab.active { color: #8a5e00; border-bottom-color: #8a5e00; }
     body.light .sq-check-row span { color: rgba(30,18,4,.85); }
     body.light .sq-recovery-q { color: rgba(30,18,4,.85); background: rgba(0,0,0,.03); }
     body.light .sq-intro { background: rgba(138,94,0,.05); border-color: rgba(138,94,0,.2); }
@@ -1077,17 +1045,7 @@
 <div class="modal-overlay" id="forgotModal" role="dialog" aria-modal="true" aria-label="Reset access">
   <div class="modal-box" style="max-width:400px;">
     <div class="modal-title">Reset access</div>
-    <div class="forgot-tabs">
-      <button class="forgot-tab active" id="ftab-recovery" onclick="switchForgotTab('recovery')">Recovery key</button>
-      <button class="forgot-tab" id="ftab-security" onclick="switchForgotTab('security')">Security question</button>
-    </div>
-    <div id="fpanel-recovery">
-      <div class="auth-error" id="ferr-recovery"></div>
-      <label class="auth-label" for="finput-recovery">Your recovery key</label>
-      <input class="auth-input" type="text" id="finput-recovery" placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" style="font-family:'Courier New',monospace;font-size:.88em;">
-      <button class="auth-btn" onclick="tryRecovery()">Unlock with recovery key</button>
-    </div>
-    <div id="fpanel-security" style="display:none">
+    <div id="fpanel-security">
       <!-- rebuilt dynamically by showForgot() -->
     </div>
     <button class="modal-btn modal-btn-cancel" style="margin-top:10px;" onclick="closeForgot()">Cancel</button>
@@ -1227,14 +1185,9 @@ async function decPayload(key, d) {
   const pt = await crypto.subtle.decrypt({ name:'AES-GCM', iv:B64.from(d.iv) }, key, B64.from(d.e));
   return JSON.parse(DEC.decode(pt));
 }
-function genRecoveryKey() {
-  const h = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
-  return [0,4,8,12,16,20,24,28].map(i=>h.slice(i,i+4)).join('-');
-}
-
 // ══════════ VAULT ══════════
 const VKEY = 'mlsVault';
-let vault = null, masterKey = null, tempRK = null;
+let vault = null, masterKey = null;
 
 function lsGet(k)    { try { return localStorage.getItem(k); }    catch { return null; } }
 function lsSet(k, v) { try { localStorage.setItem(k, v); }        catch {} }
@@ -1282,7 +1235,7 @@ function renderSetup(step) {
     box.innerHTML = `<div class="auth-emblem">✦</div>
       <div class="auth-title">Secure your book</div>
       <div class="auth-subtitle">Choose a password to protect this memory book</div>
-      <div class="auth-step">Step 1 of 3</div>
+      <div class="auth-step">Step 1 of 2</div>
       <div class="auth-error" id="se1"></div>
       <label class="auth-label" for="sp1">Password</label>
       <input class="auth-input" type="password" id="sp1" placeholder="Choose a password…" autocomplete="new-password" onkeydown="if(event.key==='Enter')s1next()">
@@ -1302,7 +1255,7 @@ function renderSetup(step) {
       </div>`).join('');
     box.innerHTML = `<div class="auth-emblem">✦</div>
       <div class="auth-title">Security questions</div>
-      <div class="auth-step">Step 2 of 3</div>
+      <div class="auth-step">Step 2 of 2</div>
       <div class="sq-intro">
         <div class="sq-intro-title">Before you begin</div>
         <div class="sq-intro-text">This memory book belongs to the child in your care — not to you as their carer. It's designed to travel with them through life, so when you answer these questions, sit together and let them lead. These should be their answers, in their words, reflecting who they are right now.</div>
@@ -1311,23 +1264,7 @@ function renderSetup(step) {
       <div class="sq-counter" id="sqCounter">0 of 3 selected</div>
       <div class="auth-error" id="se2"></div>
       ${qHTML}
-      <button class="auth-btn" style="margin-top:14px;" onclick="s2next()">Next</button>`;
-  } else {
-    box.style.maxHeight = ''; box.style.overflowY = '';
-    tempRK = genRecoveryKey();
-    box.innerHTML = `<div class="auth-emblem">🔑</div>
-      <div class="auth-title">Your recovery key</div>
-      <div class="auth-subtitle">Write this down and keep it somewhere safe.<br>You will only see it once.</div>
-      <div class="auth-step">Step 3 of 3</div>
-      <div class="recovery-box"><div class="recovery-val" id="rkDisplay">${tempRK}</div></div>
-      <div class="recovery-warn">If you lose your password and this key, the book cannot be recovered.</div>
-      <button class="copy-btn" onclick="copyRK(this)">Copy to clipboard</button>
-      <div class="auth-check-row">
-        <input type="checkbox" id="rkCheck" onchange="document.getElementById('sfinish').disabled=!this.checked">
-        <label for="rkCheck">I've saved my recovery key somewhere safe</label>
-      </div>
-      <div class="auth-error" id="se3"></div>
-      <button class="auth-btn" id="sfinish" disabled onclick="setupFinish()">Secure Life Story</button>`;
+      <button class="auth-btn" id="sfinish" style="margin-top:14px;" onclick="setupFinish()">Secure Life Story</button>`;
   }
 }
 
@@ -1362,20 +1299,14 @@ function s2next() {
   if (selected.length<3) { e.textContent='Please pick 3 questions and write an answer for each.'; return; }
   setupData.secQs=selected; renderSetup(3);
 }
-function copyRK(btn) {
-  navigator.clipboard.writeText(tempRK).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy to clipboard',2000); });
-}
 async function setupFinish() {
   const btn=document.getElementById('sfinish'), e=document.getElementById('se3');
   btn.textContent='Setting up…'; btn.disabled=true;
   try {
     masterKey = await crypto.subtle.generateKey({name:'AES-GCM',length:256}, true, ['encrypt','decrypt']);
-    const pS=crypto.getRandomValues(new Uint8Array(16)), rS=crypto.getRandomValues(new Uint8Array(16));
-    const [pW,rW] = await Promise.all([
-      deriveWrapKey(setupData.pwd, pS),
-      deriveWrapKey(tempRK.replace(/-/g,''), rS)
-    ]);
-    const [pK,rK] = await Promise.all([wrapMK(masterKey,pW), wrapMK(masterKey,rW)]);
+    const pS=crypto.getRandomValues(new Uint8Array(16));
+    const pW = await deriveWrapKey(setupData.pwd, pS);
+    const pK = await wrapMK(masterKey, pW);
     const sq = await Promise.all(setupData.secQs.map(async ({q,a}) => {
       const s=crypto.getRandomValues(new Uint8Array(16));
       const wk=await deriveWrapKey(a.toLowerCase().trim(), s);
@@ -1383,9 +1314,9 @@ async function setupFinish() {
       return { q, s:B64.to(s), k };
     }));
     const encData = await encPayload(masterKey, { carer: data.carer, child: data.child, coverPhoto: null });
-    vault = { v:1, pS:B64.to(pS), pK, rS:B64.to(rS), rK, sq, data:encData };
+    vault = { v:1, pS:B64.to(pS), pK, sq, data:encData };
     persistVault();
-    tempRK=null; setupData={};
+    setupData={};
     showScreen('cover-screen');
   } catch(err) {
     e.textContent='Something went wrong. Please try again.';
@@ -1433,28 +1364,9 @@ function showForgot() {
     <input class="auth-input" type="text" id="finput-security" placeholder="Enter your answer…" autocomplete="off">
     <button class="auth-btn" onclick="trySecurityAnswer()">Unlock with security question</button>`;
   document.getElementById('forgotModal').classList.add('open');
-  switchForgotTab('recovery');
 }
 function closeForgot() {
   document.getElementById('forgotModal').classList.remove('open');
-  const ferr=document.getElementById('ferr-recovery'); if(ferr) ferr.textContent='';
-  const finput=document.getElementById('finput-recovery'); if(finput) finput.value='';
-}
-function switchForgotTab(t) {
-  document.getElementById('ftab-recovery').classList.toggle('active',t==='recovery');
-  document.getElementById('ftab-security').classList.toggle('active',t==='security');
-  document.getElementById('fpanel-recovery').style.display=t==='recovery'?'':'none';
-  document.getElementById('fpanel-security').style.display=t==='security'?'':'none';
-}
-async function tryRecovery() {
-  const k=document.getElementById('finput-recovery').value.trim().replace(/-/g,''), e=document.getElementById('ferr-recovery');
-  if (!k) { e.textContent='Please enter your recovery key.'; return; }
-  e.textContent='Checking…';
-  try {
-    const wk = await deriveWrapKey(k, B64.from(vault.rS));
-    masterKey = await unwrapMK(vault.rK, wk);
-    closeForgot(); await unlockSuccess(); setTimeout(showChangePwd, 400);
-  } catch { e.textContent='Recovery key not recognised. Please check and try again.'; masterKey=null; }
 }
 async function trySecurityAnswer() {
   const a=document.getElementById('finput-security').value.trim().toLowerCase();
