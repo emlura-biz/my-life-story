@@ -231,6 +231,9 @@
       font-size: 1.05em;
       letter-spacing: .12em;
       text-shadow: 0 0 14px rgba(249,213,122,.3);
+      width: 100%;
+      text-align: center;
+      margin-top: 4px;
     }
 
     .top-tab {
@@ -1043,11 +1046,11 @@
 
   <nav class="topbar" aria-label="Book navigation">
     <button class="top-home-btn" onclick="goHome()" aria-label="Return to cover">← Cover</button>
-    <span class="top-title" aria-hidden="true">✦ My Life Story ✦</span>
     <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
     <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
     <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print</button>
     <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
+    <span class="top-title" aria-hidden="true">✦ My Life Story ✦</span>
   </nav>
 
   <div class="book-wrap">
