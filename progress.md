@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Step 7 — GitHub: moving save-points online. Steps 3–6 completed this session.
+Step 8 — Planning before building.
 
 ---
 
@@ -59,8 +59,8 @@ Step 7 — GitHub: moving save-points online. Steps 3–6 completed this session
 - [x] **Step 6 — Git as a safety net (local commits)**
   Notes: Mental model: commits as photographs. Emily understood immediately — cited the broken animation as the example. Concept of safety-first (tutor makes commits) landed well.
 
-- [ ] **Step 7 — GitHub: moving your save-points online**
-  Notes:
+- [x] **Step 7 — GitHub: moving your save-points online**
+  Notes: Installed Homebrew and GitHub CLI, authenticated via browser, pushed all commits to github.com/emlura-biz/my-life-story. Landed well.
 
 - [ ] **Step 8 — Planning before building**
   Notes:
