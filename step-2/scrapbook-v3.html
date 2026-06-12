@@ -526,6 +526,12 @@
       font-size: 1em; margin-bottom: 20px; text-align: center;
       letter-spacing: .1em;
     }
+    .modal-section-label {
+      font-family: 'Lexend', sans-serif; font-size: .72em;
+      letter-spacing: .06em; color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+    }
+    body.light .modal-section-label { color: rgba(30,18,4,.45); }
     .modal-btn {
       display: block; width: 100%; margin-bottom: 10px;
       padding: 13px 16px; border-radius: 9px;
@@ -1102,11 +1108,17 @@
 <!-- ══════════ PRINT MODAL ══════════ -->
 <div class="modal-overlay" id="printModal" role="dialog" aria-modal="true" aria-label="Print options">
   <div class="modal-box" style="max-width:400px;">
-    <div class="modal-title">What would you like to print?</div>
+    <div class="modal-title">Print or save as PDF</div>
     <div class="print-notice">This is the child's story — please treat printed copies with care. Give them only to the child or their social worker, and shred any spare or draft copies rather than putting them in general recycling.</div>
+    <div class="modal-section-label">🖨 Print to paper</div>
     <button class="modal-btn modal-btn-carer" onclick="doPrint('carer')">Carer's pages only</button>
     <button class="modal-btn modal-btn-child" onclick="doPrint('child')">Child's pages only</button>
     <button class="modal-btn modal-btn-all"   onclick="doPrint('all')">Whole book</button>
+    <div class="modal-section-label" style="margin-top:14px;">📄 Save as PDF</div>
+    <div class="print-notice" style="margin-bottom:12px;">A print dialog will open — choose <strong>Save as PDF</strong> (instead of a printer) to save the file to your device.</div>
+    <button class="modal-btn modal-btn-carer" onclick="doPdf('carer')">Carer's pages — PDF</button>
+    <button class="modal-btn modal-btn-child" onclick="doPdf('child')">Child's pages — PDF</button>
+    <button class="modal-btn modal-btn-all"   onclick="doPdf('all')">Whole book — PDF</button>
     <button class="modal-btn modal-btn-cancel" onclick="closePrintMenu()">Cancel</button>
   </div>
 </div>
@@ -1826,6 +1838,85 @@ function doPrint(which) {
         html += `</div>${ph.date ? `<div class="caption" style="font-size:.8em;color:#999;">${esc(ph.date)}</div>` : ''}<div class="caption">${esc(ph.caption) || '&nbsp;'}</div></div>`;
       });
 
+      html += `</div></div>`;
+    });
+  });
+
+  html += `</body></html>`;
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(() => { win.print(); }, 400);
+}
+
+function doPdf(which) {
+  closePrintMenu();
+  const win = window.open('', '_blank', 'width=900,height=700');
+  if (!win) { alert('Please allow pop-ups to export as PDF.'); return; }
+
+  let html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+  <title>My Life Story — PDF Export</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family: Georgia, serif; font-size: 13pt; color: #111; background: white; }
+    .pdf-hint {
+      background: #fff8e1; border: 1px solid #f9d57a; border-radius: 8px;
+      padding: 12px 16px; margin: 20px; font-family: Arial, sans-serif;
+      font-size: 11pt; color: #333; line-height: 1.5;
+    }
+    .pdf-hint strong { color: #7a5000; }
+    @media print { .pdf-hint { display: none !important; } }
+    .print-page { padding: 32px 36px; page-break-after: always; }
+    .print-page:last-child { page-break-after: auto; }
+    .pg-label { font-size: .75em; letter-spacing: .04em; color: #555; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
+    h2 { font-family: Georgia, serif; font-size: 1.6em; margin: 22px 0 10px; color: #222; }
+    h2:first-of-type { margin-top: 0; }
+    .entry { background: #f7f7f7; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
+    .entry-date { font-size: .85em; color: #888; margin-bottom: 4px; }
+    .entry-text { font-size: 1.05em; color: #222; min-height: 2em; white-space: pre-wrap; }
+    .ms-list { list-style: none; margin-bottom: 10px; }
+    .ms-list li { padding: 8px 12px; background: #f7f7f7; border-radius: 6px; margin-bottom: 6px; font-size: 1.05em; }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 10px; }
+    .photo-item { display: flex; flex-direction: column; gap: 4px; }
+    .photo-box { aspect-ratio: 1; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: .9em; }
+    .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+    .caption { font-size: .9em; color: #555; }
+  </style></head><body>
+  <div class="pdf-hint">
+    💡 <strong>To save as PDF:</strong> in the print dialog that opens, look for the destination or printer option and choose <strong>"Save as PDF"</strong> instead of a physical printer. On a Mac, there is also a <strong>PDF</strong> button in the bottom-left corner of the print dialog.
+  </div>`;
+
+  const secs = which === 'all' ? ['carer', 'child'] : [which];
+  secs.forEach(sec => {
+    data[sec].forEach((pg, pi) => {
+      const label = sec === 'carer' ? "Carer's Pages" : "Your Pages";
+      html += `<div class="print-page">
+        <div class="pg-label">${label} — Page ${pi + 1}</div>
+        <h2>${sec === 'carer' ? 'Memories &amp; Moments' : 'Things I want to remember'}</h2>`;
+      pg.entries.forEach(e => {
+        html += `<div class="entry">
+          <div class="entry-date">${esc(e.date) || '&nbsp;'}</div>
+          <div class="entry-text">${esc(e.text) || '&nbsp;'}</div>
+        </div>`;
+      });
+      html += `<h2>${sec === 'carer' ? 'Milestones' : 'My milestones'}</h2><ul class="ms-list">`;
+      pg.milestones.forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+      html += `</ul><h2>Favourite things at this age</h2><ul class="ms-list">`;
+      pg.favourites.forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+      html += `</ul><h2>${sec === 'carer' ? 'Things they were proud of' : 'Things I was proud of'}</h2><ul class="ms-list">`;
+      pg.proudOf.forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+      html += `</ul>`;
+      if (sec === 'child') {
+        html += `<h2>How I'd describe myself</h2><ul class="ms-list">`;
+        (pg.describeSelf || []).forEach(m => { html += `<li>${esc(m) || '&nbsp;'}</li>`; });
+        html += `</ul>`;
+      }
+      html += `<h2>Photos</h2><div class="photo-grid">`;
+      pg.photos.forEach((ph, i) => {
+        html += `<div class="photo-item"><div class="photo-box">`;
+        html += ph.src ? `<img src="${ph.src}" alt="Memory photo ${i + 1}">` : `Photo ${i + 1}`;
+        html += `</div>${ph.date ? `<div class="caption" style="font-size:.8em;color:#999;">${esc(ph.date)}</div>` : ''}<div class="caption">${esc(ph.caption) || '&nbsp;'}</div></div>`;
+      });
       html += `</div></div>`;
     });
   });
