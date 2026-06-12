@@ -387,22 +387,39 @@
     }
     .entry textarea::placeholder { color: rgba(255,255,255,.55); }
 
+    /* collapsible text wrapper */
+    .collapse-wrap { position: relative; }
+    .collapse-wrap.coll { max-height: 120px; overflow: hidden; }
+    .collapse-wrap.coll::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 36px;
+      background: linear-gradient(to bottom, transparent, rgba(25,38,56,.95));
+      pointer-events: none;
+    }
+    .read-more-btn {
+      display: none; position: absolute; bottom: 5px; right: 4px;
+      background: none; border: none; padding: 2px 6px; z-index: 3;
+      color: rgba(255,255,255,.55); font-family: 'Lexend', sans-serif;
+      font-size: .62em; letter-spacing: .04em; cursor: pointer; transition: color .15s;
+    }
+    .read-more-btn:hover { color: rgba(255,255,255,.9); }
+    .collapse-wrap.coll .read-more-btn { display: block; }
+
     /* milestones */
     .milestone-list { list-style: none; margin-bottom: 12px; }
     .milestone-list li {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: flex-start; gap: 10px;
       padding: 10px 14px;
       background: rgba(255,255,255,.03);
       border-radius: 8px; margin-bottom: 7px;
       border: 1px solid rgba(255,255,255,.05);
     }
-    .milestone-list li .ms-star { font-size: 1.1em; flex-shrink: 0; }
-    .milestone-list li input {
-      background: transparent; border: none; outline: none;
-      font-family: 'OpenDyslexic', sans-serif; font-size: 1.25em;
-      color: rgba(255,255,255,.82); flex: 1;
+    .milestone-list li .ms-star { font-size: 1.1em; flex-shrink: 0; margin-top: 3px; }
+    .milestone-list li textarea {
+      background: transparent; border: none; outline: none; resize: none; overflow: hidden;
+      font-family: 'OpenDyslexic', sans-serif; font-size: 1.25em; line-height: 1.5;
+      color: rgba(255,255,255,.82); flex: 1; min-height: 28px; padding-top: 1px;
     }
-    .milestone-list li input::placeholder { color: rgba(255,255,255,.55); }
+    .milestone-list li textarea::placeholder { color: rgba(255,255,255,.55); }
 
     /* photos */
     .photo-grid {
@@ -963,8 +980,11 @@
     body.light .entry-date input { color: rgba(30,18,4,.7); }
     body.light .entry-date input::placeholder { color: rgba(30,18,4,.65); }
     body.light .milestone-list li { background: rgba(0,0,0,.025); border-color: rgba(0,0,0,.06); }
-    body.light .milestone-list li input { color: #1c1004; }
-    body.light .milestone-list li input::placeholder { color: rgba(30,18,4,.65); }
+    body.light .milestone-list li textarea { color: #1c1004; }
+    body.light .milestone-list li textarea::placeholder { color: rgba(30,18,4,.65); }
+    body.light .collapse-wrap.coll::after { background: linear-gradient(to bottom, transparent, rgba(255,252,247,.95)); }
+    body.light .read-more-btn { color: rgba(30,18,4,.45); }
+    body.light .read-more-btn:hover { color: rgba(30,18,4,.85); }
     body.light .photo-slot { border-color: rgba(0,0,0,.18); color: rgba(30,18,4,.6); }
     body.light .photo-slot:hover { border-color: rgba(0,0,0,.4); }
     body.light .photo-caption input { color: rgba(30,18,4,.75); border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.03); }
@@ -1715,9 +1735,9 @@ function render() {
   pg.milestones.forEach((m, i) => {
     const li = document.createElement('li');
     li.innerHTML = `<span class="ms-star" aria-hidden="true">${star}</span>
-      <input type="text" placeholder="A milestone…" value="${esc(m)}"
-        aria-label="Milestone ${i + 1}"
-        onchange="data['${section}'][${pageIdx}].milestones[${i}] = this.value">`;
+      <textarea placeholder="A milestone…" aria-label="Milestone ${i + 1}"
+        onchange="data['${section}'][${pageIdx}].milestones[${i}] = this.value"
+        oninput="grow(this)">${esc(m)}</textarea>`;
     msList.appendChild(li);
   });
   wrap.appendChild(msList);
@@ -1832,6 +1852,36 @@ function render() {
 
   nav.appendChild(prevBtn); nav.appendChild(mid); nav.appendChild(nextBtn);
   wrap.appendChild(nav);
+
+  setupCollapsibles();
+}
+
+// ══════════ COLLAPSIBLE TEXT ══════════
+function setupCollapsibles() {
+  const COLL_H = 120;
+  setTimeout(() => {
+    document.querySelectorAll('#pageWrap textarea').forEach(ta => {
+      grow(ta);
+      if (ta.closest('.collapse-wrap')) return;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'collapse-wrap';
+      ta.parentNode.insertBefore(wrap, ta);
+      wrap.appendChild(ta);
+
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'read-more-btn'; btn.textContent = 'Read more';
+      wrap.appendChild(btn);
+
+      function checkColl() {
+        ta.scrollHeight > COLL_H ? wrap.classList.add('coll') : wrap.classList.remove('coll');
+      }
+      checkColl();
+      btn.addEventListener('click', () => { wrap.classList.remove('coll'); ta.focus(); });
+      ta.addEventListener('focus', () => wrap.classList.remove('coll'));
+      ta.addEventListener('blur',  checkColl);
+    });
+  }, 0);
 }
 
 // ══════════ PAGE ACTIONS ══════════
@@ -2159,9 +2209,9 @@ function buildSimpleList(items, field, icon, placeholder) {
   items.forEach((val, i) => {
     const li = document.createElement('li');
     li.innerHTML = `<span class="ms-star" aria-hidden="true">${icon}</span>
-      <input type="text" placeholder="${placeholder}" value="${esc(val)}"
-        aria-label="${field} item ${i + 1}"
-        onchange="data['${section}'][${pageIdx}]['${field}'][${i}] = this.value">`;
+      <textarea placeholder="${placeholder}" aria-label="${field} item ${i + 1}"
+        onchange="data['${section}'][${pageIdx}]['${field}'][${i}] = this.value"
+        oninput="grow(this)">${esc(val)}</textarea>`;
     ul.appendChild(li);
   });
   return ul;
