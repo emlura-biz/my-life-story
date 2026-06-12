@@ -1487,7 +1487,57 @@ function showScreen(id) {
     document.getElementById(s)?.classList.remove('active');
   });
   document.getElementById(id)?.classList.add('active');
+  if (id === 'cover-screen') requestAnimationFrame(positionCoverOverlay);
+  else hideCoverOverlay();
 }
+
+// ── Transparent overlay to fix 3D hit-testing on book cover elements ──
+// CSS hit-testing inside preserve-3d uses layout (pre-projection) positions,
+// not visual (post-projection) ones. getBoundingClientRect() returns the true
+// visual position, so we place position:fixed invisible buttons there instead.
+function positionCoverOverlay() {
+  const cover = document.getElementById('cover-screen');
+  if (!cover || !cover.classList.contains('active')) return;
+
+  let ov = document.getElementById('cvr-click-overlay');
+  if (!ov) {
+    ov = document.createElement('div');
+    ov.id = 'cvr-click-overlay';
+    ov.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:40;';
+
+    function mkBtn(fn, label) {
+      const b = document.createElement('button');
+      b.style.cssText = 'position:absolute;opacity:0;pointer-events:auto;cursor:pointer;border:none;background:none;padding:0;margin:0;touch-action:manipulation;';
+      b.setAttribute('aria-label', label);
+      b.addEventListener('click', fn);
+      ov.appendChild(b);
+      return b;
+    }
+    mkBtn(() => openBook('child'),  'My pages');
+    mkBtn(() => openBook('carer'),  "Carer's pages");
+    mkBtn(() => { const inp = document.querySelector('#coverPhotoSlot input[type="file"]'); if (inp) inp.click(); }, 'Add cover photo');
+    document.body.appendChild(ov);
+  }
+
+  function place(btn, el) {
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    btn.style.left = r.left + 'px'; btn.style.top    = r.top    + 'px';
+    btn.style.width = r.width + 'px'; btn.style.height = r.height + 'px';
+  }
+  const [oChild, oCarer, oPhoto] = ov.children;
+  place(oChild, document.querySelector('#cover-screen .btn-child'));
+  place(oCarer, document.querySelector('#cover-screen .btn-carer'));
+  place(oPhoto, document.getElementById('coverPhotoSlot'));
+  ov.style.display = '';
+}
+
+function hideCoverOverlay() {
+  const ov = document.getElementById('cvr-click-overlay');
+  if (ov) ov.style.display = 'none';
+}
+
+window.addEventListener('resize', positionCoverOverlay);
 
 // ══════════ STATE ══════════
 let coverPhoto = null;
@@ -1521,6 +1571,7 @@ let pageIdx = 0;
 
 // ══════════ COVER ══════════
 function openBook(sec) {
+  hideCoverOverlay();
   section = sec;
   pageIdx = 0;
   document.getElementById('book3d').classList.add('opening');
