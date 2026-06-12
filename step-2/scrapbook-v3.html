@@ -1084,6 +1084,21 @@
 
 </div>
 
+<!-- ══════════ BACKUP MODAL ══════════ -->
+<div class="modal-overlay" id="backupModal" role="dialog" aria-modal="true" aria-label="Download backup">
+  <div class="modal-box" style="max-width:400px;">
+    <div class="modal-title">Before you download</div>
+    <div class="print-notice">Your backup file will appear in your <strong>Downloads folder</strong>. This file is encrypted, but your Downloads folder is not a secure place to leave it long-term — anyone with access to your computer could find it there.</div>
+    <div class="print-notice" style="margin-top:10px;">Please move it to somewhere more secure as soon as possible, such as an <strong>encrypted USB stick</strong>. Do not store it in a shared or family cloud account.</div>
+    <div class="auth-check-row" style="margin:18px 0 16px;">
+      <input type="checkbox" id="backupCheck" onchange="document.getElementById('backupDownloadBtn').disabled=!this.checked">
+      <label for="backupCheck">I understand — I'll move this file somewhere secure</label>
+    </div>
+    <button class="auth-btn" id="backupDownloadBtn" disabled onclick="doExportBackup()">Download backup</button>
+    <button class="modal-btn modal-btn-cancel" style="margin-top:8px;" onclick="closeBackupModal()">Cancel</button>
+  </div>
+</div>
+
 <!-- ══════════ PRINT MODAL ══════════ -->
 <div class="modal-overlay" id="printModal" role="dialog" aria-modal="true" aria-label="Print options">
   <div class="modal-box" style="max-width:400px;">
@@ -1399,6 +1414,15 @@ async function doChangePassword() {
 // ══════════ BACKUP / RESTORE ══════════
 function exportBackup() {
   if (!vault) return;
+  document.getElementById('backupCheck').checked = false;
+  document.getElementById('backupDownloadBtn').disabled = true;
+  document.getElementById('backupModal').classList.add('open');
+}
+function closeBackupModal() {
+  document.getElementById('backupModal').classList.remove('open');
+}
+function doExportBackup() {
+  if (!vault) return;
   const json = JSON.stringify(vault);
   const blob = new Blob([json], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -1408,6 +1432,7 @@ function exportBackup() {
   document.body.appendChild(a);
   a.click();
   setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  closeBackupModal();
 }
 
 function importBackup(input) {
