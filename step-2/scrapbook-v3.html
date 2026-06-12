@@ -636,12 +636,12 @@
     .sq-item { margin-bottom: 10px; }
     .sq-check-row { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
     .sq-check-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; cursor: pointer; }
-    .sq-check-row span { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: 1em; line-height: 1.4; }
+    .sq-check-row span { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: 1.1em; line-height: 1.4; }
     .sq-answer { margin-top: 6px !important; }
     .sq-recovery-q { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.85); font-size: .95em; padding: 8px 12px; background: rgba(255,255,255,.04); border-radius: 6px; margin-bottom: 6px; }
     .sq-intro { background: rgba(249,213,122,.06); border: 1px solid rgba(249,213,122,.2); border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; }
     .sq-intro-title { font-family: 'Lexend', sans-serif; font-size: .8em; font-weight: 600; color: #f9d57a; margin-bottom: 8px; }
-    .sq-intro-text { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.82); font-size: .95em; line-height: 1.6; }
+    .sq-intro-text { font-family: 'Crimson Text', serif; color: rgba(255,255,255,.82); font-size: 1em; line-height: 1.6; }
     .sq-counter { font-family: 'Lexend', sans-serif; font-size: .75em; color: rgba(255,255,255,.65); margin-bottom: 8px; }
     .sq-counter.complete { color: #f9d57a; }
     .forgot-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 18px; }
@@ -651,6 +651,12 @@
       cursor: pointer; margin-bottom: -1px; transition: all .2s;
     }
     .forgot-tab.active { color: #f9d57a; border-bottom-color: #f9d57a; }
+
+    /* ── WIDER SCREENS: let the auth boxes breathe ── */
+    @media (min-width: 640px) {
+      .auth-box { max-width: 560px; }
+      .welcome-box { max-width: 680px; }
+    }
 
     /* ── PRINT STYLES ── */
     @media print {
