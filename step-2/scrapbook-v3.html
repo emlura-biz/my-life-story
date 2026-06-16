@@ -65,7 +65,7 @@
     .book-3d {
       position: relative;
       width: 340px;
-      height: 480px;
+      height: 508px;
       transform-style: preserve-3d;
       transform: perspective(1400px) rotateY(-22deg) rotateX(6deg);
     }
@@ -121,7 +121,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 18px 22px 40px;
+      padding: 0 22px 40px;
       overflow: hidden;
       box-shadow: inset -6px 0 24px rgba(0,0,0,.45), inset 0 0 60px rgba(0,0,0,.2);
     }
@@ -138,7 +138,7 @@
     .b-front::after  { bottom: 11px; right: 11px;   border-left: none;  border-top: none;   }
 
 
-    .b-emblem { font-size: 2.2em; margin-bottom: 8px; text-shadow: 0 0 18px rgba(249,213,122,.55); position: relative; z-index: 2; }
+    .b-emblem { font-size: 1.9em; margin-top: 16px; margin-bottom: 8px; text-shadow: 0 0 18px rgba(249,213,122,.55); position: relative; z-index: 2; }
 
     .b-title {
       font-family: 'Lexend', sans-serif;
@@ -226,8 +226,9 @@
       border: 1px solid rgba(255,255,255,.15);
       border-radius: 20px;
       color: rgba(255,255,255,.75);
-      font-family: 'Crimson Text', serif;
-      font-size: 1em;
+      font-family: 'Lexend', sans-serif;
+      font-size: .7em;
+      letter-spacing: .08em;
       cursor: pointer;
       transition: all .2s;
     }
@@ -279,6 +280,7 @@
     .top-print-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
     /* topbar items wrapper — transparent on wide screens so children sit in topbar flex directly */
     .topbar-items { display: contents; }
+    .topbar-row-break { flex-basis: 100%; height: 0; }
     /* burger button — hidden on wide screens */
     .burger-btn {
       display: none;
@@ -744,6 +746,7 @@
       .milestone-list li textarea { font-size: 1em; }
       .burger-btn { display: block; }
       .top-title  { display: none; }
+      .topbar-row-break { display: none; }
       .topbar-items {
         display: none;
         width: 100%;
@@ -981,6 +984,23 @@
     body.light .voice-clip .clip-label { color: rgba(30,18,4,.65); }
     body.light .voice-clip .clip-del { color: rgba(30,18,4,.7); }
     body.light .voice-clip .clip-del:hover { color: rgba(200,0,0,.75); }
+
+    /* ── SHARED ABOUT / LETTER TEXT COLOURS ── */
+    .pg-body-text { color: rgba(255,255,255,.82); }
+    body.light .pg-body-text { color: rgba(30,18,4,.8); }
+    .pg-dim-text  { color: rgba(255,255,255,.62); }
+    body.light .pg-dim-text  { color: rgba(30,18,4,.55); }
+    .pg-section-head {
+      font-family: 'Lexend', sans-serif;
+      font-size: .78em; letter-spacing: .07em;
+      color: #f9d57a;
+      margin: 26px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(249,213,122,.2);
+    }
+    body.light .pg-section-head { color: #8a5e00; border-bottom-color: rgba(138,94,0,.2); }
+    .pg-accent-icon { color: #f9d57a; }
+    body.light .pg-accent-icon { color: #8a5e00; }
   </style>
 </head>
 <body>
@@ -1095,6 +1115,7 @@
         <div class="b-cover-btns">
           <button class="b-cover-btn btn-child" onclick="openBook('child')" aria-label="Open child's pages">My pages</button>
           <button class="b-cover-btn btn-carer" onclick="openBook('carer')" aria-label="Open carer's pages">Carer's pages</button>
+          <button class="b-cover-btn btn-child" onclick="openLetter()" aria-label="Open letter to future me">My letter</button>
         </div>
       </div>
     </div>
@@ -1111,13 +1132,14 @@
     <button class="top-home-btn" onclick="goHome()" aria-label="Return to cover">← Cover</button>
     <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()" aria-label="Open navigation menu" aria-expanded="false">☰</button>
     <div class="topbar-items" id="topbarItems">
-      <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
       <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
-      <button class="top-tab tab-child" id="tab-letter" onclick="switchToLetter()" aria-label="Letter to future me">✉ My letter</button>
+      <button class="top-tab tab-child" id="tab-letter" onclick="switchToLetter()" aria-label="Letter to future me">My letter</button>
+      <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
+      <div class="topbar-row-break" aria-hidden="true"></div>
       <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print/export</button>
       <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
       <button class="top-print-btn" onclick="exportBackup()" aria-label="Download encrypted backup">💾 Backup</button>
-      <a class="top-print-btn" href="https://fostercarecompare.co.uk/blog/my-life-story-template" target="_blank" rel="noopener" aria-label="About this project">About</a>
+      <button class="top-print-btn" onclick="switchToAbout()" aria-label="About this book">About</button>
     </div>
     <span class="top-title" aria-hidden="true">✦ My Life Story ✦</span>
   </nav>
@@ -1508,6 +1530,7 @@ function positionCoverOverlay() {
     }
     mkBtn(() => openBook('child'),  'My pages');
     mkBtn(() => openBook('carer'),  "Carer's pages");
+    mkBtn(() => openLetter(),       'Open letter to future me');
     mkBtn(() => { const inp = document.querySelector('#coverPhotoSlot input[type="file"]'); if (inp) inp.click(); }, 'Add cover photo');
     document.body.appendChild(ov);
   }
@@ -1518,10 +1541,12 @@ function positionCoverOverlay() {
     btn.style.left = r.left + 'px'; btn.style.top    = r.top    + 'px';
     btn.style.width = r.width + 'px'; btn.style.height = r.height + 'px';
   }
-  const [oChild, oCarer, oPhoto] = ov.children;
-  place(oChild, document.querySelector('#cover-screen .btn-child'));
-  place(oCarer, document.querySelector('#cover-screen .btn-carer'));
-  place(oPhoto, document.getElementById('coverPhotoSlot'));
+  const [oChild, oCarer, oLetter, oPhoto] = ov.children;
+  const coverBtns = document.querySelectorAll('#cover-screen .btn-child');
+  place(oChild,  coverBtns[0]);
+  place(oCarer,  document.querySelector('#cover-screen .btn-carer'));
+  place(oLetter, coverBtns[1]);
+  place(oPhoto,  document.getElementById('coverPhotoSlot'));
   ov.style.display = '';
 }
 
@@ -1569,7 +1594,7 @@ const data = {
                    { src: null, caption: '' }, { src: null, caption: '' }],
     voices: { entries: [], milestones: [], favourites: [], proudOf: [], describeSelf: [] }
   }],
-  letter: { text: '', voiceClips: [] }
+  letter: { text: '', date: '', voiceClips: [] }
 };
 
 // recording state
@@ -1578,6 +1603,7 @@ const rec = { active: false, field: null, mediaRecorder: null, chunks: [], strea
 let section = 'carer';
 let pageIdx = 0;
 let letterView = false;
+let aboutView  = false;
 
 // ══════════ COVER ══════════
 function openBook(sec) {
@@ -1585,6 +1611,7 @@ function openBook(sec) {
   section = sec;
   pageIdx = 0;
   letterView = false;
+  aboutView  = false;
   document.getElementById('book3d').classList.add('opening');
   setTimeout(() => {
     document.getElementById('book3d').classList.remove('opening');
@@ -1594,8 +1621,23 @@ function openBook(sec) {
   }, 1800);
 }
 
+function openLetter() {
+  hideCoverOverlay();
+  aboutView  = false;
+  letterView = true;
+  section = 'child';
+  document.getElementById('book3d').classList.add('opening');
+  setTimeout(() => {
+    document.getElementById('book3d').classList.remove('opening');
+    showScreen('book-screen');
+    updateTabs();
+    renderLetter();
+  }, 1800);
+}
+
 function goHome() {
   letterView = false;
+  aboutView  = false;
   showScreen('cover-screen');
 }
 
@@ -1603,6 +1645,7 @@ function goHome() {
 function switchSection(sec) {
   closeBurger();
   letterView = false;
+  aboutView  = false;
   section = sec;
   pageIdx = 0;
   updateTabs();
@@ -1618,6 +1661,72 @@ function updateTabs() {
 }
 
 // ══════════ LETTER TO FUTURE ME ══════════
+function switchToAbout() {
+  closeBurger();
+  aboutView  = true;
+  letterView = false;
+  updateTabs();
+  flip('fwd');
+  setTimeout(renderAbout, 260);
+}
+
+function renderAbout() {
+  const wrap = document.getElementById('pageWrap');
+  wrap.className = 'page-wrap carer';
+  wrap.innerHTML = '';
+
+  const hdr = el('div', 'pg-header carer');
+  hdr.setAttribute('role', 'heading'); hdr.setAttribute('aria-level', '2');
+  hdr.innerHTML = `<span class="pg-dot" style="background:#f9d57a" aria-hidden="true"></span>About this book`;
+  wrap.appendChild(hdr);
+
+  const title = el('div', 'sec-title');
+  title.setAttribute('role', 'heading'); title.setAttribute('aria-level', '3');
+  title.textContent = 'My Life Story';
+  wrap.appendChild(title);
+
+  const sub = el('div', 'pg-dim-text');
+  sub.style.cssText = 'font-family:"Crimson Text",serif;font-size:1.1em;font-style:italic;margin-bottom:22px;margin-top:-8px;';
+  sub.textContent = 'Your memories, kept safe';
+  wrap.appendChild(sub);
+
+  const sh = t => `<div class="pg-section-head">${t}</div>`;
+  const li = t => `<li style="padding:8px 0 8px 20px;position:relative;border-bottom:1px solid rgba(255,255,255,.05);"><span class="pg-accent-icon" style="position:absolute;left:0;">✦</span>${t}</li>`;
+
+  const body = el('div', 'pg-body-text');
+  body.style.cssText = 'font-family:"Crimson Text",serif;font-size:1.05em;line-height:1.7;';
+  body.innerHTML = `
+    <p style="margin-bottom:16px;">My Life Story is a private memory book that belongs to you. It lives on a device you trust, it's filled in at your own pace, and when things change, as they sometimes do, it comes with you.</p>
+
+    ${sh('What it\'s for')}
+    <p style="margin-bottom:10px;">It's for the stuff that doesn't make it into official records. Your favourite songs right now. A moment that made everyone laugh. Something you were proud of. The little routines and in-jokes that make up everyday life.</p>
+    <p style="margin-bottom:16px;">The kind of thing that's easy to forget, and hard to get back once time has passed.</p>
+
+    ${sh('How it works')}
+    <ul style="list-style:none;padding:0;margin-bottom:14px;">
+      ${li('It stays on your device — nothing is stored online. No accounts, no servers, no one else can see it. Your foster carer can help you set up your password and make sure it is saved in a secure location.')}
+      ${li('You\'re in control of what goes in — there\'s space for you to write in your own words, and space for your carer to add things too.')}
+      ${li('It moves with you — if you move house, your memory book goes with you.')}
+    </ul>
+    <p style="margin-bottom:16px;">You're encouraged to write your own entries, in your own words. Your carer can help with things like passwords and security questions, so you're never locked out of your own memories later on.</p>
+
+    ${sh('Designed to work for everyone')}
+    <ul style="list-style:none;padding:0;margin-bottom:16px;">
+      ${li('Clear, dyslexia-friendly fonts')}
+      ${li('Light and dark mode')}
+      ${li('Space for photos and voice recordings (writing isn\'t the only way to capture something!)')}
+    </ul>
+
+    ${sh('Why it\'s worth it')}
+    <p style="margin-bottom:10px;">You might not think the small things matter much. But years from now, you might want to know what music you loved at this age, or remember the time you learned something new, or just recall what daily life actually felt like.</p>
+    <p style="margin-bottom:16px;">My Life Story is a way of making sure those things don't just disappear.</p>
+
+    ${sh('Get your copy')}
+    <p>My Life Story is free to download from <a href="https://fostercarecompare.co.uk" target="_blank" rel="noopener" style="color:#f9d57a;text-decoration:underline;">Foster Care Compare</a>. No sign-up needed. It's ready whenever you are.</p>
+  `;
+  wrap.appendChild(body);
+}
+
 function switchToLetter() {
   closeBurger();
   letterView = true;
@@ -1644,9 +1753,9 @@ function renderLetter() {
   title.textContent = 'Letter to Future Me';
   wrap.appendChild(title);
 
-  const intro = el('div');
-  intro.style.cssText = 'font-family:"Crimson Text",serif;color:rgba(255,255,255,.72);font-size:1em;line-height:1.6;margin-bottom:18px;';
-  intro.innerHTML = 'Write a letter to yourself — to read back whenever you want to look back at this moment.<br><span style="opacity:.7;">Some things you might want to include:</span>';
+  const intro = el('div', 'pg-dim-text');
+  intro.style.cssText = 'font-family:"Crimson Text",serif;font-size:1em;line-height:1.6;margin-bottom:18px;';
+  intro.innerHTML = 'Write a letter to your future self to read back whenever you\'d like to look back at this moment.<br>Some things you may wish to include:';
   wrap.appendChild(intro);
 
   const prompts = [
@@ -1660,13 +1769,23 @@ function renderLetter() {
   promptList.style.marginBottom = '20px';
   prompts.forEach(p => {
     const li = document.createElement('li');
-    li.innerHTML = `<span class="ms-star" aria-hidden="true">✿</span>
-      <span style="font-family:'Crimson Text',serif;color:rgba(255,255,255,.78);font-size:1.05em;">${p}</span>`;
+    li.innerHTML = `<span class="ms-star pg-accent-icon" aria-hidden="true">✿</span>
+      <span class="pg-body-text" style="font-family:'Crimson Text',serif;font-size:1.05em;">${p}</span>`;
     promptList.appendChild(li);
   });
   wrap.appendChild(promptList);
 
   const entry = el('div', 'entry');
+  const dateWrap = el('div', 'entry-date');
+  const dateIn = document.createElement('input');
+  dateIn.type = 'text';
+  dateIn.placeholder = 'Date…';
+  dateIn.value = data.letter.date || '';
+  dateIn.setAttribute('aria-label', 'Date of letter');
+  dateIn.addEventListener('change', () => { data.letter.date = dateIn.value; queueSave(); });
+  dateWrap.appendChild(dateIn);
+  entry.appendChild(dateWrap);
+
   const ta = document.createElement('textarea');
   ta.placeholder = 'Dear future me…';
   ta.setAttribute('aria-label', 'Letter to future me');
