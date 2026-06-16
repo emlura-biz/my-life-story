@@ -1113,6 +1113,7 @@
     <div class="topbar-items" id="topbarItems">
       <button class="top-tab tab-carer" id="tab-carer" onclick="switchSection('carer')" aria-label="Carer's pages">Carer's pages</button>
       <button class="top-tab tab-child" id="tab-child" onclick="switchSection('child')" aria-label="Child's pages">My pages</button>
+      <button class="top-tab tab-child" id="tab-letter" onclick="switchToLetter()" aria-label="Letter to future me">✉ My letter</button>
       <button class="top-print-btn" onclick="openPrintMenu()" aria-label="Open print options">🖨 Print/export</button>
       <button class="top-print-btn" onclick="showChangePwd()" aria-label="Change password">🔒 Password</button>
       <button class="top-print-btn" onclick="exportBackup()" aria-label="Download encrypted backup">💾 Backup</button>
@@ -1322,7 +1323,7 @@ async function setupFinish() {
       const k=await wrapMK(masterKey, wk);
       return { q, s:B64.to(s), k };
     }));
-    const encData = await encPayload(masterKey, { carer: data.carer, child: data.child, coverPhoto: null });
+    const encData = await encPayload(masterKey, { carer: data.carer, child: data.child, coverPhoto: null, letter: data.letter });
     vault = { v:1, pS:B64.to(pS), pK, sq, data:encData };
     persistVault();
     setupData={};
@@ -1354,6 +1355,7 @@ async function unlockSuccess() {
     if (d.carer) data.carer=d.carer;
     if (d.child) data.child=d.child;
     if (d.coverPhoto) { coverPhoto=d.coverPhoto; }
+    if (d.letter) data.letter=d.letter;
   } catch { /* first open or format change — use defaults */ }
   showScreen('cover-screen');
   if (coverPhoto) setTimeout(()=>{
@@ -1463,7 +1465,7 @@ function queueSave() { clearTimeout(saveTimer); saveTimer=setTimeout(doSave, 700
 async function doSave() {
   if (!masterKey||!vault) return;
   try {
-    vault.data = await encPayload(masterKey, { carer:data.carer, child:data.child, coverPhoto });
+    vault.data = await encPayload(masterKey, { carer:data.carer, child:data.child, coverPhoto, letter:data.letter });
     persistVault();
   } catch(e) { console.error('Save failed:',e); }
 }
@@ -1566,7 +1568,8 @@ const data = {
     photos:       [{ src: null, caption: '' }, { src: null, caption: '' },
                    { src: null, caption: '' }, { src: null, caption: '' }],
     voices: { entries: [], milestones: [], favourites: [], proudOf: [], describeSelf: [] }
-  }]
+  }],
+  letter: { text: '', voiceClips: [] }
 };
 
 // recording state
@@ -1574,12 +1577,14 @@ const rec = { active: false, field: null, mediaRecorder: null, chunks: [], strea
 
 let section = 'carer';
 let pageIdx = 0;
+let letterView = false;
 
 // ══════════ COVER ══════════
 function openBook(sec) {
   hideCoverOverlay();
   section = sec;
   pageIdx = 0;
+  letterView = false;
   document.getElementById('book3d').classList.add('opening');
   setTimeout(() => {
     document.getElementById('book3d').classList.remove('opening');
@@ -1590,12 +1595,14 @@ function openBook(sec) {
 }
 
 function goHome() {
+  letterView = false;
   showScreen('cover-screen');
 }
 
 // ══════════ TABS ══════════
 function switchSection(sec) {
   closeBurger();
+  letterView = false;
   section = sec;
   pageIdx = 0;
   updateTabs();
@@ -1604,8 +1611,121 @@ function switchSection(sec) {
 }
 
 function updateTabs() {
-  document.getElementById('tab-carer').classList.toggle('active', section === 'carer');
-  document.getElementById('tab-child').classList.toggle('active', section === 'child');
+  document.getElementById('tab-carer').classList.toggle('active', section === 'carer' && !letterView);
+  document.getElementById('tab-child').classList.toggle('active', section === 'child' && !letterView);
+  const lt = document.getElementById('tab-letter');
+  if (lt) lt.classList.toggle('active', letterView);
+}
+
+// ══════════ LETTER TO FUTURE ME ══════════
+function switchToLetter() {
+  closeBurger();
+  letterView = true;
+  section = 'child';
+  updateTabs();
+  flip('fwd');
+  setTimeout(renderLetter, 260);
+}
+
+function renderLetter() {
+  const wrap = document.getElementById('pageWrap');
+  wrap.className = 'page-wrap child';
+  wrap.innerHTML = '';
+
+  const hdr = el('div', 'pg-header child');
+  hdr.setAttribute('role', 'heading'); hdr.setAttribute('aria-level', '2');
+  hdr.innerHTML = `<span class="pg-dot" style="background:#ec82b7" aria-hidden="true"></span>
+    Your Pages — Letter to Future Me
+    <span style="margin-left:auto;opacity:.45;font-size:.9em">✿</span>`;
+  wrap.appendChild(hdr);
+
+  const title = el('div', 'sec-title');
+  title.setAttribute('role', 'heading'); title.setAttribute('aria-level', '3');
+  title.textContent = 'Letter to Future Me';
+  wrap.appendChild(title);
+
+  const intro = el('div');
+  intro.style.cssText = 'font-family:"Crimson Text",serif;color:rgba(255,255,255,.72);font-size:1em;line-height:1.6;margin-bottom:18px;';
+  intro.innerHTML = 'Write a letter to yourself — to read back whenever you want to look back at this moment.<br><span style="opacity:.7;">Some things you might want to include:</span>';
+  wrap.appendChild(intro);
+
+  const prompts = [
+    'What are you hoping for?',
+    'What do you want your future self to know?',
+    'What makes you feel happy?',
+    'What are you proud of?',
+    'Who makes you feel safe?'
+  ];
+  const promptList = el('ul', 'milestone-list');
+  promptList.style.marginBottom = '20px';
+  prompts.forEach(p => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="ms-star" aria-hidden="true">✿</span>
+      <span style="font-family:'Crimson Text',serif;color:rgba(255,255,255,.78);font-size:1.05em;">${p}</span>`;
+    promptList.appendChild(li);
+  });
+  wrap.appendChild(promptList);
+
+  const entry = el('div', 'entry');
+  const ta = document.createElement('textarea');
+  ta.placeholder = 'Dear future me…';
+  ta.setAttribute('aria-label', 'Letter to future me');
+  ta.style.cssText = 'width:100%;background:transparent;border:none;outline:none;resize:none;overflow:hidden;font-family:"OpenDyslexic",sans-serif;font-size:1.35em;color:rgba(255,255,255,.88);line-height:1.5;min-height:200px;';
+  ta.value = data.letter.text || '';
+  ta.addEventListener('input', () => { data.letter.text = ta.value; grow(ta); queueSave(); });
+  ta.addEventListener('change', () => { data.letter.text = ta.value; queueSave(); });
+  entry.appendChild(ta);
+  wrap.appendChild(entry);
+
+  if (data.letter.voiceClips && data.letter.voiceClips.length > 0) {
+    const box = el('div', 'voice-clips');
+    data.letter.voiceClips.forEach((clip, i) => {
+      const div = el('div', 'voice-clip');
+      div.innerHTML = `<span class="clip-label" aria-hidden="true">🎤 ${clip.date}</span>
+        <audio controls src="${clip.src}" aria-label="Voice recording ${i + 1} from ${clip.date}"></audio>
+        <button class="clip-del" aria-label="Delete voice recording ${i + 1}" onclick="deleteLetterVoice(${i})">✕</button>`;
+      box.appendChild(div);
+    });
+    wrap.appendChild(box);
+  }
+
+  const vb = el('button', 'voice-btn' + (rec.active && rec.field === 'letter' ? ' is-recording' : ''));
+  vb.setAttribute('aria-label', rec.active && rec.field === 'letter' ? 'Stop recording' : 'Add voice recording');
+  vb.textContent = rec.active && rec.field === 'letter' ? '⏹ Stop recording' : '🎤 Add voice recording';
+  vb.onclick = () => rec.active && rec.field === 'letter' ? stopVoiceRecording() : startLetterRecording();
+  wrap.appendChild(vb);
+
+  setTimeout(() => { if (ta) grow(ta); }, 0);
+}
+
+function startLetterRecording() {
+  if (rec.active) { stopVoiceRecording(); return; }
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      rec.active = true; rec.field = 'letter'; rec.chunks = []; rec.stream = stream;
+      rec.mediaRecorder = new MediaRecorder(stream);
+      rec.mediaRecorder.ondataavailable = e => rec.chunks.push(e.data);
+      rec.mediaRecorder.onstop = () => {
+        const blob = new Blob(rec.chunks, { type: 'audio/webm' });
+        const reader = new FileReader();
+        reader.onload = ev => {
+          if (!data.letter.voiceClips) data.letter.voiceClips = [];
+          data.letter.voiceClips.push({ src: ev.target.result, date: new Date().toLocaleDateString('en-GB') });
+          rec.stream.getTracks().forEach(t => t.stop());
+          rec.active = false; rec.field = null;
+          renderLetter(); queueSave();
+        };
+        reader.readAsDataURL(blob);
+      };
+      rec.mediaRecorder.start();
+      renderLetter();
+    })
+    .catch(() => alert('Microphone access is needed to record voice clips. Please allow it in your browser.'));
+}
+
+function deleteLetterVoice(i) {
+  data.letter.voiceClips.splice(i, 1);
+  renderLetter(); queueSave();
 }
 
 // ══════════ RENDER ══════════
