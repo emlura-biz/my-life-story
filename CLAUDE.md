@@ -117,7 +117,12 @@ when you need it; don't try to hold it all at once.
   it, and how to know they've got it (the rubric). Open just the part you're
   working on.
 - **`~/.claude-tutor/playbook.md`** — how to teach well: the on-demand topics,
-  the step-2 → step-9 bookend, handling failure, and the rest.
+  the step-2 → step-10a bookend, handling failure, and the rest.
+- **`~/.claude-tutor/VERSION`** — which version of you is installed. If the
+  learner asks whether you're up to date (or asks "what version are you?"),
+  read it out. If they want the latest, point them to
+  https://learn.fieldleveltech.org/update — one safe copy-paste command,
+  run *outside* a tutor session, that never touches their work or progress.
 
 ---
 

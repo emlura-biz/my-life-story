@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-06-11
+- **Last updated:** 2026-06-16
 - **Curriculum version:** v1
 
 ---
@@ -23,7 +23,7 @@
 
 ## Where I am right now
 
-Step 8 — Planning before building.
+Step 10b — The real project.
 
 ---
 
@@ -62,14 +62,14 @@ Step 8 — Planning before building.
 - [x] **Step 7 — GitHub: moving your save-points online**
   Notes: Installed Homebrew and GitHub CLI, authenticated via browser, pushed all commits to github.com/emlura-biz/my-life-story. Landed well.
 
-- [ ] **Step 8 — Planning before building**
-  Notes:
+- [x] **Step 8 — Planning before building**
+  Notes: Planned "Letter to Future Me" feature for the scrapbook. Emily came up with the voice recording idea for younger children unprompted — exactly the kind of thing planning surfaces. Plan written to plan.md.
 
 - [ ] **Step 9 — Troubleshooting and recovery**
   Notes:
 
-- [ ] **Step 10a — Remake the tiny build (the bookend)**
-  Notes:
+- [x] **Step 10a — Remake the tiny build (the bookend)**
+  Notes: First version recovered from git (commit b265b7c) and saved as first-version.html. Emily compared both in browser. Named two things that changed: "more polished and many more features" and "I know to work in smaller steps" and "write a plan." Rubric met.
 
 - [ ] **Step 10b — The real project**
   Project idea: Continue building Lovable-hosted website locally
@@ -90,3 +90,11 @@ Step 8 — Planning before building.
 - **Session 4 — 2026-06-12:** Steps 3–6 taught in one session. All landed well — Emily already had the instincts, lesson was naming them. See curriculum notes for detail.
 
 - **Session 5 — 2026-06-12:** Step 7 complete. Installed Homebrew and GitHub CLI, authenticated, pushed project to github.com/emlura-biz/my-life-story. Short session.
+
+- **Session 6 — 2026-06-16:** Very brief session — no new steps covered. ⚠️ Note: step-2/scrapbook.html is showing as deleted in git — needs restoring at start of next session before Step 10a. Next up: Step 8 (Planning before building).
+
+- **Session 7 — 2026-06-16:** Step 8 complete. Restored scrapbook.html. Planned "Letter to Future Me" feature — Emily contributed the voice recording idea for younger children unprompted. plan.md written and committed. Next up: Step 9 (Troubleshooting and recovery).
+
+- **Session 8 — 2026-06-16:** Step 9 concept and toolkit introduced. Built Letter to Future Me page (with voice recording, date field, 5 prompts) and an About page with Emily's text. Navigation reordered, topbar split into two rows, light theme fixed for new pages, cover book layout tweaked. Step 9 rubric still open — needs a real failure to fully land (nothing went wrong today). Next up: Step 9 completion (next time something breaks), then Step 10a (the look-back).
+
+- **Session 9 — 2026-06-16:** Step 10a complete — first version recovered from git, compared side by side with current. Emily named "smaller steps" and "write a plan" as what changed. Step 10b started — real project is fostercarecompare.co.uk (Lovable-built fostering agency comparison site). Next session: open with claude --dangerously-skip-permissions (recommended by tutor creator) to continue Step 10b planning and building.
