@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-06-16
+- **Last updated:** 2026-09-01
 - **Curriculum version:** v1
 
 ---
@@ -24,6 +24,17 @@
 ## Where I am right now
 
 Step 10b — The real project.
+
+⚠️ **Launcher changed (2026-09-01):** Becky had Emily run
+`sed -i '' '/alias tutor=/d' ~/.zshrc`, which removed the `tutor` shortcut from
+`~/.zshrc`. Backup at `~/.zshrc.backup-2026-09-01`. Emily was going to clear/exit
+and run "Becky's next prompt" — presumably a new launcher setup. If the learner
+can't get back in, that's why; point them to Becky / the WhatsApp group.
+
+⚠️ **To tidy next session:** `step-2/scrapbook-v3.html` is deleted in the working
+tree (safe in git history, last at commit c2ded56). New untracked file
+`step-2/Life story work.html` — looks like a rename done outside git. Sort out
+which is the file to keep before doing more scrapbook work.
 
 ---
 
@@ -98,3 +109,5 @@ Step 10b — The real project.
 - **Session 8 — 2026-06-16:** Step 9 concept and toolkit introduced. Built Letter to Future Me page (with voice recording, date field, 5 prompts) and an About page with Emily's text. Navigation reordered, topbar split into two rows, light theme fixed for new pages, cover book layout tweaked. Step 9 rubric still open — needs a real failure to fully land (nothing went wrong today). Next up: Step 9 completion (next time something breaks), then Step 10a (the look-back).
 
 - **Session 9 — 2026-06-16:** Step 10a complete — first version recovered from git, compared side by side with current. Emily named "smaller steps" and "write a plan" as what changed. Step 10b started — real project is fostercarecompare.co.uk (Lovable-built fostering agency comparison site). Next session: open with claude --dangerously-skip-permissions (recommended by tutor creator) to continue Step 10b planning and building.
+
+- **Session 10 — 2026-09-01:** Very brief admin session, no curriculum steps. Emily pasted a command from Becky: `sed -i '' '/alias tutor=/d' ~/.zshrc`. Confirmed source was Becky before running. Backed up `~/.zshrc` to `~/.zshrc.backup-2026-09-01`, then ran it — removed the `tutor` alias. Emily then chose to clear and exit to run Becky's next prompt (new launcher, presumably). Also spotted uncommitted scrapbook-v3.html deletion + untracked "Life story work.html" — left untouched, flagged for next session. Next up: Step 10b.
