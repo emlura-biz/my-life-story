@@ -25,11 +25,14 @@
 
 Step 10b — The real project.
 
-⚠️ **Launcher changed (2026-09-01):** Becky had Emily run
-`sed -i '' '/alias tutor=/d' ~/.zshrc`, which removed the `tutor` shortcut from
-`~/.zshrc`. Backup at `~/.zshrc.backup-2026-09-01`. Emily was going to clear/exit
-and run "Becky's next prompt" — presumably a new launcher setup. If the learner
-can't get back in, that's why; point them to Becky / the WhatsApp group.
+**Setup migration complete (2026-09-01):** the move to the caged setup is done.
+Projects now live in `~/FLT/` (`my-claude-project` and `foster-compare`); see
+`~/FLT/migration-record.txt`. Launcher: `flt` once per terminal window, then
+`tutor` (this project) or `FCC` (foster-compare). Both projects confirmed still
+linked to GitHub and reachable; `gh` auth active as `emlura-biz`.
+
+⚠️ **`my-claude-project` unpushed commits:** local `main` is ~6 commits ahead of
+GitHub (last push was session 5). Not a fault — just needs a push. Offer to do it.
 
 ⚠️ **To tidy next session:** `step-2/scrapbook-v3.html` is deleted in the working
 tree (safe in git history, last at commit c2ded56). New untracked file
@@ -111,3 +114,5 @@ which is the file to keep before doing more scrapbook work.
 - **Session 9 — 2026-06-16:** Step 10a complete — first version recovered from git, compared side by side with current. Emily named "smaller steps" and "write a plan" as what changed. Step 10b started — real project is fostercarecompare.co.uk (Lovable-built fostering agency comparison site). Next session: open with claude --dangerously-skip-permissions (recommended by tutor creator) to continue Step 10b planning and building.
 
 - **Session 10 — 2026-09-01:** Very brief admin session, no curriculum steps. Emily pasted a command from Becky: `sed -i '' '/alias tutor=/d' ~/.zshrc`. Confirmed source was Becky before running. Backed up `~/.zshrc` to `~/.zshrc.backup-2026-09-01`, then ran it — removed the `tutor` alias. Emily then chose to clear and exit to run Becky's next prompt (new launcher, presumably). Also spotted uncommitted scrapbook-v3.html deletion + untracked "Life story work.html" — left untouched, flagged for next session. Next up: Step 10b.
+
+- **Session 11 — 2026-09-01:** No curriculum step advanced. Emily opened worried about the setup migration — asked whether both projects could still reach GitHub (yes: confirmed remotes + `gh` auth for both) and whether her API keys / automated emails in foster-compare were affected (no: Google Places, Resend email, Supabase all run on Cloudflare with secrets in the Cloudflare dashboard, untouched by a file move; local `.env`/`.dev.vars` came across intact). **Tutor mistake, logged deliberately:** recommended removing tracked `.env` from git as generic "best practice" WITHOUT checking the project's own docs first. `foster-compare/docs/security-plan.md` deliberately keeps `.env` tracked (publishable/public keys only; real secrets in Cloudflare + `.dev.vars`). Committed + pushed the removal (31f3e51), caught it, `git revert` (89fa01a), pushed. Verified: `.env` byte-identical to before, GitHub good, live site polled ~5 min stayed HTTP 200 throughout. Emily got unsettled — unsure if she'd run a command herself (she hadn't; she'd typed it to the tutor as approval), and noted the session never properly "started" before diving into live-project changes. Fair. Lesson that genuinely landed (Emily spotted it): a confident-sounding tutor recommendation still has to be checked against decisions the project already made. **Still outstanding:** (1) `my-claude-project` ~6 commits unpushed since session 5; (2) step-2 scrapbook file tidy-up; (3) Step 10b not started. Next up: actually start Step 10b — with a proper session start first.
