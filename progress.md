@@ -35,6 +35,12 @@ real usage stats, contract terms, GDPR) and credibility ("who's behind FCC" —
 deliberately deferred, Emily doesn't want to look like a one-person operation
 yet). Full detail in the session 13 log.
 Note: this file is NOT in git — safety net is the dated copies beside it.
+⚠️ **PDFs need re-exporting:** the two existing PDF exports in that folder
+(`...Prospectus.pdf` and `...(Print-Friendly).pdf`) were made before today's
+changes — they're missing the new footer date and legal/registered-office
+line. Remind Emily to re-export both once the remaining content gaps are
+filled in (no rush to do it after every small edit).
+
 There are now two parallel files that must stay word-for-word identical:
 `(draft).html` (full colour) and `(print).html` (white background, no
 decorative blobs, for print/PDF) — the draft now links to the print version
