@@ -177,6 +177,21 @@ kept the new name, committed as a proper rename, and pushed.
 
 ## Session log
 
+- **Session 17 — 2026-09-16:** No curriculum step — continued the bell
+  notification troubleshooting from session 16. Systematically ruled out
+  everything on Emily's end: Focus/Do Not Disturb was off; Terminal's own
+  bell mechanism works fine (`printf '\a'` rang correctly); Terminal
+  Settings → Profiles has Audible bell ticked on the active profile;
+  `~/.claude/settings.json` correctly has `preferredNotifChannel:
+  "terminal_bell"`; and it made no difference whether the Terminal window
+  was focused or backgrounded when a response finished — no bell either
+  way. Conclusion: this looks like a genuine bug in how this version of
+  Claude Code triggers the bell, not anything wrong on Emily's machine or
+  settings. **Told Emily to message Becky/WhatsApp** about it (the human
+  safety net for "I might be the thing failing"). Also logged it as a bug
+  report via the tutor's own feedback tool. **Next session: check whether
+  Becky/the team found anything, and whether a tutor update resolves it.**
+
 - **Session 16 — 2026-09-16:** No curriculum step — small on-demand request.
   Emily wanted a bell notification when the tutor finishes responding.
   Found `preferredNotifChannel` was already set to `"terminal_bell"` in
