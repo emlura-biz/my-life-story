@@ -187,7 +187,8 @@ kept the new name, committed as a proper rename, and pushed.
   line. Good real example of "this is what going wrong looks like." Fixed by
   rewriting the JSON parsing to use `python3` instead (already installed),
   tested with sample input before and after. Applies everywhere, not just
-  this project.
+  this project. Also switched the bar from dimmed grey to normal brightness
+  text, per Emily's preference.
 
 - **Session 13 — 2026-09-16:** Housekeeping + Step 10b (real project) work.
   Housekeeping: confirmed Emily's tutor version (2.3) is current. Pushed 1
