@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-01
+- **Last updated:** 2026-09-16
 - **Curriculum version:** v1
 
 ---
@@ -24,6 +24,69 @@
 ## Where I am right now
 
 Step 10b — The real project.
+
+**Active thread (session 14):** switched focus from the prospectus to
+foster-compare's **M15 agency data cleanup** (checking the site against the
+official Ofsted register).
+⚠️ **Emily flagged she's been using Claude outside the cage**, possibly on
+the *old* foster-compare copy at `~/Documents/Squemo/Foster Care
+Compare/Website build/foster-compare/` on her Mac (left in place, untouched,
+by the 1 Sept migration — the tutor cannot see or check this folder from
+inside the cage). Cage copy confirmed fully in sync with GitHub. **Told
+Emily to message Becky/WhatsApp** to check the old folder before any more
+work happens outside the cage — ✅ done, Emily confirmed she's messaged
+Becky. Agreed to stick to the cage copy for now.
+Also found and fixed: `scripts/backup-database.mjs`'s output path broke in
+the 1 Sept migration (computed 3-levels-up, which pointed outside the repo
+correctly under the old layout but landed inside the cage-only home
+directory after the move) — backups since 1 Sept were going nowhere real.
+Fixed to write to `~/FLT/data/backups` (Mac-visible). Ran a fresh backup
+before touching anything (1101 rows, verified).
+M15 work done this session (all confirmed live via a fresh
+`check-england-ifas-vs-ofsted.py` run before and after):
+- **4 possibly-closed listings → 0.** Children Always First (Bromsgrove,
+  confirmed closed by Emily) and Regional Foster Families — West Midlands
+  (Worcester — turned out to be a bogus duplicate of the real Regional
+  Fostering Services, Uxbridge, already listed correctly) both deleted.
+  Parallel Parents — North (North Ferriby) deleted — not a real separate
+  Ofsted registration; Emily supplied the real office list (Stockport HQ +
+  West/St Helens + East/Cleckheaton) and confirmed North's coverage area
+  (Hull/Lincolnshire/East Midlands) is actually served centrally from
+  Stockport, so it was folded into the HQ listing instead (renamed
+  "Parallel Parents — Cheshire (HQ)", coverage widened).
+- **1 wrong-URN → 0.** Sunflower Fostering's URN corrected (SC398387 →
+  2725635 — re-registered under National Fostering Group).
+- Committed + pushed (`af746d7`).
+- ✅ **Follow-up done:** Parallel Parents — Cheshire (HQ)'s description and
+  county/city lists updated to match its widened coverage. Also fixed
+  `office_cities`, which was oddly showing "Cheshire" (a county, not a
+  city) — now "Stockport".
+**M15 now effectively COMPLETE.** Worked through the remaining 8 missing
+agencies with Emily — she caught that the automated register-check script
+produces false positives when Ofsted's name differs from ours (Five Rivers
+Romford was flagged "missing" but already existed under a slightly
+different name, with a shared placeholder URN across 9 offices). Cross-
+checked every remaining item by name before adding anything:
+- Excluded (Emily's calls): Impact Foster Care Ltd Bradford (dissolved,
+  despite still showing active on Ofsted), Credo Care's old registration
+  (closed, successor already listed), Pyramid Care's new Ltd registration
+  (going with the established Outstanding-rated CIC instead — see below)
+- Fixed existing rows: Five Rivers Romford's URN, CFT Newark's URN (set to
+  Bromsgrove's — their oldest/main registration, per Emily), a mislabeled
+  TACT entry that was carrying its sister branch's name
+- Added 4 genuinely new agencies: TACT — London and the South East, CFT
+  Bishop Auckland, CFT Wakefield, Young People At Heart — Doncaster
+- **Pyramid Care correction:** the DB had merged two genuinely separate
+  Ofsted registrations (an established Outstanding CIC from 2012 and a
+  brand-new unrated Ltd company from 2025) into one listing using the
+  wrong URN. Corrected to the real CIC registration (SC453308) with its
+  current head office address (Worcester, per Emily).
+Final check: **0 genuine gaps remaining** — the England side of M15 is
+done, well ahead of the 13 Nov roadmap deadline. Committed + pushed
+(`af746d7`, `030012e`).
+**Not yet done:** Scotland/Wales/NI import (waits on a ratings-column
+dependency, see `docs/open-plans.md` #21) — separate from what was
+finalised today.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
@@ -113,6 +176,18 @@ kept the new name, committed as a proper rename, and pushed.
 ---
 
 ## Session log
+
+- **Session 15 — 2026-09-16:** No curriculum step — small on-demand request.
+  Emily asked for a permanent status line showing how much of her context
+  window is used each session. Set up via the tutor's `statusline-setup`
+  agent: added a `statusLine` entry to the user-level
+  `~/.claude/settings.json` and a new script `~/.claude/statusline-command.sh`
+  (shows model | git branch | context-used %). First version used `jq`,
+  which isn't installed on this machine — script silently produced a blank
+  line. Good real example of "this is what going wrong looks like." Fixed by
+  rewriting the JSON parsing to use `python3` instead (already installed),
+  tested with sample input before and after. Applies everywhere, not just
+  this project.
 
 - **Session 13 — 2026-09-16:** Housekeeping + Step 10b (real project) work.
   Housekeeping: confirmed Emily's tutor version (2.3) is current. Pushed 1
