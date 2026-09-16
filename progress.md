@@ -177,6 +177,24 @@ kept the new name, committed as a proper rename, and pushed.
 
 ## Session log
 
+- **Session 16 — 2026-09-16:** No curriculum step — small on-demand request.
+  Emily wanted a bell notification when the tutor finishes responding.
+  Found `preferredNotifChannel` was already set to `"terminal_bell"` in
+  `~/.claude/settings.json` — no file change needed there. Troubleshot why
+  no sound was happening: (1) confirmed Terminal's Basic profile had
+  "Audible bell" ticked and was set as Default; (2) found the real cause —
+  macOS System Settings → Sound → **Alert volume was muted**. Fixed, and
+  `printf '\a'` in a fresh Terminal window then rang correctly. (3) The
+  bell still didn't fire for an actual tutor response while Terminal was
+  in the background (tested by switching to Chrome) — working theory:
+  Terminal locks in a window's profile settings at the moment it's opened,
+  and this session's window was opened *before* the profile fix, so it may
+  still be running on stale settings. Emily is opening a fresh session to
+  test. **Next session: check whether the bell now works in the new
+  window; if not, keep troubleshooting from there** (next things to check:
+  System Settings → Notifications → Terminal, and whether a Focus/Do Not
+  Disturb mode is on).
+
 - **Session 15 — 2026-09-16:** No curriculum step — small on-demand request.
   Emily asked for a permanent status line showing how much of her context
   window is used each session. Set up via the tutor's `statusline-setup`
