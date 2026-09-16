@@ -25,13 +25,21 @@
 
 Step 10b — The real project.
 
-**Active thread (session 12):** editing the Foster Care Compare **Recruitment
+**Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
-wording + layout amends done. Still to do: the "group B" accuracy claims, 6
-content gaps (onboarding, who's behind FCC, real usage stats, contract terms,
-GDPR, legal footer), and a footer date. Full detail in the session 12 log.
+wording + layout amends done. Footer date added, legal footer (company name,
+number, registered office) added. Still to do: the "group B" accuracy claims
+(Emily's decision: leave as is for now), 4 remaining content gaps (onboarding,
+real usage stats, contract terms, GDPR) and credibility ("who's behind FCC" —
+deliberately deferred, Emily doesn't want to look like a one-person operation
+yet). Full detail in the session 13 log.
 Note: this file is NOT in git — safety net is the dated copies beside it.
+There are now two parallel files that must stay word-for-word identical:
+`(draft).html` (full colour) and `(print).html` (white background, no
+decorative blobs, for print/PDF) — the draft now links to the print version
+via a "Click for printer friendly copy" button. Any future wording change
+needs to go in both.
 
 **Setup migration complete (2026-09-01):** the move to the caged setup is done.
 Projects now live in `~/FLT/` (`my-claude-project` and `foster-compare`); see
@@ -100,14 +108,39 @@ kept the new name, committed as a proper rename, and pushed.
 
 ## Session log
 
-- **Session 13 — 2026-09-16:** Housekeeping only, no curriculum step advanced.
-  Confirmed Emily's tutor version (2.3) is current. Pushed 1 unpushed commit to
-  GitHub (progress.md note of ~6 was stale). Resolved step-2 file mix-up: diffed
-  `scrapbook-v3.html` (last in git history) against untracked `Life story
-  work.html` — byte-identical, confirmed a Finder rename done outside git.
-  Emily chose to keep the new name; staged as a git rename, committed, pushed.
-  Next up: back to Step 10b — the prospectus (group B claims, 6 content gaps,
-  footer date).
+- **Session 13 — 2026-09-16:** Housekeeping + Step 10b (real project) work.
+  Housekeeping: confirmed Emily's tutor version (2.3) is current. Pushed 1
+  unpushed commit to GitHub (progress.md note of ~6 was stale). Resolved
+  step-2 file mix-up: diffed `scrapbook-v3.html` (last in git history) against
+  untracked `Life story work.html` — byte-identical, confirmed a Finder rename
+  done outside git. Emily chose to keep the new name; staged as a git rename,
+  committed, pushed.
+  Prospectus work: found the working file had been edited independently on
+  2026-09-04 (print-formatting CSS, PDF exports) outside our sessions — Emily
+  confirmed this was expected. Made a fresh dated backup checkpoint before
+  touching anything further (file still not in git).
+  Added footer date ("September 2026") to `(draft).html`. Verified, at Emily's
+  request, that `(draft).html`, `(print).html`, and both existing PDF exports
+  are word-for-word identical in content (only the footer date differs, since
+  the PDFs predate today's edit — expected). Found the PDFs' "Click for
+  printer friendly copy" link / "Page X of 5" footer text isn't in either
+  local file — Emily confirmed she likely made the PDF from the live website
+  version, which has its own template. Added a matching "Click for printer
+  friendly copy" link to `(draft).html`, pointing to `(print).html`
+  (URL-encoded spaces in the href rather than renaming the file).
+  Content gap — legal footer: added company registration details to both
+  `(draft).html` and `(print).html`: "Foster Care Compare Ltd is a company
+  registered in England and Wales (No. 17379343)." / "Registered office: 82A
+  James Carter Road, Mildenhall, IP28 7DE." on its own line. Flagged and
+  excluded the Companies House "submission number" Emily also pasted in —
+  that's an internal filing reference, not something that belongs on a public
+  page. No VAT registration, so no VAT line added.
+  Fresh dated checkpoint copies of both files saved at end of session.
+  Next up: back to Step 10b — remaining content gaps (onboarding, real usage
+  stats, contract terms, GDPR), credibility section (deferred by Emily until
+  the business looks less like a one-person operation), group B claims
+  (still deliberately not applied), and re-exporting the PDFs to pick up
+  today's changes.
 
 - **Session 1 — 2026-06-11:** Diagnostic complete. Steps 1 and 2 done. Emily has some HTML experience, never used a terminal. Came up with a genuinely strong project idea unprompted — a life story scrapbook for foster carers. Wants to develop it into something with pages you can flick through. Full of ideas. Wants to develop Lovable website locally as longer-term goal.
 
