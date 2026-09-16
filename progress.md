@@ -39,13 +39,10 @@ Projects now live in `~/FLT/` (`my-claude-project` and `foster-compare`); see
 `tutor` (this project) or `FCC` (foster-compare). Both projects confirmed still
 linked to GitHub and reachable; `gh` auth active as `emlura-biz`.
 
-⚠️ **`my-claude-project` unpushed commits:** local `main` is ~6 commits ahead of
-GitHub (last push was session 5). Not a fault — just needs a push. Offer to do it.
-
-⚠️ **To tidy next session:** `step-2/scrapbook-v3.html` is deleted in the working
-tree (safe in git history, last at commit c2ded56). New untracked file
-`step-2/Life story work.html` — looks like a rename done outside git. Sort out
-which is the file to keep before doing more scrapbook work.
+✅ **Housekeeping done (session 13):** unpushed commits pushed to GitHub (all
+caught up now). Step-2 file mix-up resolved — `scrapbook-v3.html` and
+`Life story work.html` were confirmed identical (Finder rename outside git),
+kept the new name, committed as a proper rename, and pushed.
 
 ---
 
@@ -102,6 +99,15 @@ which is the file to keep before doing more scrapbook work.
 ---
 
 ## Session log
+
+- **Session 13 — 2026-09-16:** Housekeeping only, no curriculum step advanced.
+  Confirmed Emily's tutor version (2.3) is current. Pushed 1 unpushed commit to
+  GitHub (progress.md note of ~6 was stale). Resolved step-2 file mix-up: diffed
+  `scrapbook-v3.html` (last in git history) against untracked `Life story
+  work.html` — byte-identical, confirmed a Finder rename done outside git.
+  Emily chose to keep the new name; staged as a git rename, committed, pushed.
+  Next up: back to Step 10b — the prospectus (group B claims, 6 content gaps,
+  footer date).
 
 - **Session 1 — 2026-06-11:** Diagnostic complete. Steps 1 and 2 done. Emily has some HTML experience, never used a terminal. Came up with a genuinely strong project idea unprompted — a life story scrapbook for foster carers. Wants to develop it into something with pages you can flick through. Full of ideas. Wants to develop Lovable website locally as longer-term goal.
 
