@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-18 (session 19)
+- **Last updated:** 2026-09-18 (session 19, continued after compaction)
 - **Curriculum version:** v1
 
 ---
@@ -133,10 +133,48 @@ radius-filter component first** (this also signs off/builds
 `search-radius-plan.md`'s draft along the way), then have the Outstanding
 page consume it with a 50-mile default, rather than building a one-off
 50-mile version to reconcile later.
-**Emily is about to give specific build instructions for the radius
-component, after compacting the conversation.** Nothing built yet — next
-session/turn should pick up there, not re-litigate the format/location
-decisions above.
+After compacting, Emily gave the build instructions: apply the city-pages'
+filter bar to `/fostering-agencies-near-me` too, add a distance-radius
+filter as a first-position replacement for "Fostering type" (data accuracy
+concern), 10 options from 5 to 50 miles, default 25 instead of 20. Checked
+with Emily first: Fostering type filter stays on city pages, only dropped
+from near-me. **Built and shipped:**
+- New reusable `src/components/DistanceFilter.tsx` — a dropdown, so it can
+  be reused on the Outstanding-agencies page later with its own default.
+- `src/lib/nearbyAgencies.ts`: `buildNearbyResults()` now takes the radius
+  as a parameter instead of a hardcoded 20-mile constant.
+- `fostering-agencies-near-me.tsx`: new filter bar (Distance first, then
+  Organisation Type / Coverage / Ofsted, matching city pages), page copy
+  updated to reflect the chosen distance instead of a fixed number, query
+  restructured so changing distance re-filters locally with no new
+  Supabase call.
+- Emily then refined the options twice: dropped the 5-mile increments
+  (now 10/20/30/40/50) and changed the default to 30 (not 25).
+- Committed + pushed (`4869426`).
+- Caught after pushing: a much more detailed, pre-existing plan for this
+  exact feature at `docs/search-radius-plan.md` (20/30/40/Whole UK, radius
+  saved in the URL, one-tap widen buttons, `llms.txt` update) that wasn't
+  checked before building. `public/llms.txt` was genuinely stale ("within
+  20 miles") — fixed. Checked for a real conflict with
+  `docs/mobile-comparison-blueprint.md` (signed off, unexecuted, touches
+  the same file's mobile cards) — no actual clash since that's untouched
+  card markup, just flagged for whoever builds it later to preserve the
+  new filter bar. Updated `search-radius-plan.md` with a "what actually
+  got built" section so it's not mistaken for a live spec. Committed +
+  pushed (`49abdb6`).
+- Asked Emily about the two real remaining gaps (URL persistence for the
+  radius, one-tap widen buttons on no-results) — **decision: leave both
+  out for now.** Recommended revisiting URL persistence specifically for
+  the Outstanding-agencies Ads page later, since a link opening straight
+  at a fixed 50-mile radius is exactly what that page needs it for.
+  **Emily confirmed: happy with the search feature as shipped.**
+
+**Lesson for next time (self-correction, logged deliberately):** built a
+feature from Emily's direct instructions without first checking `docs/`
+for an existing plan covering the same page. Should grep `docs/` for
+related plans before starting a build, even when given specific
+instructions — a stale-but-relevant doc can carry real requirements
+(here: the `llms.txt` line) that direct instructions don't repeat.
 
 **Still open / not raised again this session:** Scotland/Wales/NI import
 (blocked), the outside-cage duplicate-copy question to Becky (unconfirmed
