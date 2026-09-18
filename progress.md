@@ -189,9 +189,9 @@ kept the new name, committed as a proper rename, and pushed.
   existing settings (theme, `skipDangerousModePermissionPrompt`,
   `preferredNotifChannel`, `statusLine`) left untouched; validated the
   resulting JSON with `python3` (`jq` still not installed on this machine).
-  Applies to every project, not just this one. **Next session: confirm with
-  Emily whether the beep actually sounded** — a Stop hook only takes effect
-  from the next reply/window, so it couldn't be proven live in-session.
+  Applies to every project, not just this one. ✅ **Confirmed working** —
+  Emily heard the beep after this session's final reply. Bell notification
+  saga (sessions 15–18) closed out.
 
 - **Session 17 — 2026-09-16:** No curriculum step — continued the bell
   notification troubleshooting from session 16. Systematically ruled out
