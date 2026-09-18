@@ -105,11 +105,43 @@ and dates pulled from git log: 12+39+30+63+7 agencies, batches on
 2026-08-10 and 2026-09-14, final gap-resolution 2026-09-16) and to flag
 Scotland/Wales/NI as the one open M15 item. Committed + pushed
 (`4f2ed42`) to the foster-compare repo.
-**Still open / not raised again this session:** plan #22 (new page idea,
-awaiting Emily's decision), Scotland/Wales/NI import (blocked), the
-outside-cage duplicate-copy question to Becky (unconfirmed as of session
-14 — see memory), and the prospectus thread (group B claims, content
-gaps, PDF re-export).
+Then worked through plan #22 (the Outstanding-agencies page idea) with
+Emily as a design conversation — no build yet, all captured in
+`docs/outstanding-agencies-page-plan.md` (committed `ec3dc2f`):
+- **Format:** a genuine live-filtered page (reuses `$citySlug.tsx`'s
+  Supabase + rating-filter pattern), not a stripped-down ad page — per
+  the site's own Quality Score rule in `docs/google-ads-plan.md`.
+- **Location:** lives under `/blog` (new `blog.outstanding-fostering-
+  agencies.tsx`-style route), doubling as an SEO post and a Google Ads
+  landing page — precedent: Group B already does this, Group C is
+  planned to. Resolves the earlier nav question: no header/menu change
+  needed, since blog posts aren't in top nav.
+- **Near-me combo confirmed:** postcode input + results table filtered
+  by distance, same pattern as `/fostering-agencies-near-me`.
+- Emily wants a **50-mile radius** (fewer agencies hold Outstanding, so
+  a tighter radius would starve results) — flagged in the doc as not
+  yet reconciled with `docs/search-radius-plan.md`'s draft (20/30/40mi/
+  Whole UK selector for the near-me page, still unsigned-off).
+- **Reminder captured:** must add the new page to `blog.index.tsx`'s
+  hardcoded `POSTS` array when built, or it won't show on the guides page.
+Then a sequencing question: checked the code and found distance
+filtering currently exists on exactly **one** page (`fostering-agencies-
+near-me.tsx`) — other pages only have a postcode search bar, not their
+own filtered table. Emily wants a distance-radius filter reusable across
+all postcode-results tables eventually, so agreed: **build the shared
+radius-filter component first** (this also signs off/builds
+`search-radius-plan.md`'s draft along the way), then have the Outstanding
+page consume it with a 50-mile default, rather than building a one-off
+50-mile version to reconcile later.
+**Emily is about to give specific build instructions for the radius
+component, after compacting the conversation.** Nothing built yet — next
+session/turn should pick up there, not re-litigate the format/location
+decisions above.
+
+**Still open / not raised again this session:** Scotland/Wales/NI import
+(blocked), the outside-cage duplicate-copy question to Becky (unconfirmed
+as of session 14 — see memory), and the prospectus thread (group B
+claims, content gaps, PDF re-export).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
