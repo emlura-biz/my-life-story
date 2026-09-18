@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-16
+- **Last updated:** 2026-09-18
 - **Curriculum version:** v1
 
 ---
@@ -176,6 +176,22 @@ kept the new name, committed as a proper rename, and pushed.
 ---
 
 ## Session log
+
+- **Session 18 — 2026-09-18:** No curriculum step — resolved the bell
+  notification bug from sessions 15–17. Emily confirmed Becky sent the fix
+  after the session-17 escalation: a Stop hook (a command Claude Code runs
+  automatically each time the tutor finishes replying) in user-level
+  `~/.claude/settings.json` running `printf '\a' > /proc/$PPID/fd/1` — writes
+  the bell character straight to the terminal's screen, working around this
+  machine having no audio device. Confirmed the source was Becky before
+  making the change (same practice as session 10). Tested the raw command
+  runs cleanly (exit 0) before adding it; added under a new `hooks` key,
+  existing settings (theme, `skipDangerousModePermissionPrompt`,
+  `preferredNotifChannel`, `statusLine`) left untouched; validated the
+  resulting JSON with `python3` (`jq` still not installed on this machine).
+  Applies to every project, not just this one. **Next session: confirm with
+  Emily whether the beep actually sounded** — a Stop hook only takes effect
+  from the next reply/window, so it couldn't be proven live in-session.
 
 - **Session 17 — 2026-09-16:** No curriculum step — continued the bell
   notification troubleshooting from session 16. Systematically ruled out
