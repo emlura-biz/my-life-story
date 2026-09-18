@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-18
+- **Last updated:** 2026-09-18 (session 19)
 - **Curriculum version:** v1
 
 ---
@@ -87,6 +87,29 @@ done, well ahead of the 13 Nov roadmap deadline. Committed + pushed
 **Not yet done:** Scotland/Wales/NI import (waits on a ratings-column
 dependency, see `docs/open-plans.md` #21) — separate from what was
 finalised today.
+
+**Session 19 (2026-09-18):** Emily asked "what's next for foster-compare?" —
+before answering, checked live against the repo rather than trusting the
+progress note (per past feedback). Confirmed via `git log` that M15 England
+really is fully committed and complete (last M15 commits `030012e`/`af746d7`,
+16 Sept). Found the project's own docs hadn't caught up: `docs/open-plans.md`
+#21 and `docs/launch-roadmap.md`'s M15 row/checkpoint still read as
+mid-batch ("Batch 1 DONE... next step Batch 2"). Also surfaced a new item:
+plan #22 in `open-plans.md`, an "Outstanding fostering agencies" page idea,
+proposed 17 Sept, not yet scoped — Emily hasn't decided on it yet. Gave
+Emily a real choice (not open-ended) between: tidying the stale docs,
+looking at plan #22, starting Scotland/Wales/NI prep, or something else
+(prospectus / outside-cage follow-up). **Emily chose: tidy the stale docs.**
+Updated both files to say England is complete (with actual batch counts
+and dates pulled from git log: 12+39+30+63+7 agencies, batches on
+2026-08-10 and 2026-09-14, final gap-resolution 2026-09-16) and to flag
+Scotland/Wales/NI as the one open M15 item. Committed + pushed
+(`4f2ed42`) to the foster-compare repo.
+**Still open / not raised again this session:** plan #22 (new page idea,
+awaiting Emily's decision), Scotland/Wales/NI import (blocked), the
+outside-cage duplicate-copy question to Becky (unconfirmed as of session
+14 — see memory), and the prospectus thread (group B claims, content
+gaps, PDF re-export).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
