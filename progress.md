@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-23 (session 24)
+- **Last updated:** 2026-09-23 (session 25)
 - **Curriculum version:** v1
 
 ---
@@ -388,6 +388,34 @@ checklist exceptions plus the Brighton and Hove `metaTitle` fix.
 No curriculum step advanced — pure Step 10b real-project work. Next up:
 whatever Emily picks next time — the prospectus content gaps are still the
 longest-standing open thread if nothing more pressing comes up.
+
+**Session 25 (2026-09-23): Google Ads keyword research → plan PAUSED.**
+Emily asked for "Google Ads forecasting". Checked docs first: `google-ads-plan.md`
+appendix Steps 1–5 already covered it, and nothing had been executed yet. Emily
+used her old Ads account first, to protect the new-customer £400 credit. It
+turned out to be **closed and in USD**, which made the data unreliable, and I
+walked back a conclusion I'd drawn from it. Then she created a **new GBP account**:
+skipped campaign creation, no billing, no promo code, so the credit is untouched
+(section 10 confirms the clock starts at the first ad, not at account creation).
+Findings: the plan's comparison keywords get almost no UK searches. Real volume
+exists only for recruitment keywords. Creative round: pay/not-for-profit searches
+are High competition, complaints/directory/charity return no data. **Real lead:**
+"fostering agencies northampton/walsall/bristol" get 10–100/mo, Low, no bids,
+while "foster carer northampton" is High. Agencies bid on recruitment wording,
+not agency wording. West Midlands is High (up to £46.47), so organic only.
+**Emily's calls:** (1) never bid on agency brand names, because agencies are
+her customers. Her idea, and I should have raised it myself. (2) **Pause the Ads
+plan**: a £2/day city test can't meet the £400-in-60-days credit rule, and
+running it first would forfeit the credit.
+Recorded in foster-compare (`4d04fba`, pushed): pause box + findings in
+`google-ads-plan.md`; new DRAFT `docs/keyword-map.md` (SEO checklist Phase 2,
+still needs the Search Console check). Organic gaps: **UK foster carer pay
+(~5,000/mo)**, North East + South West regional pages (~500/mo), UK-wide A–Z
+list. Also updated `open-plans.md` (#2, #3, #4) and the SEO checklist's status box.
+Emily's Keyword Planner CSV + screenshots are in foster-compare's `Google ads/` and
+`screenshots/` folders, **untracked in git on purpose**.
+Next up: one of the organic gaps (UK pay page is the biggest), or the
+prospectus content gaps.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
