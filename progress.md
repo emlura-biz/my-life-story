@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-23 (session 22)
+- **Last updated:** 2026-09-23 (session 23)
 - **Curriculum version:** v1
 
 ---
@@ -312,6 +312,28 @@ Emily also flag this to Becky/WhatsApp**, both because it may need someone
 who already knows the correct secret name, and because it's exactly the
 kind of "you might be the thing failing" situation the safety net exists
 for.
+
+**Session 23 (2026-09-23): enquiry-form bug RESOLVED.** Emily asked to
+"recover the secret keys without reading them" from a file she believed the
+tutor had saved. Corrected that: the tutor has no record of saving keys
+anywhere; the local key is `SUPABASE_SECRET_KEY` in foster-compare
+`.dev.vars` (name only checked, never the value). `~/FLT/.flt-sentinel` is
+only 20 bytes and was modified 2 min after session 22 ended, so it's a
+cage/setup marker, **not a key file**. Stop wondering about it.
+**Safety guard:** Claude Code's auto-mode guard blocked the tutor
+("Credential Materialization") from reading anything in foster-compare's
+secret-adjacent area, including `.env`, `wrangler.jsonc` and even
+`client.server.ts`. Didn't try to get around it. Key/secret jobs now go
+through Emily by hand in the Cloudflare dashboard, with the tutor guiding.
+Emily checked Cloudflare → Workers & Pages → Settings → Variables and
+Secrets. Live has ADMIN_PASSCODE, GOOGLE_PLACES_API_KEY, RESEND_API_KEY,
+SUPABASE_PUBLISHABLE_KEY, SUPABASE_SERVICE_ROLE_KEY (secret), SUPABASE_URL
+(variable). So nothing was missing and the name-mismatch theory from
+session 22 was wrong. Emily retested the live form: **it works, and the test
+enquiry arrived.** Most likely someone set or fixed the settings after
+session 22 (not confirmed who). No secret value ever passed through chat.
+Emily shared names only, never values, which was exactly right.
+Next up: back to Step 10b (the prospectus content gaps).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
