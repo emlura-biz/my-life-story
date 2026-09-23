@@ -207,6 +207,41 @@ click-through (postcode search, mobile layout, no-results state) — so
 far only checked via SSR HTML output, never live in a browser.
 Next up: pick up one of those two items with Emily.
 
+Continued straight on (same session, 2026-09-23) with live review on
+localhost — Emily driving from the browser, iterating fast. Landed:
+"How it works" section widened to match the filter bar/results below
+and condensed on mobile (padding, gaps, number-beside-title layout,
+blobs hidden on mobile); hero/subheading copy reshuffled a few times
+before settling (subheading text moved to "How it works", removed a
+redundant "See agencies near you" line, shortened the intro paragraph);
+the shortlist toast reworked to wait for the results table to scroll
+into view before a postcode search, and to word itself differently
+before vs. after a search; a scroll-to-results jump added on mobile
+when the search button is tapped, so results don't feel a distant
+scroll away from the search box.
+Then ran the page against `docs/seo-master-checklist.md` and
+`docs/blog-post-checklist.md` (Emily's request — "check this against
+the SEO checklist") — found and fixed 5 real gaps (title tag too long
+and had an em dash, meta description too long, one more em dash in a
+live FAQ answer, missing from `sitemap.xml`, missing from `llms.txt`)
+plus 3 follow-ups (stale `dateModified`, blog index card excerpt out
+of sync, post missing from blog-post-checklist.md's own list). Talked
+through 3 judgement calls with Emily rather than assuming: skip the
+site-wide sticky postcode bar and the location-directory CTA (both
+would duplicate what this page's own search already does), but do add
+a "Read next" card (linking to "How to Choose a Fostering Agency") for
+consistency. Also added a new permanent rule to
+`seo-master-checklist.md` Part 2: keep `dateModified` current whenever
+a page is meaningfully edited after publishing, not just at first
+publish — came directly out of catching it stale on this page.
+All committed and pushed to PR #12's branch (`outstanding-agencies-seo-table`,
+commits `b0e3f11` and `f34fcdd`). Not yet done: Emily's still-open
+"move postcode box near results" idea from earlier in the session
+wasn't picked back up (superseded in practice by the scroll-to-results
+jump link, which solves the same problem more simply) — worth checking
+with Emily next time whether that's still wanted or the jump link is
+enough. PR #12 itself not yet merged.
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
