@@ -276,8 +276,42 @@ commit `f13853e` on `main`, branch deleted both locally and on GitHub, local
 `main`. Then asked Emily about the "move postcode box near results" question
 — **decided: not needed, the scroll-to-results jump already covers it.**
 (Only ever tracked here in progress.md, not in the project's own docs, so
-nothing to update there.) **Still open:** the real browser click-through
-test, now against the live site.
+nothing to update there.) Emily then did the click-through test on the live
+site — **found a real, pre-existing bug**, unrelated to today's merge: the
+enquiry form (the "request a call/email" flow) throws "Missing Supabase
+server environment variables. Ensure SUPABASE_URL and
+SUPABASE_SERVICE_ROLE_KEY are set." on submit.
+Traced it: `src/integrations/supabase/client.server.ts` (added 2026-04-23,
+untouched since — confirmed not touched by PR #12) needs
+`SUPABASE_SERVICE_ROLE_KEY`. Local `.dev.vars` has a similarly-named
+`SUPABASE_SECRET_KEY` instead (Supabase's newer naming) — looks like a
+name mismatch between what the code expects and what's actually configured.
+**This form is site-wide**, not just on the new page — it's rendered from
+`src/routes/__root.tsx` (`LeadFlowModal`), used via `src/lib/leads.functions.ts`
+and shared by `contact`/`reviews`/`area-request` functions too. Postcode
+search itself is unaffected (uses the public client, not this one).
+Couldn't confirm what's actually set on the live Cloudflare Worker —
+`wrangler secret list` needs Node 22, this machine only has v20.20.2, no
+nvm/volta installed to get a newer one. Nothing in git history or
+`docs/security-plan.md` records this secret being set up, so unclear how
+long it's been broken.
+Emily said the value is saved in a file on her Mac "I could access but not
+read" — checked `~/FLT/` for it: no clear match. `.flt-projects.json` looks
+like project registry metadata; `.flt-sentinel` (permissions 600, 20 bytes,
+modified same day) is unidentified — did NOT open either without
+confirming, since this is real secret-handling territory. Asked Emily to
+clarify which file / who set it up; **unresolved when the session ended.**
+**⚠️ Important for next session:** (1) confirm what that file actually is
+before touching it: if it holds the real Supabase service role key, it must
+never be pasted into chat — only used to set the Cloudflare secret directly
+(e.g. via `wrangler secret put`, which prompts and never echoes the value —
+though that needs Node ≥22 sorted first, or doing it via the Cloudflare
+dashboard by hand). (2) This is a real, live, business-impacting bug — the
+enquiry form may have been silently failing since April. **Recommended
+Emily also flag this to Becky/WhatsApp**, both because it may need someone
+who already knows the correct secret name, and because it's exactly the
+kind of "you might be the thing failing" situation the safety net exists
+for.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
