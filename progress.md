@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-23 (session 21)
+- **Last updated:** 2026-09-23 (session 22)
 - **Curriculum version:** v1
 
 ---
@@ -260,6 +260,22 @@ first — pre-existing unrelated type errors elsewhere (Supabase `Agency` type
 mismatch, several other route files), nothing from this file. Emily reviewed
 live on localhost before it was committed. Committed + pushed to PR #12's
 branch (`outstanding-agencies-seo-table`, `b9838e1`). PR #12 still not merged.
+
+**Session 22 (2026-09-23):** Picked up from session 21's three open items —
+Emily chose "decide on merging PR #12" first. Checked the PR live rather than
+assuming: 9 files changed (+494/−156) across 7 commits, no merge conflicts
+with `main` (clean), all 3 checks passing (Semgrep, TruffleHog, Cloudflare
+Workers build). Flagged the one gap: the browser click-through test
+(postcode search, mobile layout, no-results state) still hadn't happened as
+its own dedicated pass. Emily chose to merge now and treat the click-through
+as a normal live-site check afterwards. Checked `main`'s history first (no
+merge commits — past PRs were squash-merged) and matched that convention.
+**Squash-merged PR #12** (`gh pr merge 12 --squash --delete-branch`) →
+commit `f13853e` on `main`, branch deleted both locally and on GitHub, local
+`main` fast-forwarded to match. Cloudflare will auto-build/deploy from
+`main`. **Still open:** the "move postcode box near results" question
+(possibly superseded by the scroll-to-results jump — needs confirming with
+Emily) and the real browser click-through test, now against the live site.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
