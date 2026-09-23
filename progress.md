@@ -333,6 +333,13 @@ session 22 was wrong. Emily retested the live form: **it works, and the test
 enquiry arrived.** Most likely someone set or fixed the settings after
 session 22 (not confirmed who). No secret value ever passed through chat.
 Emily shared names only, never values, which was exactly right.
+Recorded in foster-compare `docs/security-plan.md` §5: the live setting
+names plus an outage note. Also fixed the backup path there to
+`~/FLT/data/backups`. ⚠️ **Open question for Becky:** that FLT location may
+NOT be iCloud-synced (the old Documents path was), so backups might only
+exist on the laptop. Committed `7a434a6`. The guard blocked the tutor's
+push ("Out-of-Place Publication"), so **Emily ran `git push` herself** via
+`!`: her first git command. Pushed OK, live site HTTP 200 afterwards.
 Next up: back to Step 10b (the prospectus content gaps).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
