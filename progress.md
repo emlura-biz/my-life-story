@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-18 (session 19, continued after compaction)
+- **Last updated:** 2026-09-23 (session 20)
 - **Curriculum version:** v1
 
 ---
@@ -180,6 +180,32 @@ instructions — a stale-but-relevant doc can carry real requirements
 (blocked), the outside-cage duplicate-copy question to Becky (unconfirmed
 as of session 14 — see memory), and the prospectus thread (group B
 claims, content gaps, PDF re-export).
+
+**Session 20 (2026-09-23):** Emily had been building the Outstanding-
+agencies page (plan #22) herself in a Claude Code session since session 19
+— well beyond what this file had recorded. That session got cut short by
+Claude freezing, so she cleared it without a proper end-lesson wrap-up,
+which is why this file was out of date, not because anything was lost:
+git had everything safely committed throughout. Caught up by reading the
+live repo instead of trusting this file (branch
+`outstanding-agencies-seo-table`, PR #12, open): the page is built —
+hero redesign, UK-wide static Outstanding-agencies table for SEO, a
+persistent shortlist/compare explainer, and a 3-step "How it works"
+section (the screenshot Emily opened this session with). Found and saved
+one loose end: an uncommitted wording tweak to
+`PostcodeSearchBox.tsx` (helper text moved above the form) — committed
+and pushed (`b0e3f11`).
+⚠️ `docs/outstanding-agencies-page-plan.md` itself is a little behind
+the actual build too — its "How it was actually built" / "SEO revamp"
+notes stop before the persistent explainer and "How it works" commits.
+Worth a tidy pass next time something touches that doc, same pattern as
+the M15 docs in session 19.
+Per the plan doc's own "Still open" list, real remaining work on this
+page: move the postcode search box out of the hero to sit closer to the
+results table (flagged by Emily, not done), and a genuine browser
+click-through (postcode search, mobile layout, no-results state) — so
+far only checked via SSR HTML output, never live in a browser.
+Next up: pick up one of those two items with Emily.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
