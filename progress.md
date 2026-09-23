@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-23 (session 23)
+- **Last updated:** 2026-09-23 (session 24)
 - **Curriculum version:** v1
 
 ---
@@ -341,6 +341,53 @@ exist on the laptop. Committed `7a434a6`. The guard blocked the tutor's
 push ("Out-of-Place Publication"), so **Emily ran `git push` herself** via
 `!`: her first git command. Pushed OK, live site HTTP 200 afterwards.
 Next up: back to Step 10b (the prospectus content gaps).
+
+**Session 24 (2026-09-23):** Emily asked to check a list of recently-created
+pages against the SEO checklist — the six new city pages (Gloucester, Bath,
+Canterbury, Brighton and Hove, Reading, Portsmouth) plus the
+outstanding-fostering-agencies blog post. Checked live against
+`docs/seo-master-checklist.md` Part 2 and `docs/blog-post-checklist.md`
+rather than assuming. Blog post: clean, session 20's fixes held. City pages:
+all correctly in `sitemap.xml` and `llms.txt`; all correctly linked from the
+homepage's "Search by city" section (confirmed via `AvailableAreas.tsx` —
+a first grep for hardcoded links found nothing and looked like a gap, but
+the links are generated from each city's `homepageGroup`, not hardcoded, so
+double-checked before reporting a false alarm).
+Two real, template-wide findings, both resolved as Emily's deliberate
+decisions rather than fixes:
+- The shared `$citySlug.tsx` template's default title tag contains an em
+  dash ("Fostering Agencies in {City} — Compare & Shortlist"). **Emily's
+  call: added as a permanent exception** in `seo-master-checklist.md` Part 2
+  — title tags are now explicitly exempt from the no-em-dash rule, since
+  that rule is really about body copy sounding AI-written.
+- Longer city names push the default meta description over 160 characters
+  by 1-2 characters. **Emily's call: added a 1-2 character tolerance**
+  exception to the same checklist line, rather than rewriting for it.
+- Title tag's 60-character limit stayed strict (Emily's explicit choice, not
+  extended the same tolerance). Brighton and Hove's default title was 61
+  chars — fixed with a `metaTitle` override ("Brighton & Hove" instead of
+  "Brighton and Hove") bringing it to 59.
+Also discussed, no action taken: only 4 of the 42 city pages (Walsall,
+Dudley, Sandwell, Stoke-on-Trent — all West Midlands) have real
+city-specific FAQ facts; the other 38, including all six new ones, run on
+generic boilerplate FAQs. Confirmed this is the checklist's known
+pre-existing weakness, not something the six new pages introduced, and
+declined to fabricate "quick" city facts to paper over it — the FAQ code
+itself is written to stay generic until Emily has verified real facts per
+city. Emily then asked about live per-city foster-home shortfall data (to
+publicise local need). Researched rather than guessed: no live feed exists
+anywhere in the codebase; real data does exist (DfE's "Children looked
+after by local authorities" release, SSDA903 collection) but it's an
+**annual statistical release, not live**, and local-authority boundaries
+don't map cleanly onto the city pages (same cross-boundary issue already
+seen with agency postcode coverage, e.g. Reading/Hampshire, Canterbury/
+Kent). Offered to scope it as a proper plan doc; **Emily declined** ("no
+don't worry") — not pursued further.
+Committed + pushed to the foster-compare repo (`173b563`): the two
+checklist exceptions plus the Brighton and Hove `metaTitle` fix.
+No curriculum step advanced — pure Step 10b real-project work. Next up:
+whatever Emily picks next time — the prospectus content gaps are still the
+longest-standing open thread if nothing more pressing comes up.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
