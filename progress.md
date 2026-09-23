@@ -273,9 +273,11 @@ merge commits — past PRs were squash-merged) and matched that convention.
 **Squash-merged PR #12** (`gh pr merge 12 --squash --delete-branch`) →
 commit `f13853e` on `main`, branch deleted both locally and on GitHub, local
 `main` fast-forwarded to match. Cloudflare will auto-build/deploy from
-`main`. **Still open:** the "move postcode box near results" question
-(possibly superseded by the scroll-to-results jump — needs confirming with
-Emily) and the real browser click-through test, now against the live site.
+`main`. Then asked Emily about the "move postcode box near results" question
+— **decided: not needed, the scroll-to-results jump already covers it.**
+(Only ever tracked here in progress.md, not in the project's own docs, so
+nothing to update there.) **Still open:** the real browser click-through
+test, now against the live site.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
