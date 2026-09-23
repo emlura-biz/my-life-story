@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-23 (session 20)
+- **Last updated:** 2026-09-23 (session 21)
 - **Curriculum version:** v1
 
 ---
@@ -241,6 +241,25 @@ wasn't picked back up (superseded in practice by the scroll-to-results
 jump link, which solves the same problem more simply) — worth checking
 with Emily next time whether that's still wanted or the jump link is
 enough. PR #12 itself not yet merged.
+
+**Session 21 (2026-09-23):** Small, focused request — cross-link the
+`how-to-choose-a-fostering-agency` blog post to the new Outstanding-agencies
+post (still on PR #12's branch, not merged). Emily's ask evolved through the
+conversation: started as "add a link" with 2 read-next posts, then she
+specified she wanted the existing Birmingham card swapped out entirely and
+replaced with two side-by-side cards — Outstanding-agencies and
+local-authority-vs-independent-fostering-agency — styled like the homepage's
+"From the blog" cards rather than the site's usual single curved card. Emily
+herself flagged the side-by-side might be too narrow in the blog's `max-w-3xl`
+column; agreed to stack on mobile/tablet and only go side-by-side from `md`
+up (homepage grid starts side-by-side at `sm`, narrower here on purpose).
+Reused existing image/title/excerpt text from the homepage and the
+Outstanding post itself rather than writing new copy, for consistency.
+Removed the now-unused Birmingham image import. Checked with `tsc --noEmit`
+first — pre-existing unrelated type errors elsewhere (Supabase `Agency` type
+mismatch, several other route files), nothing from this file. Emily reviewed
+live on localhost before it was committed. Committed + pushed to PR #12's
+branch (`outstanding-agencies-seo-table`, `b9838e1`). PR #12 still not merged.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
