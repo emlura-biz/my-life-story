@@ -427,6 +427,15 @@ Logged in a new "Inbound requests" section of foster-compare
 your traffic?" reply (template 3b + roadmap 3e), which still said "weeks into
 paid promotion" after the Ads pause. Pushed `0f517d2`.
 **Next:** build their listing when they reply (rating "Not yet inspected").
+Emily attached `public/agency-partner-prospectus.pdf` (the 4 Sept export, the
+same one on `/agency-partner`). Reminded her it still has the group B claims
+("regularly scans…", "proved", "Instant" heading) and no legal footer. Her
+earlier "leave for now" decision stands, and I didn't push it. Heart and Home
+can't have the Good/Outstanding badge until inspected. **Open:** offered to note
+"prospectus attached (4 Sept PDF)" in their outreach-log row; not answered, not
+done.
+Session ended with "sign off". No curriculum step advanced; all Step 10b
+real-project work.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
