@@ -417,6 +417,17 @@ Emily's Keyword Planner CSV + screenshots are in foster-compare's `Google ads/` 
 Next up: one of the organic gaps (UK pay page is the biggest), or the
 prospectus content gaps.
 
+**Session 25 cont. (2026-09-25): first inbound agency.** Heart And Home Fostering
+Group Ltd (Milton Keynes) asked to join. Their website is "coming soon". Emily
+confirmed their URN (2850766), and I checked it on Ofsted: Open, IFA, registered
+23 June 2026, not yet inspected. Drafted the reply; Emily edited it (added an
+allowances question, attached the partner prospectus) and sent it from hello@.
+Logged in a new "Inbound requests" section of foster-compare
+`docs/outreach-log.md`, with the follow-up due 2026-10-02. Also fixed the "what's
+your traffic?" reply (template 3b + roadmap 3e), which still said "weeks into
+paid promotion" after the Ads pause. Pushed `0f517d2`.
+**Next:** build their listing when they reply (rating "Not yet inspected").
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
