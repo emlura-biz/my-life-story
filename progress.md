@@ -745,6 +745,21 @@ and the 2 Oct Heart and Home follow-up.
 **Next up:** unhide agency profiles in stages, or the loose ends above.
 Session ended with "sign off".
 
+**Session 32 (2026-09-30): loose ends cleared.** Emily asked for 10-minute quick
+wins; went through the open list from session 31 and logged her answers in
+foster-compare `outreach-log.md` and `backlink-plan.md`:
+- **Correction:** Foster Care Matters and Fostering Hope were approached via
+  **website contact forms**, not email (session 31 said emailed). Wording not
+  saved, summary only, so the 14 Oct follow-up can't quote it.
+- **Reddit:** r/fosteringuk, 30 Sep, linking `/transfer-fostering-agencies`.
+- **Phone number:** Emily's decision, NOT going on the site; listings only.
+- **FreeIndex:** submitted, not yet live.
+- **web-logo.png:** Emily moved it out of `public/`; checked, repo clean.
+**Still open:** 14 Oct follow-up on both swap forms, 10 Oct Tier 1 charity
+cut-off, 2 Oct Heart and Home follow-up, FreeIndex going live.
+**Next up:** unhide agency profiles in stages (M9's three gates need Emily's
+sign-off).
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
