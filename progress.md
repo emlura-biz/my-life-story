@@ -614,7 +614,26 @@ FAQ (unverified), and the postcode highlight on the table.
 fix) were NOT live 10+ min after pushing (14:13 → 14:23 UTC), although
 earlier changes today (Wiltshire) are live. Emily to check the Cloudflare
 dashboard (Workers & Pages → Deployments).
-**Next up:** Emily reviews the page on localhost, then merge via PR.
+**⚠️ CORRECTION (same session): the QCR "accuracy fix" above was WRONG.**
+The 2026/27 figures £20,440/£435/£515 ARE law: *The Income Tax (Indexation
+of Qualifying Care Relief Amounts) Order 2026* (SI 2026/39), "has effect for
+the tax year 2026-27". HMRC's HS236 and BIM52765 just hadn't caught up. I
+had only checked HMRC guidance, not legislation.gov.uk. Emily pasted a
+second opinion (another AI) that flagged it, and I verified it against the
+SI itself. Restored on all 3 pages and the new UK page, now cited to the SI
+(better than the original Capstone source), with the false "not yet
+published" note removed. `main` `5b1cfb5`, branch `521bbfa`. Plan doc
+corrected too. The same second opinion suggested relabelling NI's "16+" as
+"16 to 17": declined, because NI's scheme says 16+. **The wrong version
+never went live**, because Cloudflare didn't build any of those pushes.
+**Deploy issue, continued:** Cloudflare has built nothing since the 15:07
+push (9c38ae8). Pushes 0e94579, 0cff991, 3b8d60a, the empty trigger e9ffb34
+and 5b1cfb5 all got no "Workers Builds" check-run. Emily's Deployments page
+showed nothing queued or failed. Live site = the 15:07 version, which has
+correct figures but still sends Google "[object Object]" on 2 pages.
+**Next up:** get Cloudflare building again (Emily's dashboard: the Worker →
+Settings → Builds, check the Git connection), confirm 5b1cfb5 goes live,
+then Emily reviews the UK page on localhost, then merge via PR.
 **Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
 council list, QCR, NI), then build the page.
 
