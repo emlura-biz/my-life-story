@@ -679,9 +679,10 @@ checked each one and pushed back where the copy went beyond the facts:
 Skill note: she's now writing and editing the copy herself, and batching
 tweaks so they go out in one push. That's the directing → leading shift.
 **Next up:** confirm `01ac40b` is live. Then Emily requests indexing in
-Search Console for /blog/foster-carer-pay-uk. Still open: the South East
-council list, the hero image (placeholder), council rate examples, Staying
-Put, the benefits FAQ.
+Search Console for /blog/foster-carer-pay-uk. Emily decided to **keep the
+placeholder hero image** and called the page done. Still open, for a possible
+v2: the South East council list, council rate examples, Staying Put, the
+benefits FAQ.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
