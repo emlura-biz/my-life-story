@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-23 (session 25)
+- **Last updated:** 2026-09-30 (session 27)
 - **Curriculum version:** v1
 
 ---
@@ -475,6 +475,50 @@ Confirmed this is pre-existing, not caused by this session's changes.
 thing next session, before any further building. Also: GitHub flagged 2
 Dependabot vulnerabilities (1 high, 1 moderate) on push — not investigated
 this session, worth a look. Emily to check the live Wiltshire page herself.
+
+**Session 27 (2026-09-30): both open items from session 26 resolved.**
+No curriculum step — pure Step 10b real-project work, both tasks Emily's own
+direct requests.
+**Dependabot (`let's fix dependabot`):** checked live via `gh api` rather than
+trusting the 2-alert count from session 26's push message — found 9 open
+alerts, not 2 (Dependabot had since found new problems in packages already
+pinned for older issues, plus more that only surfaced on closer digging).
+Fixed in two commits: (1) `fast-uri` 3.1.6→3.1.8 and `undici` 7.29.0→7.29.1
+in `package.json`'s two `overrides` blocks (`58181a7`-style pins from
+earlier sessions had themselves become vulnerable to newer CVEs) — commit
+`74c26f3`; (2) `brace-expansion` and `engine.io` (7 alerts, all transitive
+dev-tooling pulled in via `react-email`→`glob`/`socket.io`) — these didn't
+need new overrides, a plain `npm update` picked up already-compatible safe
+patch versions — commit `2b6c205`. `npm audit` now clean (0 vulnerabilities).
+Confirmed via `gh api` after both pushes: **0 open Dependabot alerts.**
+`tsc --noEmit` showed the same pre-existing `Agency`-type errors before and
+after (session 21's known issue) — nothing new introduced.
+**Localhost preview (`let's fix the preview`):** root-caused properly before
+fixing — reproduced the 500 live, found the real error in the SSR output:
+`@supabase/realtime-js` requires a global `WebSocket`, which Node only has
+natively from v22+; this cage is deliberately pinned to Node 20
+(`/etc/flt-cage-provisioned` says `node-major: 20`) with no `sudo`/nvm/volta
+available to change that — a genuine platform constraint, not something
+fixable from inside the cage. Fixed at the application level instead: new
+`scripts/dev-websocket-polyfill.cjs` hands Node the `ws` package's
+`WebSocket` before Vite starts, wired in via the `dev` script's
+`NODE_OPTIONS`. Dev-only — production (Cloudflare Workers) already has a
+native `WebSocket`, untouched. Also pinned `ws` as an explicit
+`devDependency` (previously only present incidentally through another
+package). Verified live: homepage, the Wiltshire agency page (full real
+data — pay rates, coverage towns, everything), and a city page all return
+200 with a clean log, using the actual `npm run dev` command Emily would
+type. Committed + pushed (`34611fb`).
+An aside mid-session: Emily asked whether tasks like these could be pushed
+to the background so she could work on something else in parallel —
+explained the conversation is inherently turn-based (that's also *why* the
+review-before-it-happens safety net works), background-running a whole
+independent task isn't something a single session supports, and a second
+terminal/`tutor` session touching the same repo at once carries real risk
+(cited the session 12 Finder-reorg scramble) — recommended sticking to one
+thread at a time given how quick these particular tasks were anyway.
+**Next up:** whatever Emily picks — no open thread was pressing at session
+end.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
