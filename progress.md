@@ -771,6 +771,25 @@ indexable + linked + new title. Pay figures verified on bristol.gov.uk.
 not readable by my tools (pages point to PDFs/403). No text written for them.
 Ofsted URNs for Dorset/Somerset/Oxfordshire/Hampshire in DB look wrong ("70","74","68","60").
 
+### Session 32 (cont.): batch of 9, Bristol built, data fixed (2026-09-30)
+**Council rating rule A (Emily):** show the council's latest Ofsted "children in care" judgement,
+labelled council-wide. Checked: Dorset Outstanding (Mar 2025), Somerset Requires improvement
+(Apr 2026), Oxfordshire Good, Hampshire Outstanding, Sandwell Good. Fixed URNs: Dorset 2533840,
+Somerset SC041894, Oxfordshire SC048223, Hampshire SC061164 (Sandwell URN unchecked). I wrongly
+set Dorset to "not yet inspected" first, then restored Outstanding. Somerset STAYS in the batch.
+**Pay rule:** no pay figures on councils unless verified + dated; councils get an "Ask about
+current rates" button (adds to shortlist -> existing request-a-call bar), never "contact them
+directly". Bristol + Wiltshire keep dated figures (checked Sept 2026; re-check each April).
+**CTAs built:** blog StickyPostcodeBar on all profile pages + council pay box button
+(GenericAgencyProfile). Wiltshire/Sandwell use custom profiles, NO pay button yet.
+**Bristol copy:** short hero intro (hard-coded), pay/matching/support in lower boxes, start-up grant
+in Allowances box, cautious coverage line. Gemini coverage list NOT published (unverified).
+Reviews left out (no fostering-specific Google listing; council testimonials are marketing).
+Preview branch: bristol-preview-fcc.fostercarecompare.workers.dev/agencies/foster-bristol (works).
+**Still to do:** page copy for Dorset, Oxfordshire, Hampshire, Somerset, Sandwell (no pay figures);
+new rows for Gloucestershire CC + Swindon BC; add Wiltshire/Sandwell pay button; audit the other
+~100 council ratings (none show Requires improvement); Bristol/Wiltshire April figure re-check.
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
