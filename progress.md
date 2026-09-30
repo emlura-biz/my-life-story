@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-30 (session 29)
+- **Last updated:** 2026-09-30 (session 30)
 - **Curriculum version:** v1
 
 ---
@@ -687,6 +687,36 @@ Search Console for /blog/foster-carer-pay-uk. Emily decided to **keep the
 placeholder hero image** and called the page done. Still open, for a possible
 v2: the South East council list, council rate examples, Staying Put, the
 benefits FAQ.
+
+**Session 30 (2026-09-30): pay page confirmed live, business listings logged.**
+No curriculum step, pure Step 10b real-project work.
+**Pay page LIVE:** the `01ac40b` build (PR #16) went live at 16:05 UTC. Checked
+directly on the live page: new "Breakdown of the fostering allowance" heading,
+the rewritten meta description, 0 "[object Object]", and it's in the sitemap.
+(Some early checks wrongly showed zero matches. That was a bad search command,
+not the site: re-checked with Python.) **Emily requested indexing** in Search
+Console for `/blog/foster-carer-pay-uk`. Watch the Performance report for
+impressions in a few days.
+**Listings and Reddit logged** in foster-compare `docs/outreach-log.md`
+section 1: Reddit (Emily still posting; subreddits/dates/page not recorded),
+Yell, Google Business Profile, Bing Places (confirmed), Cylex, Apple Business
+Connect and FreeIndex. Emily did all of them herself. Apple's domain-validation
+step rejected fostercarecompare.co.uk ("Unable to add domain", cause never
+found); it was added some other way, method not recorded. My first guess that
+she was on the wrong Apple screen was wrong. All are mostly `nofollow`, so
+they're citations and visitors, not backlinks, and don't count towards the
+domain-authority goal. Master business details (name, registered-office
+address, phone, site) recorded at the top of that section so every listing
+matches. Saved to memory as "Business listings tracker".
+**Open:** (1) the phone number 01638336031 isn't on the site itself, so Emily
+to decide if it should be; (2) FreeIndex confirmation email not checked;
+(3) an untracked `public/web-logo.png` in foster-compare, which would go live
+if committed, so move it out of `public/` or commit it on purpose; (4) the
+foster-compare listing checkpoints (`83c1b0b` to `31a7fdd`) are local only, not
+pushed. Emily to run `! git push` in that folder; (5) subreddits, dates and
+which page was linked for Reddit, still to fill in.
+**Next up:** unhide agency profiles in stages (item 3 of session 28's plan).
+Session ended with "sign off".
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
