@@ -596,9 +596,25 @@ broken (London and West Midlands, 3 answers each), so it can't come back.
 Verified with before/after snapshots on localhost: 0 "[object Object]", the
 other 9 pages byte-identical, tsc error count unchanged (10 before and after,
 all the old known ones). Pushed `0cff991`.
-**Still to check:** the Class 2 National Insurance line, and that both
-pushes (`0e94579`, `0cff991`) show up on the live site. **Next up:** build
-the UK pay page.
+NI verified on gov.uk: foster carers can get free Class 3 NI credits (form
+CF411A), and voluntary Class 2 is £3.65/week in 2026/27. Plan updated
+(`3b8d60a`), so all figures are now verified.
+**UK pay page BUILT on branch `uk-foster-carer-pay-page`** (`b86eb15`, pushed
+to GitHub, NOT merged, not live): `src/routes/blog.foster-carer-pay-uk.tsx`.
+All text drafted by the tutor; Emily still to review it on localhost. It has
+the four-nation table, NI spending split, tax/NI/council tax sections, the
+kinship signpost, the CTA with PostcodeSearchBox, 5 FAQs via nodeToText, and
+a Read next card to the London post. Hero image is the bedtime-story photo
+(placeholder). Also: added to the blog index, sitemap, llms.txt and
+checklist, with a link back from the London post. Checks passed: title 44
+chars, description 159, 0 em dashes, 0 "[object Object]". Left out of v1:
+council rate examples (unverified), Staying Put, benefits/Universal Credit
+FAQ (unverified), and the postcode highlight on the table.
+⚠️ **Deploy issue:** the `main` pushes `0e94579` (tax fix) and `0cff991` (FAQ
+fix) were NOT live 10+ min after pushing (14:13 → 14:23 UTC), although
+earlier changes today (Wiltshire) are live. Emily to check the Cloudflare
+dashboard (Workers & Pages → Deployments).
+**Next up:** Emily reviews the page on localhost, then merge via PR.
 **Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
 council list, QCR, NI), then build the page.
 
