@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-30 (session 28)
+- **Last updated:** 2026-09-30 (session 29)
 - **Curriculum version:** v1
 
 ---
@@ -649,12 +649,39 @@ preview-only and never went live (confirmed the page was 404 on the real site).
 giving `a6c37e3` on `main`, and the branch was deleted. Checks passed. This
 build carries the UK page, the 2026/27 QCR figures cited to SI 2026/39, and
 the FAQ "[object Object]" fix.
-**Next up:** confirm `a6c37e3` actually builds and goes live (page 200,
-blog index, figures, FAQ fix). If it doesn't build, use the manual build in
-the Cloudflare dashboard (build latest `main`, NOT "retry" on an old build),
-or message Becky. Then: Search Console request indexing for the new URL.
-**Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
-council list, QCR, NI), then build the page.
+✅ **LIVE 15:02 UTC.** `a6c37e3` built, about 50 minutes after the merge, with
+no manual build needed. So the "stall" was Cloudflare running very slowly,
+not skipping pushes. All live checks passed: page 200, blog index, SI cite,
+0 "[object Object]".
+**Emily's edits round (PR #16 → `01ac40b`, "publish" = sign-off).** Emily
+directed ten changes herself, pasting exact before/after copy. The tutor
+checked each one and pushed back where the copy went beyond the facts:
+- NI breakdown: checked against the DoH NI 2026/27 Model Scheme PDF. Her
+  "(bills, maintenance, extra utilities)" and "savings for the child" aren't in
+  the source, and "should be spent" became "meant to cover". She accepted the
+  sourced version.
+- Council vs agency section: charities can't give council tax discounts, so
+  that was reattributed to councils. Em dashes became commas, and the two
+  internal links (LA vs IFA guide, London pay post) were kept.
+- CTA: "View pay rates" became "published pay rates", because only about 9%
+  of agencies have an allowance figure. The title and hint line were removed;
+  `PostcodeSearchBox` got a `showHint` prop, default on, so the homepage and
+  transfer page are unchanged.
+- Practical things: bold lead-in titles (option 1, matches the West
+  Midlands post).
+- Keyword pass from her Keyword Planner export: the table heading, "Breakdown
+  of the fostering allowance", "foster carers/parents allowance", "foster
+  carer tax allowance" and "Council tax for foster carers". The meta
+  description was rewritten and is 157 characters; she spotted the filler
+  "in each nation" herself.
+- Skipped on purpose: "wages" (carers are self-employed), "benefits" (UC
+  isn't covered) and kinship (her earlier decision).
+Skill note: she's now writing and editing the copy herself, and batching
+tweaks so they go out in one push. That's the directing → leading shift.
+**Next up:** confirm `01ac40b` is live. Then Emily requests indexing in
+Search Console for /blog/foster-carer-pay-uk. Still open: the South East
+council list, the hero image (placeholder), council rate examples, Staying
+Put, the benefits FAQ.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
