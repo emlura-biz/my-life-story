@@ -574,6 +574,23 @@ is a later step. All recorded as a "Decisions" section 0 in the plan. The
 plan's tax figures are 2025/26, so everything must be verified against
 gov.uk for 2026/27 before building. Pushed `cf82fb3`. Emily decided to
 leave the London pay post's "income" wording for now (recorded in the plan).
+**Figures verified (all from official sources):** 2026/27 minimum allowances
+for England (the plan's figures were right), Scotland, Wales and NI, now in
+plan section 0. NI's Model Scheme gives a real spending split (food 40% etc.)
+that replaces the plan's unsourced one. **Not found:** the official list of
+"South East" councils. **Accuracy fix shipped:** HMRC hasn't published
+2026/27 Qualifying Care Relief figures. The £20,440/£435/£515 figures on the
+site came from an agency website (Capstone), so all 3 pages were corrected to
+the 2025/26 figures (£19,690/£415/£495) with a note: the London pay post (also
+redid Sarah's worked sum to £67,010, and dateModified is now 30 Sept),
+`/west-midlands-fostering-agencies` and `/london-fostering-agencies`. Previewed
+on localhost, pushed `0e94579`.
+**Found, not fixed (pre-existing):** the `/london-fostering-agencies` FAQ
+data for Google uses `a.join()` on page elements, so the live page sends
+Google "[object Object]" in place of some answers. Worth fixing separately,
+and other city pages may use the same pattern.
+**Still to check:** the Class 2 National Insurance line. **Next up:** decide
+on the FAQ bug, then build the UK pay page.
 **Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
 council list, QCR, NI), then build the page.
 
