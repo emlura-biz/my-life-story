@@ -558,7 +558,23 @@ Monthly: Jul 8 clicks / Aug 11 / Sep 17, with Sep position improving to
 London pay post got 361 impressions and 0 clicks, and national pay searches
 sit at position 87–90. Added as a baseline section in
 `docs/keyword-map.md`, pushed `edca127`.
-**Next up:** the UK foster carer pay page (plan it first, as a docs/ plan).
+Then gap-reviewed Emily's own pay page plan
+(`docs/uk_foster_care_pay_rates_webpage_plan.md`). Emily asked whether the
+database has enough pay data. Checked live: only **47/524 agencies (9%)**
+have a real £ figure (IFAs 15/354), so no per-agency pay table. **Emily's
+idea instead:** a national minimum allowance table covering **all four
+nations**. Her Keyword Planner pay export (`Google exports/Exported pay
+keywords/`, untracked) showed "allowance" wording is as big as "pay"
+(~5,000 each), so the page targets both. Tax gets a full section. **Kinship
+kept off the page** (Emily's call) apart from one signpost sentence, and
+logged as keyword-map gap #6. Emily added an agency comparison CTA; I
+adjusted it to use `PostcodeSearchBox`, "Google reviews" not "carer
+reviews", and no em dash. The postcode "highlight my area" box on the table
+is a later step. All recorded as a "Decisions" section 0 in the plan. The
+plan's tax figures are 2025/26, so everything must be verified against
+gov.uk for 2026/27 before building. Pushed `cf82fb3`.
+**Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
+council list, QCR, NI), then build the page.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
