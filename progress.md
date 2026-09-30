@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-30 (session 27)
+- **Last updated:** 2026-09-30 (session 27, signed off)
 - **Curriculum version:** v1
 
 ---
@@ -519,6 +519,12 @@ terminal/`tutor` session touching the same repo at once carries real risk
 thread at a time given how quick these particular tasks were anyway.
 **Next up:** whatever Emily picks — no open thread was pressing at session
 end.
+**Follow-up same session:** Emily asked to save the "flag background jobs"
+preference to memory — then corrected it once it was saved: she doesn't
+want them narrated/announced, she wants slow jobs actually run non-blocking
+so the conversation keeps moving (speed, not visibility). Memory rewritten
+to match. Session ended with "sign off" (this project's established
+equivalent of "End lesson" — used the same way at the end of session 25).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
