@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-30 (session 30)
+- **Last updated:** 2026-09-30 (session 31)
 - **Curriculum version:** v1
 
 ---
@@ -716,6 +716,33 @@ foster-compare listing checkpoints (`83c1b0b` to `31a7fdd`) are local only, not
 pushed. Emily to run `! git push` in that folder; (5) subreddits, dates and
 which page was linked for Reddit, still to fill in.
 **Next up:** unhide agency profiles in stages (item 3 of session 28's plan).
+Session ended with "sign off".
+
+**Session 31 (2026-09-30): reciprocal outreach logged.** No curriculum step,
+pure Step 10b real-project work. Emily asked "what's next?" and got a steered
+choice: start the unhide-agency-profiles conversation (M9's three gates still
+need her sign-off) or clear loose ends first. She went straight to outreach
+notes instead.
+**Outreach logged** (foster-compare `docs/outreach-log.md` section 1 and
+`docs/backlink-plan.md` Tier 3): Emily emailed **Foster Care Matters**
+(fostercarematters.com) and **Fostering Hope** (fosteringhope.co.uk) herself,
+same reciprocal-swap email with names swapped, both 30 Sep. Follow-up due
+2026-10-14, one at most. Contact addresses not recorded, and what kind of
+organisation Fostering Hope is hasn't been checked. Flagged honestly that the
+offer is conditional, against backlink-plan section 6 ("feature first, ask
+second"). Emily asked whether Google would know: corrected my earlier
+overstatement. Google can't see the email, only the resulting links, and one
+relevant swap at this scale is low risk. Emily's call: fine to send both.
+**Coram (parked):** Emily wants to approach Coram with her life story tool
+but may turn it into an app first. Noted under Tactic C in `backlink-plan.md`.
+Which part of Coram is undecided. Nothing sent.
+Commits `c225fb6` and `a832f4e`, both pushed by Emily (`! git push`).
+**Open:** (1) Emily to give the contact addresses for the two emails;
+(2) web-logo.png untracked in `public/`; (3) phone number not on the site;
+(4) FreeIndex confirmation email; (5) Reddit details; (6) 14 Oct follow-up
+on both swap emails, plus the 10 Oct no-reply cut-off on the Tier 1 charities
+and the 2 Oct Heart and Home follow-up.
+**Next up:** unhide agency profiles in stages, or the loose ends above.
 Session ended with "sign off".
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
