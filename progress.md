@@ -631,9 +631,28 @@ push (9c38ae8). Pushes 0e94579, 0cff991, 3b8d60a, the empty trigger e9ffb34
 and 5b1cfb5 all got no "Workers Builds" check-run. Emily's Deployments page
 showed nothing queued or failed. Live site = the 15:07 version, which has
 correct figures but still sends Google "[object Object]" on 2 pages.
-**Next up:** get Cloudflare building again (Emily's dashboard: the Worker →
-Settings → Builds, check the Git connection), confirm 5b1cfb5 goes live,
-then Emily reviews the UK page on localhost, then merge via PR.
+Emily pasted Cloudflare's Settings warning about a name mismatch, so
+`wrangler.jsonc` `name` was changed from "foster-care-compare" to "fcc" (`0fa9e8c`). A
+manual deploy would otherwise have gone to a second Worker. Build settings
+were all correct (repo, `main`, watch paths `*`). Cloudflare status showed
+Workers Builds operational, R2 degraded. Emily pasted a second AI's
+troubleshooting list. Tutor advised against `wrangler deploy` from the cage
+(it would ship the local branch; also needs a Cloudflare login and Node 22)
+and against disconnect/reconnect (the Git link was proven working because
+the branch push DID get a preview build, b86eb15 at 14:35 UTC). Emily
+thinks it's lag, and that fits: builds seem to run one at a time and slowly,
+dropping pushes that arrive mid-build.
+Branch previews exist:
+`uk-foster-carer-pay-page-fcc.fostercarecompare.workers.dev`. They're
+preview-only and never went live (confirmed the page was 404 on the real site).
+**PUBLISHED: Emily said "publish" (sign-off).** PR #15 was squash-merged,
+giving `a6c37e3` on `main`, and the branch was deleted. Checks passed. This
+build carries the UK page, the 2026/27 QCR figures cited to SI 2026/39, and
+the FAQ "[object Object]" fix.
+**Next up:** confirm `a6c37e3` actually builds and goes live (page 200,
+blog index, figures, FAQ fix). If it doesn't build, use the manual build in
+the Cloudflare dashboard (build latest `main`, NOT "retry" on an old build),
+or message Becky. Then: Search Console request indexing for the new URL.
 **Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
 council list, QCR, NI), then build the page.
 
