@@ -760,6 +760,17 @@ cut-off, 2 Oct Heart and Home follow-up, FreeIndex going live.
 **Next up:** unhide agency profiles in stages (M9's three gates need Emily's
 sign-off).
 
+### Session 32 (cont.): unhide batch of 9 started (2026-09-30)
+Batch of 9 agreed with Emily: Wiltshire (live), Bristol, Dorset, Somerset, Oxfordshire,
+Hampshire, Gloucestershire CC + Swindon BC (need NEW rows), Sandwell (check).
+Dropped Bath (no search data) and West Berkshire (no data). Keyword files in
+foster-compare/Google ads/Keywords for council pages/.
+**Bristol DONE, committed 3ad8bba, NOT pushed:** DB copy updated (backup in FLT/data/backups),
+indexable + linked + new title. Pay figures verified on bristol.gov.uk.
+**Blocked:** current pay figures for Dorset, Somerset, Oxfordshire, Hampshire, Sandwell
+not readable by my tools (pages point to PDFs/403). No text written for them.
+Ofsted URNs for Dorset/Somerset/Oxfordshire/Hampshire in DB look wrong ("70","74","68","60").
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
