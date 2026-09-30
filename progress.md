@@ -572,7 +572,8 @@ adjusted it to use `PostcodeSearchBox`, "Google reviews" not "carer
 reviews", and no em dash. The postcode "highlight my area" box on the table
 is a later step. All recorded as a "Decisions" section 0 in the plan. The
 plan's tax figures are 2025/26, so everything must be verified against
-gov.uk for 2026/27 before building. Pushed `cf82fb3`.
+gov.uk for 2026/27 before building. Pushed `cf82fb3`. Emily decided to
+leave the London pay post's "income" wording for now (recorded in the plan).
 **Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
 council list, QCR, NI), then build the page.
 
