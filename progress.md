@@ -589,8 +589,16 @@ on localhost, pushed `0e94579`.
 data for Google uses `a.join()` on page elements, so the live page sends
 Google "[object Object]" in place of some answers. Worth fixing separately,
 and other city pages may use the same pattern.
-**Still to check:** the Class 2 National Insurance line. **Next up:** decide
-on the FAQ bug, then build the UK pay page.
+**FAQ bug FIXED (Emily approved):** new `src/lib/nodeToText.ts` flattens
+formatted FAQ answers to plain text (keeps the words, drops SourceCite
+pills). Used on all 11 pages that build FAQ schema, not just the 2 that were
+broken (London and West Midlands, 3 answers each), so it can't come back.
+Verified with before/after snapshots on localhost: 0 "[object Object]", the
+other 9 pages byte-identical, tsc error count unchanged (10 before and after,
+all the old known ones). Pushed `0cff991`.
+**Still to check:** the Class 2 National Insurance line, and that both
+pushes (`0e94579`, `0cff991`) show up on the live site. **Next up:** build
+the UK pay page.
 **Next up:** verify the 2026/27 figures (NMA for 4 nations, the South East
 council list, QCR, NI), then build the page.
 
