@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-30 (session 27, signed off)
+- **Last updated:** 2026-09-30 (session 28)
 - **Curriculum version:** v1
 
 ---
@@ -525,6 +525,30 @@ want them narrated/announced, she wants slow jobs actually run non-blocking
 so the conversation keeps moving (speed, not visibility). Memory rewritten
 to match. Session ended with "sign off" (this project's established
 equivalent of "End lesson" — used the same way at the end of session 25).
+
+**Session 28 (2026-09-30): launch re-plan, traffic-first.** Emily's single
+highest priority: gain traffic to show domain authority to agency partners.
+Reviewed `launch-roadmap.md` against reality: its only traffic engine was
+Google Ads, paused 23 Sept, and nothing replaced it. Wave 1 pitches never
+went out. Explained that domain authority comes from backlinks, not visits,
+and that new pages take 2–4 months to rank, so backlinks are the fastest
+credibility before the 31 Dec early-adopter deadline. Agreed priority list:
+(1) chase the 3 Tier 1 charity follow-ups, (2) UK foster carer pay page
+(~5,000+/mo), (3) unhide agency profiles in stages (unlocks the
+already-built `/agency-badge`), (4) council FIS directory listings,
+(5) North East + South West regional pages, (6) first inclusion page (early
+Nov). Parked: Ads, Bing, quiz, Facebook, Why Foster phases 2–3, and the
+`/impact` page unless UnLtd shortlists her.
+**UnLtd: submitted** (Emily confirmed), no reply yet.
+**(1) DONE:** all three follow-ups sent 30 Sept, with a no-reply cut-off of
+10 Oct. Addresses verified live: Fostering Network to campaigns@, CC info@.
+FosterTalk to marketing@, forwarded to enquiries@. Become: campaigns@
+bounced, and info@ is no longer on their site, so the August email probably
+never arrived. The original was re-sent fresh to hello@. Logged in
+foster-compare `outreach-log.md` + `backlink-plan.md`.
+Roadmap rewrite to match the new plan: offered, not done yet.
+**Next up:** the UK foster carer pay page. Also still open: Emily's Search
+Console baseline (impressions/clicks, last 3 months).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
