@@ -550,6 +550,16 @@ Roadmap rewrite to match the new plan: offered, not done yet.
 **Next up:** the UK foster carer pay page. Also still open: Emily's Search
 Console baseline (impressions/clicks, last 3 months).
 
+**Session 29 (2026-09-30): Search Console baseline recorded.** Emily
+exported it herself (foster-compare `Google exports/30.09.26/`, untracked on
+purpose). Last 3 months: **36 clicks, 19,587 impressions, avg position ~25**.
+Monthly: Jul 8 clicks / Aug 11 / Sep 17, with Sep position improving to
+21.8. Only 74 of 854 queries reach page one. It confirms the pay gap: the
+London pay post got 361 impressions and 0 clicks, and national pay searches
+sit at position 87–90. Added as a baseline section in
+`docs/keyword-map.md`, pushed `edca127`.
+**Next up:** the UK foster carer pay page (plan it first, as a docs/ plan).
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
