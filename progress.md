@@ -437,6 +437,45 @@ done.
 Session ended with "sign off". No curriculum step advanced; all Step 10b
 real-project work.
 
+**Session 26 (2026-09-30): Wiltshire Council profile — real SEO work, from the
+paused Ads research.** Emily wanted to make use of last session's keyword
+findings on the organic (non-paid) side: optimise agency profile pages to be
+found on Google, prioritising large councils and charities. Checked live
+Supabase before trusting the docs (`docs/keyword-map.md` still said ~385
+agencies; live count is 524: 354 IFA, 108 council, 47 charity, 15 social
+enterprise). Identified 60 "large" profiles by the existing `scale` field —
+32 regional-scale councils + 28 national-scale charities (Emily's own
+definition, confirmed).
+**Blocker found before any keyword work could matter:** agency profile pages
+are noindexed site-wide except one, `wiltshire-council-fostering-service` —
+a deliberate gate (`docs/launch-roadmap.md` M9, set 2026-07-21, three
+conditions: data verified, template not too thin/duplicate, pages generally
+improved). None confirmed cleared. **Emily's call: leave the other 523
+noindexed for now** — this session only touched the one live page.
+Real SEO work on Wiltshire: Search Console data (Emily's export) showed
+"fostering wiltshire" already ranking ~position 6 with 8 impressions, 0
+clicks. New title swaps the old "...in Trowbridge" (nobody searches the
+council's office town, and it was over the checklist's 60-char limit) for
+"...— Ofsted Outstanding". New meta description leads with pay
+(£420–£780/week) instead of repeating "Outstanding" twice; deliberately does
+NOT mention reviews (no review data exists for this listing — would have
+been the same kind of overclaim as the prospectus "Instant" wording). Added
+a coverage-area sentence naming the towns actually served — checked against
+wiltshire.gov.uk's own recruitment campaign pages (not just our database,
+which was missing Warminster/Calne/Westbury/Melksham). Database's
+`coverage_cities` and `coverage_postcode_prefixes` updated to match (script
+`scripts/update-wiltshire-seo-2026-09-30.mjs`, backup saved first). Pushed
+`7d76bb9`.
+**Environment issue found, not fixed:** tried to preview on localhost first,
+per the project's own rule. This cage machine's Node 20 can't run pages that
+query Supabase during server-side rendering (missing native `WebSocket`) —
+homepage loads fine, but any agency profile page 500s in dev mode here.
+Confirmed this is pre-existing, not caused by this session's changes.
+**Next up (Emily's request):** fix the localhost preview environment first
+thing next session, before any further building. Also: GitHub flagged 2
+Dependabot vulnerabilities (1 high, 1 moderate) on push — not investigated
+this session, worth a look. Emily to check the live Wiltshire page herself.
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
