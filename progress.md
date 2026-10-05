@@ -869,9 +869,14 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   Plan `docs/council-profile-template-plan.md` (`f769b69`). **Step 1 done** (`bd401eb`): `GenericLAProfile` +
   `src/data/councilProfiles.ts` (two markers per council; Ofsted wording built from DB rating; summary only shows if
   rating still matches), Wiltshire switched over, old component deleted, check warns on missing markers. Pushed.
-**Next up:** Emily checks live Wiltshire (Areas covered, types list) + Bristol Mockingbird + shortlist toggle;
-step 2 (Bristol entry + DB allowance fallback + switch other councils; fix `yearly-refresh-plan.md` row E);
-confirm issue #17 email; notes on hidden council pages.
+- Emily asked: batches or all at once? Tutor: all at once (one code path, pages hidden, easy undo; real risk is
+  data gaps). Emily: "just do it then push without my permission" (guard still blocks tutor push → she pushes).
+- **Step 2 done** (`b391f7d`, local): Bristol entry (heading, subtitle, intro, photo, Mockingbird, ILACS quotes),
+  all councils → `GenericLAProfile`, DB allowance fallback → `CouncilAllowanceSection`. Previewed 7 pages: all render;
+  108 councils show 4–5 sections except 1 (Homes and Horizons: 2). Bristol lost its generic support cards (as agreed).
+  Found: Foster Birmingham (hidden, hand-built) has headcounts (594 households etc.) → step 3 with Sandwell.
+**Next up:** Emily pushes `b391f7d`; checks live Bristol + Wiltshire; Bristol needs checked support items + Ofsted
+inspection date; confirm issue #17 email; notes on hidden council pages.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
