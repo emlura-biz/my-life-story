@@ -856,7 +856,9 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
 - Emily pushed `22de539`. Contact submission 4 Oct 20:09 confirmed received by Emily.
 - **DB wording done:** Dorset + Somerset allowance "Ask about current rates." → "Shortlist to check current rates."
   (only 2 rows had it; rows backed up; script committed). Live Outstanding page verified: old 0, new 2.
-**Next up:** confirm issue #17 email arrived in Gmail; Emily's notes on 5 hidden council pages; Sandwell link call.
+- **Sandwell unlinked** (Emily's call): removed from `profileLinks.ts` until she's happy with the page. Page still
+  exists at its URL, still noindexed. Clickable now: Wiltshire + Foster Bristol only (both indexed).
+**Next up:** Emily pushes the Sandwell unlink + wording script; confirm issue #17 email; notes on 5 hidden council pages.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
