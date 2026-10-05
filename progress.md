@@ -847,7 +847,13 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   `docs/freshness-register.md`, 29 markers. Emily asked about new cities → added a safety net (city FAQs with £ and
   `councilPay.ts` entries with no marker get flagged) + a step in all 3 checklists. Build + tsc (10 known) fine.
 - First email will list: security spot-check (Oct), Wiltshire Ofsted (Nov), £295 offer + "81,000 children" (Dec).
-**Next up:** Emily pushes; run the workflow once by hand to test the email; security spot-check; DB "ask"→"check".
+- Emily pushed `fde8dda`; reminders workflow passed on push; she ran it by hand → issue #17 "Refresh due: October
+  2026" created + assigned (Gmail arrival not yet confirmed).
+- **Security spot-check DONE, all 9 clear** (`22de539`): rate limit burst-tested (6th → 429), MFA on all 5, only fcc
+  worker, logs normal (Emily exported CSV; crawler burst 22:33, a contact form submission 4 Oct 20:09). Backup was 18
+  days old → new full backup 2026-10-05 (needed the WebSocket polyfill; command fixed in security plan `fc2bf28`).
+  Branch protection not available on free private repo → recorded as accepted.
+**Next up:** Emily pushes `fc2bf28` + `22de539`; confirm issue #17 email arrived; DB "Ask"→"Check" wording.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
