@@ -858,7 +858,20 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   (only 2 rows had it; rows backed up; script committed). Live Outstanding page verified: old 0, new 2.
 - **Sandwell unlinked** (Emily's call): removed from `profileLinks.ts` until she's happy with the page. Page still
   exists at its URL, still noindexed. Clickable now: Wiltshire + Foster Bristol only (both indexed).
-**Next up:** Emily pushes the Sandwell unlink + wording script; confirm issue #17 email; notes on 5 hidden council pages.
+- Emily pushed Sandwell unlink etc. (`26a76e5`). **Foster Bristol Mockingbird section** (`2ccdfd5`): shared
+  `MockingbirdSection`, Bristol wording softened after web check (first constellation 2024), marker 2027-04.
+- **Shortlist fix** (`b81c055`): council pay-card "Shortlist" button couldn't un-shortlist (`if (shortlisted) return`)
+  → now toggles + "removed" toast. Audited every other shortlist button: all already toggle. Pushed.
+- **Council profile template** (Emily: "Wiltshire as the gold star"). Asked the tutor to scrutinise as a content
+  specialist → found: Areas covered / DB allowance fallback / ILACS note would be lost; DB vs hand-typed fostering
+  types; generic "24/7 support" cards unverified for 100+ councils (Wiltshire says until midnight); stale content in
+  `agencies.$slug.tsx` too. Emily: keep all, add Areas covered to Wiltshire, drop generic support cards.
+  Plan `docs/council-profile-template-plan.md` (`f769b69`). **Step 1 done** (`bd401eb`): `GenericLAProfile` +
+  `src/data/councilProfiles.ts` (two markers per council; Ofsted wording built from DB rating; summary only shows if
+  rating still matches), Wiltshire switched over, old component deleted, check warns on missing markers. Pushed.
+**Next up:** Emily checks live Wiltshire (Areas covered, types list) + Bristol Mockingbird + shortlist toggle;
+step 2 (Bristol entry + DB allowance fallback + switch other councils; fix `yearly-refresh-plan.md` row E);
+confirm issue #17 email; notes on hidden council pages.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
