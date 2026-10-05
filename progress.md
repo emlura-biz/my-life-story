@@ -875,8 +875,11 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   all councils → `GenericLAProfile`, DB allowance fallback → `CouncilAllowanceSection`. Previewed 7 pages: all render;
   108 councils show 4–5 sections except 1 (Homes and Horizons: 2). Bristol lost its generic support cards (as agreed).
   Found: Foster Birmingham (hidden, hand-built) has headcounts (594 households etc.) → step 3 with Sandwell.
-**Next up:** Emily pushes `b391f7d`; checks live Bristol + Wiltshire; Bristol needs checked support items + Ofsted
-inspection date; confirm issue #17 email; notes on hidden council pages.
+- Emily pushed `b391f7d`. **Bristol support + Ofsted date** (`7298059`): 6 support cards from
+  bristol.gov.uk support page (own wording, no prices); last full ILACS 16 Jan 2023 (reports.ofsted.gov.uk, focused
+  visits since); new full ILACS reported due by mid-2026 → Ofsted marker due 2026-12 (may land any time).
+**Next up:** Emily pushes; checks live Bristol + Wiltshire; step 3 (Sandwell + Foster Birmingham headcounts);
+confirm issue #17 email; notes on hidden council pages.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
