@@ -790,6 +790,10 @@ Preview branch: bristol-preview-fcc.fostercarecompare.workers.dev/agencies/foste
 new rows for Gloucestershire CC + Swindon BC; add Wiltshire/Sandwell pay button; audit the other
 ~100 council ratings (none show Requires improvement); Bristol/Wiltshire April figure re-check.
 
+**Heart and Home (5 Oct 2026):** they replied asking Emily to HOLD OFF listing them. No listing to
+build; no follow-up date. Logged in foster-compare docs/outreach-log.md. Remaining dated items: 10 Oct
+Tier 1 charity cut-off, 14 Oct swap-form follow-up, FreeIndex going live.
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
