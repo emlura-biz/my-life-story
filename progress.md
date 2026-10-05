@@ -810,6 +810,29 @@ unpublished; cautious line live; Emily may ask Foster Bristol directly.
 **Push state at sign-off:** both repos have ONE unpushed log-only commit each (Heart and Home on hold).
 **Curriculum:** no step advanced (still 10b real project).
 
+### Session 33 (2026-10-05): profile links locked down, council pay layout, yearly refresh plan
+No curriculum step (10b real project). All in foster-compare, committed locally (not yet pushed at time of logging):
+- **Profile links gap found + fixed (`c36f026`):** near-me + Outstanding pages linked EVERY agency name to its
+  (noindexed, unverified) profile since they were built. Now use one shared approved list,
+  `src/lib/profileLinks.ts` (Sandwell, Wiltshire, Foster Bristol). Indexable list (`INDEXABLE_SLUGS`) is separate:
+  only Wiltshire + Bristol. Sandwell = linked but noindexed (Emily not yet asked whether to keep it linked).
+- **Council "Shortlist" button (`0c112a8`, `2f4b81a`, `96ca62b`):** shared `AskAboutRatesButton.tsx`; bold line
+  "Shortlist to check current rates" + button "Shortlist" → "Shortlisted" with tick. Now on Wiltshire, Sandwell and
+  all generic council profiles. Pop-up wording matches ("check").
+- **Bristol allowances in Wiltshire card layout (`61f0a44`), Wiltshire moved onto it too (`2f4b81a`):** figures for
+  both councils now live in `src/data/councilPay.ts`, drawn by `CouncilPaySection.tsx`. Wiltshire verified identical
+  before/after. Tutor wrote Bristol's intro + short card notes (restating old text only); Emily to read them.
+- **Yearly refresh plan (#23, `docs/yearly-refresh-plan.md`):** REFRESH markers + one register + combined monthly
+  GitHub-issue email (assigned to Emily) + push warning + GOV.UK alerts + tutor session check. Ofsted ratings point
+  to plan #8. **Emily's setup all done:** GOV.UK alerts (HS236, Fostering topic, DfE CLA stats), GitHub email,
+  two calendar events. Pending her sign-off: rating-date DB column; unlinked custom profiles marked when unhidden;
+  Walsall fix; keep commercial/legal in register.
+- **Found:** Walsall city page pay (Oct 2023 PDF, £159–£233.15) is BELOW England 2026/27 legal minimum (£205–£309)
+  → plan action #1. Security quarterly spot-check due early Oct 2026 (now). Ofsted's GOV.UK dataset is yearly only.
+- **Tutor mistakes, logged:** called Walsall "out of date" before checking its note (turned out right, for a better
+  reason); recommended a GOV.UK search alert without checking it keeps the keyword (it doesn't). Emily caught it.
+**Next up:** push; build refresh Phase 1; Walsall; Emily's notes on the 5 hidden council pages; Sandwell link call.
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
