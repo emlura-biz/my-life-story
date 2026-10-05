@@ -853,7 +853,10 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   worker, logs normal (Emily exported CSV; crawler burst 22:33, a contact form submission 4 Oct 20:09). Backup was 18
   days old → new full backup 2026-10-05 (needed the WebSocket polyfill; command fixed in security plan `fc2bf28`).
   Branch protection not available on free private repo → recorded as accepted.
-**Next up:** Emily pushes `fc2bf28` + `22de539`; confirm issue #17 email arrived; DB "Ask"→"Check" wording.
+- Emily pushed `22de539`. Contact submission 4 Oct 20:09 confirmed received by Emily.
+- **DB wording done:** Dorset + Somerset allowance "Ask about current rates." → "Shortlist to check current rates."
+  (only 2 rows had it; rows backed up; script committed). Live Outstanding page verified: old 0, new 2.
+**Next up:** confirm issue #17 email arrived in Gmail; Emily's notes on 5 hidden council pages; Sandwell link call.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
