@@ -25,6 +25,10 @@
 
 Step 10b — The real project.
 
+**Dated items (tutor: check at every session start):** in foster-compare run
+`node scripts/check-refresh-due.mjs` and mention anything OVERDUE or DUE IN THE
+NEXT 60 DAYS, plus anything listed as unmarked. Register: `docs/freshness-register.md`.
+
 **Active thread (session 14):** switched focus from the prospectus to
 foster-compare's **M15 agency data cleanup** (checking the site against the
 official Ofsted register).
@@ -827,11 +831,23 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   to plan #8. **Emily's setup all done:** GOV.UK alerts (HS236, Fostering topic, DfE CLA stats), GitHub email,
   two calendar events. Pending her sign-off: rating-date DB column; unlinked custom profiles marked when unhidden;
   Walsall fix; keep commercial/legal in register.
-- **Found:** Walsall city page pay (Oct 2023 PDF, £159–£233.15) is BELOW England 2026/27 legal minimum (£205–£309)
-  → plan action #1. Security quarterly spot-check due early Oct 2026 (now). Ofsted's GOV.UK dataset is yearly only.
+- **Found:** Walsall city page pay quoted an Oct 2023 PDF (£159–£233.15) → plan action #1. (Tutor first said it was
+  "below the legal minimum" — wrong comparison, corrected; Walsall pays a fee on top and uses different age bands.) Security quarterly spot-check due early Oct 2026 (now). Ofsted's GOV.UK dataset is yearly only.
 - **Tutor mistakes, logged:** called Walsall "out of date" before checking its note (turned out right, for a better
   reason); recommended a GOV.UK search alert without checking it keeps the keyword (it doesn't). Emily caught it.
 **Next up:** push; build refresh Phase 1; Walsall; Emily's notes on the 5 hidden council pages; Sandwell link call.
+
+### Session 33 (cont.): pushes, Walsall fixed, refresh Phase 1 built (2026-10-05)
+- Emily pushed `5563a80` (live, verified: Bristol/Wiltshire "Shortlist to check current rates"; Outstanding page links
+  only Wiltshire) and `160e3cb` Walsall fix (April 2026 fees + allowances, first REFRESH marker; was still building).
+- Found: Outstanding page shows "…Ask about current rates." from a council's DB `allowance` text (old wording, not a
+  code bug). Offered to update DB rows to "check" wording — Emily not yet decided.
+- **Refresh Phase 1 built (foster-compare, committed locally):** `scripts/check-refresh-due.mjs`,
+  `.github/workflows/refresh-reminders.yml` (1st of month issue to emlura-biz + push warnings, never blocks),
+  `docs/freshness-register.md`, 29 markers. Emily asked about new cities → added a safety net (city FAQs with £ and
+  `councilPay.ts` entries with no marker get flagged) + a step in all 3 checklists. Build + tsc (10 known) fine.
+- First email will list: security spot-check (Oct), Wiltshire Ofsted (Nov), £295 offer + "81,000 children" (Dec).
+**Next up:** Emily pushes; run the workflow once by hand to test the email; security spot-check; DB "ask"→"check".
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
