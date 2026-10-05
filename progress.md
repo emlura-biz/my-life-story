@@ -794,6 +794,22 @@ new rows for Gloucestershire CC + Swindon BC; add Wiltshire/Sandwell pay button;
 build; no follow-up date. Logged in foster-compare docs/outreach-log.md. Remaining dated items: 10 Oct
 Tier 1 charity cut-off, 14 Oct swap-form follow-up, FreeIndex going live.
 
+### Session 32 — sign off (2026-10-05)
+**Live now:** Foster Bristol + Wiltshire indexable and in sitemap.xml; sticky postcode bar on every profile page;
+council pay box with "Ask about current rates" (generic layout only); repeated "supports X arrangements"
+line removed from all generic profiles. Wiltshire layout checked by Emily: fine.
+**Hidden (noindex) but reviewable:** Dorset, Somerset, Oxfordshire, Hampshire, Sandwell profiles. Data fixed
+(ratings/URNs), copy NOT yet written. Emily was going to review them and send notes.
+**Next up (in order):** (1) Emily's notes on the five hidden pages; (2) write their copy, no pay figures,
+only verified facts; (3) Hampshire allowance still says "contact direct for 2025-26 rates" and Oxfordshire
+has none: replace with the ask-about-rates wording; (4) add pay button to Wiltshire/Sandwell custom layouts;
+(5) new rows for Gloucestershire CC + Swindon BC; (6) Sandwell URN unchecked; (7) audit ~100 other council
+ratings; (8) Search Console "Request indexing" for Bristol (Emily). Reviews: left out. Coverage: Gemini list
+unpublished; cautious line live; Emily may ask Foster Bristol directly.
+**Dates:** 10 Oct Tier 1 charity cut-off; 14 Oct swap-form follow-up; FreeIndex going live. Heart and Home on hold.
+**Push state at sign-off:** both repos have ONE unpushed log-only commit each (Heart and Home on hold).
+**Curriculum:** no step advanced (still 10b real project).
+
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
 `~/FLT/My documents/Agency approaches/Partner prospectuses/`. Lots of style +
