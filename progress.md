@@ -921,8 +921,14 @@ council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 
   needed for FOI (s8). Northants → Northamptonshire Children's Trust (one request for both).
   **Batch 3 (15 Yorkshire, Bradford via its children's trust) + batch 4 (12 North East) SENT 6 Oct.**
   Batches 5 (24 NW) + 6 (11 EoE) SENT 6 Oct. Batch 7 (15 SW, 14 Bcc + Somerset form) SENT 6 Oct. Batch 8 (19 SE, 14 Bcc + 5 forms) SENT 6 Oct. Batch 9 (27 London Bcc) SENT 6 Oct; IoW resent to information@iow.gov.uk. London web forms (Hackney, H&F, Harrow, Havering, Redbridge) + Enfield SENT 6 Oct. **ALL 153 of 153 contacted (Tactic H sending complete), all replies due 2026-11-03.** Derbyshire RESENT to access2info@ 6 Oct (Derby City also got a duplicate by mistake). Kingston, Richmond, RBWM redirected to Achieving for Children (AfC) form; resubmitted 6 Oct as one request asking for per-council figures. Web-search budget ran out this session.
-**Next up (old):** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
-chase. Remaining 139 council addresses: later sessions, region by region.
+- **Session 34 ended (End lesson).** Skill note: Emily found Enfield's FOI form herself on the council site, and asked
+  good "is this council in scope?" questions (city vs county unitary). Lesson she met: same-name city/county councils
+  (Derby vs Derbyshire) are separate; check the tracker row before sending.
+**Next up (FOI):** log acknowledgement reference numbers as Emily pastes them; handle bounces (most likely: Brent,
+Tower Hamlets, Waltham Forest, Wandsworth; also Kent, W Berks, BANES, Wiltshire, Bedford, Norfolk, Southend, N Lincs,
+Sunderland, Manchester, NE watch list). Richmond confirmed live (replied). Check AfC reply gives per-council figures.
+**3 Nov 2026: replies due**, then chase non-responders from the tracker. Offer: plan the reply analysis for the
+press release. Web searches may be limited per session: read council sites directly when they are.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
