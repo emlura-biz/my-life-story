@@ -944,7 +944,8 @@ coverage in postcode search.
 - Foster Birmingham rates added to DB (was "Enquire for rates"), taken from their site calculator (page last edited Oct 2025, above 2026/27 NMA). Script `scripts/update-foster-birmingham-rates-2026-10-06.mjs`. FOI tracker Birmingham row reminds us to swap in FOI figures (due 3 Nov). Emily says the page otherwise looks good. **Next: link + index Birmingham when she confirms.**
 - Rates button heading on all council profiles: "Shortlist to confirm what you'd be paid" (was "…check current rates", which contradicted "Figures checked"). One size bigger (`22313d9`). Wiltshire now shows its "Figures checked September 2026" line.
 - Lesson: my CSV edit turned the tracker's Windows line endings into Unix ones (whole-file diff), so I restored them (`2d906f6`). **Always keep CRLF in foi-tracker.csv.**
-- **Open decision:** a written rule for the "exceptional" badge. Proposed: Ofsted Outstanding only. Today only Wiltshire qualifies; Bristol, Sandwell and Birmingham are Good with an RI sub-judgement or an ILACS-only rating. Emily hasn't confirmed the rule yet.
+- **Badges decided:** use the criteria on /agency-badge (Ofsted Good counts for both tiers). Wiltshire = Exceptional (out-of-hours needn't be 24/7, Emily's call). Bristol and Birmingham = Trusted. **Sandwell = no badge**: no therapeutic model found, and Ofsted Oct 2024 flagged out-of-hours as inconsistent (Reg 17 requirement). Caseloads unknown for all four.
+- Badge now sits at the page bottom with an agency-specific `badgeText` + "How we award badges →" link. The photo keeps the top right and is hidden on phones. Wiltshire got a hero photo (girl with a magnifying glass, from screenshots/…049). Commit `0fe4e5e`.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
