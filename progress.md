@@ -920,7 +920,7 @@ council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 
   Leicester FOIA@ BOUNCED (tutor guess) → resent via council form. Leicester asked for ID: told Emily not
   needed for FOI (s8). Northants → Northamptonshire Children's Trust (one request for both).
   **Batch 3 (15 Yorkshire, Bradford via its children's trust) + batch 4 (12 North East) SENT 6 Oct.**
-  Batches 5 (24 NW) + 6 (11 EoE) SENT 6 Oct. Batch 7 (15 SW, 14 Bcc + Somerset form) SENT 6 Oct. **101 of 153 contacted, all replies due 2026-11-03.** Remaining: SE 19, London 33.
+  Batches 5 (24 NW) + 6 (11 EoE) SENT 6 Oct. Batch 7 (15 SW, 14 Bcc + Somerset form) SENT 6 Oct. Batch 8 (19 SE, 14 Bcc + 5 forms) SENT 6 Oct. **120 of 153 contacted, all replies due 2026-11-03.** Remaining: London 33.
 **Next up (old):** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
 chase. Remaining 139 council addresses: later sessions, region by region.
 
