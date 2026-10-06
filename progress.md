@@ -929,6 +929,14 @@ Tower Hamlets, Waltham Forest, Wandsworth; also Kent, W Berks, BANES, Wiltshire,
 Sunderland, Manchester, NE watch list). Richmond confirmed live (replied). Check AfC reply gives per-council figures.
 **3 Nov 2026: replies due**, then chase non-responders from the tracker. Offer: plan the reply analysis for the
 press release. Web searches may be limited per session: read council sites directly when they are.
+**Session 34 continued (same day, after the first End lesson):** 45 FOI references logged; agency emails all
+answered (Heart and Home told they're live; Fusion: Emily rewrote the reply herself, clearer than tutor's draft,
+explaining postcode search = office distance vs city pages = coverage; Thrive: offered Enhanced with sponsored link,
+PDF attached). FosterWiki added to backlink plan Tier 1 (FOI findings angle, after 3 Nov). Skills shown: she pushed
+back on over-engineered suggestions (coverage-by-council) and chose the simplest honest answer; spotted partial-council
+coverage flaw herself; spotted a new backlink target from an agency's site. **Next session:** new FOI acks; Lydia's
+reply (add city-page coverage + any hubs, show changes first); parked ideas: "Satellite office" label wording,
+coverage in postcode search.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
