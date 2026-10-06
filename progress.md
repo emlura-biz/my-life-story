@@ -907,7 +907,12 @@ council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 
 - Emily: FOI files go *inside* foster-compare, back up everything. Commit `ad46c53` (local): `data/foi/foi-tracker.csv`
   (153 rows, FOI email/form columns still empty), the xlsx, Google ads/GSC export CSVs, plan line updated,
   `.gitignore` adds `data/foi/replies/` and `screenshots/` (Supabase log export has IPs, so kept off GitHub).
-**Next up:** Emily pushes; approve final FOI wording; tutor fills FOI addresses (West Midlands first).
+- Pushed `ad46c53`. West Midlands FOI contacts filled (`f741333`): 10 email, 4 web-form only (Dudley, Shropshire,
+  Warwickshire, Worcestershire). Search summaries were wrong for Dudley + Warwickshire; council pages checked directly.
+- **FOI wording APPROVED** (3 Qs, no marketing Q, signed Emily Browne), saved in backlink plan Tactic H. Pushed.
+  Emily is watching context/credits: send West Midlands first, other 139 addresses later.
+**Next up:** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
+chase. Remaining 139 council addresses: later sessions, region by region.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
