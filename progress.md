@@ -937,6 +937,7 @@ back on over-engineered suggestions (coverage-by-council) and chose the simplest
 coverage flaw herself; spotted a new backlink target from an agency's site. **Next session:** new FOI acks; Lydia's
 reply (add city-page coverage + any hubs, show changes first); parked ideas: "Satellite office" label wording,
 coverage in postcode search.
+**Session 35 (2026-10-06):** 5 more FOI acks logged (S Tyneside, Manchester, Milton Keynes, Bexley = refs; City of London no ref, Square Mile only so may say "not held"). Bexley, S Tyneside, Manchester confirmed live (were bounce-watch). Commit `9bfc7d1`.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
