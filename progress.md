@@ -938,6 +938,13 @@ coverage flaw herself; spotted a new backlink target from an agency's site. **Ne
 reply (add city-page coverage + any hubs, show changes first); parked ideas: "Satellite office" label wording,
 coverage in postcode search.
 **Session 35 (2026-10-06):** 5 more FOI acks logged (S Tyneside, Manchester, Milton Keynes, Bexley = refs; City of London no ref, Square Mile only so may say "not held"). Bexley, S Tyneside, Manchester confirmed live (were bounce-watch). Commit `9bfc7d1`.
+**Session 35 cont. (2026-10-06), site changes (all pushed):**
+- Agency profile shortlist buttons now always orange, both states (`488363e`). City/search pills unchanged: clear, turns orange.
+- Sandwell profile linked + indexed (`profileLinks.ts`, `INDEXABLE_SLUGS`, sitemap). Live set now: Wiltshire, Bristol, Sandwell. Foster Birmingham added by mistake (Emily meant Bristol), then reverted (`e315cb7`).
+- Foster Birmingham rates added to DB (was "Enquire for rates"), taken from their site calculator (page last edited Oct 2025, above 2026/27 NMA). Script `scripts/update-foster-birmingham-rates-2026-10-06.mjs`. FOI tracker Birmingham row reminds us to swap in FOI figures (due 3 Nov). Emily says the page otherwise looks good. **Next: link + index Birmingham when she confirms.**
+- Rates button heading on all council profiles: "Shortlist to confirm what you'd be paid" (was "…check current rates", which contradicted "Figures checked"). One size bigger (`22313d9`). Wiltshire now shows its "Figures checked September 2026" line.
+- Lesson: my CSV edit turned the tracker's Windows line endings into Unix ones (whole-file diff), so I restored them (`2d906f6`). **Always keep CRLF in foi-tracker.csv.**
+- **Open decision:** a written rule for the "exceptional" badge. Proposed: Ofsted Outstanding only. Today only Wiltshire qualifies; Bristol, Sandwell and Birmingham are Good with an RI sub-judgement or an ILACS-only rating. Emily hasn't confirmed the rule yet.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
