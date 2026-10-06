@@ -4,7 +4,7 @@
 > go. Lives in your project folder so it pushes to GitHub with your work.
 
 - **Started:** 2026-06-11
-- **Last updated:** 2026-09-30 (session 31)
+- **Last updated:** 2026-10-06 (session 34)
 - **Curriculum version:** v1
 
 ---
@@ -892,6 +892,22 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
 **Next up:** Emily checks live Bristol (support cards), Wiltshire (Areas covered), Sandwell + Birmingham (unlinked;
 read Birmingham's new Ofsted wording); decide whether to relink Sandwell; confirm issue #17 email; notes on hidden
 council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 81,000 stat (Dec).
+
+### Session 34 (2026-10-06): FOI track (backlink Tactic H) started
+- Emily wants FOIs to **all 153** councils (plan had said West Midlands first). Her source: mySociety
+  `data/local authorities.xlsx` (no FOI emails in it). Filter: her 4 type labels gave 131, because the dataset says
+  "County", not "County council". Added 21 counties + City of London = 153. Dataset had Lincolnshire (Y&H) and
+  Derbyshire (WM) in the wrong regions; fixed. All 9 regions now match official counts.
+- **Checked Ofsted's "Fostering in England" underlying data (LA_Data tab):** it already publishes, per council, newly
+  approved households, total de-registrations + de-registration reasons (no financial category). So Emily's Q1 was
+  dropped. Redraft: 3 Qs (tenure bands at de-registration 23/24–25/26; financial/housing exit reasons 25/26;
+  discretionary hardship payments count + £ 22/23 and 25/26) + section 16 "answer the rest" line. **Emily said yes to
+  redrafting; final wording NOT yet approved.** Open: optional Q4 on recruitment marketing spend (fits her
+  "councils compete for carers online" angle); confirm sign-off name.
+- Emily: FOI files go *inside* foster-compare, back up everything. Commit `ad46c53` (local): `data/foi/foi-tracker.csv`
+  (153 rows, FOI email/form columns still empty), the xlsx, Google ads/GSC export CSVs, plan line updated,
+  `.gitignore` adds `data/foi/replies/` and `screenshots/` (Supabase log export has IPs, so kept off GitHub).
+**Next up:** Emily pushes; approve final FOI wording; tutor fills FOI addresses (West Midlands first).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
