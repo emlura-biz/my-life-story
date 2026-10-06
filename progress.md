@@ -794,8 +794,8 @@ Preview branch: bristol-preview-fcc.fostercarecompare.workers.dev/agencies/foste
 new rows for Gloucestershire CC + Swindon BC; add Wiltshire/Sandwell pay button; audit the other
 ~100 council ratings (none show Requires improvement); Bristol/Wiltshire April figure re-check.
 
-**Heart and Home (5 Oct 2026):** they replied asking Emily to HOLD OFF listing them. No listing to
-build; no follow-up date. Logged in foster-compare docs/outreach-log.md. Remaining dated items: 10 Oct
+**Heart and Home (5 Oct 2026):** ~~they replied asking Emily to HOLD OFF~~ **WRONG (corrected 6 Oct): tutor
+mixed them up with Step by Step Fostering. Heart and Home sent full details 28 Sep and never asked to wait: ready to list.** Logged in foster-compare docs/outreach-log.md. Remaining dated items: 10 Oct
 Tier 1 charity cut-off, 14 Oct swap-form follow-up, FreeIndex going live.
 
 ### Session 32 — sign off (2026-10-05)
@@ -810,7 +810,7 @@ has none: replace with the ask-about-rates wording; (4) add pay button to Wiltsh
 (5) new rows for Gloucestershire CC + Swindon BC; (6) Sandwell URN unchecked; (7) audit ~100 other council
 ratings; (8) Search Console "Request indexing" for Bristol (Emily). Reviews: left out. Coverage: Gemini list
 unpublished; cautious line live; Emily may ask Foster Bristol directly.
-**Dates:** 10 Oct Tier 1 charity cut-off; 14 Oct swap-form follow-up; FreeIndex going live. Heart and Home on hold.
+**Dates:** 10 Oct Tier 1 charity cut-off; 14 Oct swap-form follow-up; FreeIndex going live. Heart and Home on hold (WRONG, corrected 6 Oct: ready to list).
 **Push state at sign-off:** both repos have ONE unpushed log-only commit each (Heart and Home on hold).
 **Curriculum:** no step advanced (still 10b real project).
 
