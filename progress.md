@@ -795,7 +795,7 @@ new rows for Gloucestershire CC + Swindon BC; add Wiltshire/Sandwell pay button;
 ~100 council ratings (none show Requires improvement); Bristol/Wiltshire April figure re-check.
 
 **Heart and Home (5 Oct 2026):** ~~they replied asking Emily to HOLD OFF~~ **WRONG (corrected 6 Oct): tutor
-mixed them up with Step by Step Fostering. Heart and Home sent full details 28 Sep and never asked to wait: ready to list.** Logged in foster-compare docs/outreach-log.md. Remaining dated items: 10 Oct
+mixed them up with Step by Step Fostering. Heart and Home sent full details 28 Sep and never asked to wait: ready to list.** LISTED 6 Oct (free, noindexed); Emily to email Augustina. Logged in foster-compare docs/outreach-log.md. Remaining dated items: 10 Oct
 Tier 1 charity cut-off, 14 Oct swap-form follow-up, FreeIndex going live.
 
 ### Session 32 — sign off (2026-10-05)
