@@ -883,8 +883,13 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   inside quote marks → fixed). Dropped unconfirmed claims (six-stage, practice model, step-down). DB: Sandwell
   fostering_types + allowance filled (backup in data/backups). Sandwell → GenericLAProfile, old component deleted.
   Foster Birmingham stats (594/819/90%) removed; Birmingham still hand-built.
-**Next up:** Emily pushes `7298059` + `6235530`; checks live Bristol, Wiltshire, Sandwell; maybe move Foster
-Birmingham onto the template; confirm issue #17 email; notes on hidden council pages.
+- Emily pushed `6235530`. **Foster Birmingham moved onto template** (local commit, see foster-compare log): Ofsted
+  had a NEW full inspection (27–31 July 2026, published 24 Sept): overall Good, helped & protected RI, leaders Good →
+  old "Good in all areas" + 2024 quotes replaced from the new report. Dropped "one of the largest" (site only says the
+  Trust is the biggest children's service). Every council now on `GenericLAProfile`.
+- Tooling note: old preview servers left running → tsc OOM-killed ("0 errors" was a false pass). Killed them; tsc 10.
+**Next up:** Emily pushes; checks live Bristol, Wiltshire, Sandwell, Birmingham; decide whether to relink Sandwell;
+confirm issue #17 email; notes on hidden council pages.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
