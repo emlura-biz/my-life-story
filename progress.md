@@ -917,7 +917,10 @@ council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 
   council-by-council publishing; "independent"; Ramsden vs Browne name check).
 - Purpose paragraph approved (batch 2+). **Batch 2 SENT 2026-10-06: 10 East Midlands** (8 Bcc, 2 forms). Leicester
   FOIA@ + Derbyshire access.2info@ unverified: Emily watching for bounces; chase if no ack by ~13 Oct.
-  24 of 153 councils contacted. Next region: Yorkshire and the Humber (15).
+  Leicester FOIA@ BOUNCED (tutor guess) → resent via council form. Leicester asked for ID: told Emily not
+  needed for FOI (s8). Northants → Northamptonshire Children's Trust (one request for both).
+  **Batch 3 (15 Yorkshire, Bradford via its children's trust) + batch 4 (12 North East) SENT 6 Oct.**
+  **51 of 153 contacted, all replies due 2026-11-03.** Remaining: NW 24, SE 19, SW 15, EoE 11, London 33.
 **Next up (old):** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
 chase. Remaining 139 council addresses: later sessions, region by region.
 
