@@ -878,8 +878,13 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
 - Emily pushed `b391f7d`. **Bristol support + Ofsted date** (`7298059`): 6 support cards from
   bristol.gov.uk support page (own wording, no prices); last full ILACS 16 Jan 2023 (reports.ofsted.gov.uk, focused
   visits since); new full ILACS reported due by mid-2026 → Ofsted marker due 2026-12 (may land any time).
-**Next up:** Emily pushes; checks live Bristol + Wiltshire; step 3 (Sandwell + Foster Birmingham headcounts);
-confirm issue #17 email; notes on hidden council pages.
+- **Step 3 done** (2026-10-06, `6235530`, local): Sandwell re-checked against fostersandwell.co.uk + Oct 2024 Ofsted
+  PDF (WebFetch wrongly said the quotes weren't in it — extracted text by hand: all 4 there, one had been shortened
+  inside quote marks → fixed). Dropped unconfirmed claims (six-stage, practice model, step-down). DB: Sandwell
+  fostering_types + allowance filled (backup in data/backups). Sandwell → GenericLAProfile, old component deleted.
+  Foster Birmingham stats (594/819/90%) removed; Birmingham still hand-built.
+**Next up:** Emily pushes `7298059` + `6235530`; checks live Bristol, Wiltshire, Sandwell; maybe move Foster
+Birmingham onto the template; confirm issue #17 email; notes on hidden council pages.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
