@@ -915,6 +915,9 @@ council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 
   **SENT 2026-10-06** to all 14 West Midlands (10 Bcc email, 4 forms). Tracker + outreach log updated, pushed.
   Reply due 2026-11-03. Emily drafting a purpose paragraph for future FOIs (tutor flagged: "aggregated" vs
   council-by-council publishing; "independent"; Ramsden vs Browne name check).
+- Purpose paragraph approved (batch 2+). **Batch 2 SENT 2026-10-06: 10 East Midlands** (8 Bcc, 2 forms). Leicester
+  FOIA@ + Derbyshire access.2info@ unverified: Emily watching for bounces; chase if no ack by ~13 Oct.
+  24 of 153 councils contacted. Next region: Yorkshire and the Humber (15).
 **Next up (old):** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
 chase. Remaining 139 council addresses: later sessions, region by region.
 
