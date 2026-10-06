@@ -911,7 +911,11 @@ council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 
   Warwickshire, Worcestershire). Search summaries were wrong for Dudley + Warwickshire; council pages checked directly.
 - **FOI wording APPROVED** (3 Qs, no marketing Q, signed Emily Browne), saved in backlink plan Tactic H. Pushed.
   Emily is watching context/credits: send West Midlands first, other 139 addresses later.
-**Next up:** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
+- FOI wording v3 final (all 5 Qs on 2023/24–2025/26, incl. marketing spend + exit interviews), saved in plan.
+  **SENT 2026-10-06** to all 14 West Midlands (10 Bcc email, 4 forms). Tracker + outreach log updated, pushed.
+  Reply due 2026-11-03. Emily drafting a purpose paragraph for future FOIs (tutor flagged: "aggregated" vs
+  council-by-council publishing; "independent"; Ramsden vs Browne name check).
+**Next up (old):** Emily sends the 14 West Midlands FOIs; tutor logs dates in tracker + outreach-log; 20-working-day
 chase. Remaining 139 council addresses: later sessions, region by region.
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
