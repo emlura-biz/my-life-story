@@ -888,8 +888,10 @@ No curriculum step (10b real project). All in foster-compare, committed locally 
   old "Good in all areas" + 2024 quotes replaced from the new report. Dropped "one of the largest" (site only says the
   Trust is the biggest children's service). Every council now on `GenericLAProfile`.
 - Tooling note: old preview servers left running → tsc OOM-killed ("0 errors" was a false pass). Killed them; tsc 10.
-**Next up:** Emily pushes; checks live Bristol, Wiltshire, Sandwell, Birmingham; decide whether to relink Sandwell;
-confirm issue #17 email; notes on hidden council pages.
+- Emily pushed `3180654` (all template work live once Cloudflare builds). Session ended 2026-10-06 ("End lesson").
+**Next up:** Emily checks live Bristol (support cards), Wiltshire (Areas covered), Sandwell + Birmingham (unlinked;
+read Birmingham's new Ofsted wording); decide whether to relink Sandwell; confirm issue #17 email; notes on hidden
+council pages. Due soon: Wiltshire Ofsted (Nov), Bristol Ofsted + £295 offer + 81,000 stat (Dec).
 
 **Active thread (session 13):** editing the Foster Care Compare **Recruitment
 Partner Prospectus** — a standalone HTML file at
